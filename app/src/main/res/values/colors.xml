@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorPrimary">#222431</color>
+    <color name="colorPrimaryDark">#121212</color>
     <color name="colorAccent">#03DAC5</color>
+    <color name="pColor1">#222431</color>
+    <color name="pTextColor3">#8C8FA0</color>
+    <color name="pTextColor4">#898B9A</color>
+    <color name="pTextColor5">#FCFCFC</color>
+    <color name="mainYellow">#FFDD72</color>
+    <color name="cardColor">#2A2C39</color>
+    <color name="cardColor2">#676A81</color>
+    <color name="frontEnd">#FFB317</color>
+    <color name="uiUx">#EB9796</color>
+    <color name="mobileDev">#A3E395</color>
+    <color name="profileBk">#292B39</color>
+    <color name="darkGrey">#414040</color>
+    <color name="frontEndCard">#FDCF71</color>
+    <color name="uiUxCard">#EB9796</color>
+    <color name="totalStatsTextColor">#E0D26B</color>
 </resources>

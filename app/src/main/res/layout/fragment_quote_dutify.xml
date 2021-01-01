@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_gravity="center|bottom"
+    tools:context=".QuoteDutify">
+
+    <TextView
+        android:id="@+id/quote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawablePadding="16dp"
+        android:text="@string/dutifyQuote"
+        android:textColor="@color/pTextColor5"
+        android:textFontWeight="500"
+        android:textSize="15sp"
+        app:drawableStartCompat="@drawable/ic_logo" />
+
+</FrameLayout>

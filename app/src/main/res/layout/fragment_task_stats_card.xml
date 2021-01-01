@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TaskStatsCard">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/cardColor"
+        app:shapeAppearance="@style/ShapeAppearanceOverlay.MaterialCardView.Cut">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingStart="34dp"
+            android:paddingTop="16dp"
+            android:paddingEnd="34dp"
+            android:paddingBottom="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="26dp"
+                android:text="@string/projectTileProfile"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textColor="@color/pTextColor5"
+                android:textFontWeight="800"
+                android:textSize="15sp"
+                app:drawableStartCompat="@drawable/ic_correct" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="100dp"
+                android:drawablePadding="26dp"
+                android:text="@string/numberTasks"
+                android:textColor="@color/totalStatsTextColor"
+                android:textSize="15sp"
+                app:drawableEndCompat="@drawable/ic_arrow_right" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</FrameLayout>
