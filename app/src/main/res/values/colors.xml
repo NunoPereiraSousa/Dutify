@@ -18,4 +18,7 @@
     <color name="frontEndCard">#FDCF71</color>
     <color name="uiUxCard">#EB9796</color>
     <color name="totalStatsTextColor">#E0D26B</color>
+    <color name="calendarColor">#DA9BE2</color>
+    <color name="awardsErrorColor">#F26F6E</color>
+    <color name="profileColor">#7FBBCF</color>
 </resources>

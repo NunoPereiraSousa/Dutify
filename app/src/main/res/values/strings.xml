@@ -32,4 +32,15 @@
     <string name="tasksStatisticsTitle">Tasks Statistics</string>
     <string name="numberTasks">30</string>
     <string name="logo_for_the_quote">Logo For the Quote</string>
+    <string name="errorPageHeader">Ups, something\nwent wrong 😪...</string>
+    <string name="errorCalendarParagraph">Go to Calendar</string>
+    <string name="errorDashboardParagraph">Go to Dashboard</string>
+    <string name="errorAwardsParagraph">Go to Awards</string>
+    <string name="errorProfileParagraph">Go to Profile</string>
+    <string name="timelineProjectHeader">Timeline</string>
+    <string name="timeLeft">29 days left.</string>
+    <string name="projectStatus">Under development</string>
+    <string name="teamProjectHeader">Team</string>
+    <string name="actionsProjectHeader">Actions</string>
+    <string name="taskChatBtn">Task Chat</string>
 </resources>

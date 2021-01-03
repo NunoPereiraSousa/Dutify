@@ -156,7 +156,6 @@
                     android:layout_marginTop="10dp"
                     android:lineHeight="18dp"
                     android:text="@string/descriptionProfileEx"
-                    android:textAppearance="?attr/textAppearanceHeadline6"
                     android:textColor="@color/pTextColor5"
                     android:textFontWeight="400"
                     android:textSize="14sp" />
@@ -169,39 +168,13 @@
                     android:textColor="@color/pTextColor4"
                     android:textSize="12sp" />
 
-                <TextView
+                <fragment
+                    android:id="@+id/phone_email_webite_frag"
+                    android:name="com.example.dutify.PhoneEmailWebsite"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:drawablePadding="14dp"
-                    android:text="@string/phoneNumberEx"
-                    android:textColor="@color/pTextColor5"
-                    android:textFontWeight="400"
-                    android:textSize="14sp"
-                    app:drawableStartCompat="@drawable/ic_phone" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:drawablePadding="14dp"
-                    android:text="@string/profileEmail"
-                    android:textColor="@color/pTextColor5"
-                    android:textFontWeight="400"
-                    android:textSize="14sp"
-                    app:drawableStartCompat="@drawable/ic_email" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:drawablePadding="14dp"
-                    android:text="@string/websiteProfile"
-                    android:textColor="@color/pTextColor5"
-                    android:textFontWeight="400"
-                    android:textSize="14sp"
-                    app:drawableStartCompat="@drawable/ic_globe"
-                    tools:targetApi="p" />
+                    tools:layout="@layout/fragment_phone_email_website" />
 
                 <TextView
                     android:layout_width="wrap_content"
