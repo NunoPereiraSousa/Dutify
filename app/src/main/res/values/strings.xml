@@ -43,4 +43,7 @@
     <string name="teamProjectHeader">Team</string>
     <string name="actionsProjectHeader">Actions</string>
     <string name="taskChatBtn">Task Chat</string>
+    <string name="BtnPersonalTasksText">Personal Tasks</string>
+    <string name="allTasksBtnText">All Tasks</string>
+    <string name="workTasksBtnText">Work Tasks</string>
 </resources>

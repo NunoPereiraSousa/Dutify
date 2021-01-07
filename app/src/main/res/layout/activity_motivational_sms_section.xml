@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@color/colorPrimary"
+    tools:context=".MotivationalSmsSection"
+    android:orientation="vertical"
+    android:padding="20dp"
+    >
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Make your day count."
+        android:textSize="18sp"
+        android:textColor="@color/pTextColor5"
+        />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:text="Let's get it!."
+        android:textColor="@color/pTextColor5"
+        android:layout_marginBottom="200dp"
+        />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="200dp"
+        android:gravity="center_horizontal">
+
+        <fragment
+
+            android:id="@+id/productIdentification"
+            android:name="com.example.dutify.QuoteDutify"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="0dp"
+            android:layout_alignParentBottom="true"
+            tools:layout="@layout/fragment_quote_dutify"
+
+            />
+    </RelativeLayout>
+
+
+</LinearLayout>
