@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void login(View view) {
-        Intent intent = new Intent(this, Login.class);
+        Intent intent = new Intent(this, Calendar.class);
         startActivity(intent);
     }
 

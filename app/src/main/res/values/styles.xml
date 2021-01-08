@@ -28,4 +28,27 @@
         <item name="cornerSizeBottomLeft">10dp</item>
     </style>
 
+
+    <!--Calendar Style-->
+
+    <style name="CalenderViewCustom" parent="Theme.AppCompat">
+        <item name="android:focusedMonthDateColor">@color/colorPrimaryDark</item>
+        <item name="android:textColorPrimary">@color/frontEnd</item>
+        <item name="colorAccent">@color/mainYellow</item>
+        <item name="colorPrimary">@color/cardColor2</item>
+        <item name="strokeWidth">20dp</item>
+    </style>
+
+    <style name="CalenderViewDateCustomText" parent="android:TextAppearance.DeviceDefault.Small">
+        <item name="android:textColor">@color/pTextColor5</item>
+        <item name="android:weekNumberColor">@color/pTextColor5</item>
+    </style>
+
+    <style name="CalenderViewWeekCustomText" parent="android:TextAppearance.DeviceDefault.Small">
+        <item name="android:textColor">@color/pTextColor4</item>
+    </style>
+
+
+
+
 </resources>
