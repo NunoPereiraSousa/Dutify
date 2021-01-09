@@ -49,4 +49,9 @@
     <string name="letsGetItText">Let\'s get it!.</string>
     <string name="makeYourDayCount">Make your day count.</string>
     <string name="addPersonalTaskBtnLabelText">Add Personal Task</string>
+    <string name="forTodayDayLabelText">For today\'s day:</string>
+    <string name="PersonalTaksNameHintLabel">Personal Task Name</string>
+    <string name="PersonalTaskDescriptionHintLabel">Personal Task Description</string>
+    <string name="endingDateLabelHint">Ending Date</string>
+    <string name="startingDateLabelHintTxt">Starting Date</string>
 </resources>

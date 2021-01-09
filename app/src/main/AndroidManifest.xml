@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Catalog"></activity>
+        <activity android:name=".Calendar"></activity>
+        <activity android:name=".MotivationalSmsSection" />
+        <activity android:name=".DashboardBoard" />
+        <activity android:name=".Catalog" />
         <activity android:name=".DashboardProjectDescription" />
         <activity android:name=".ErrorPage" />
         <activity android:name=".Profile" />

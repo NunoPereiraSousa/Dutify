@@ -28,6 +28,16 @@
         <item name="cornerSizeBottomLeft">10dp</item>
     </style>
 
+    <!--Days todo card -->
+    <style name="ShapeAppearanceOverlay.MaterialCardView.Cut.TodayTaskCard" parent="">
+
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">20dp</item>
+        <item name="cornerSizeTopLeft">20dp</item>
+        <item name="cornerSizeBottomRight">20dp</item>
+        <item name="cornerSizeBottomLeft">20dp</item>
+    </style>
+
 
     <!--Calendar Style-->
 
@@ -49,6 +59,18 @@
     </style>
 
 
+    <!--    Top navigation Calendar Style-->
+
+
+    <style name="Widget.MaterialComponents.Toolbar.Primary1">
+        <item name="android:elevation">@dimen/design_appbar_elevation</item>
+        <item name="android:background">?attr/colorPrimary</item>
+        <item name="titleTextColor">?attr/colorOnPrimary</item>
+        <item name="android:textSize">9sp</item>
+        <item name="subtitleTextColor">@color/material_on_primary_emphasis_medium</item>
+        <!-- Note: this theme overlay will only work if the style is applied directly to a Toolbar. -->
+        <item name="android:theme">@style/ThemeOverlay.MaterialComponents.Toolbar.Primary</item>
+    </style>
 
 
 </resources>

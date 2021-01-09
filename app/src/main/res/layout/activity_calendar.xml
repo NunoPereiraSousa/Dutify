@@ -7,6 +7,17 @@
     android:background="@color/colorPrimary"
     tools:context=".Calendar">
 
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/topAppBar"
+        style="@style/Widget.MaterialComponents.Toolbar.Primary1"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:menu="@menu/calendar_top_menu"
+        app:title="Calendar"
+        />
+
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation3"
         style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
@@ -21,125 +32,157 @@
         app:menu="@menu/bottom_navigation_menu" />
 
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="20dp"
-        >
-
-
-    <LinearLayout
-        android:background="@drawable/ic_calendar_shape"
+        android:layout_marginTop="40dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        >
-        <CalendarView
-            android:theme="@style/CalenderViewCustom"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:dateTextAppearance="@style/CalenderViewDateCustomText"
-            android:weekDayTextAppearance="@style/CalenderViewWeekCustomText"
-            android:focusedMonthDateColor="@color/frontEnd"
-            >
-        </CalendarView>
-    </LinearLayout>
+        android:layout_marginBottom="80dp">
+
+
         <LinearLayout
+
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:orientation="horizontal"
-            android:gravity="end"
-            >
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/outlinedButton"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_gravity="end"
-                android:insetLeft="0dp"
-                android:insetTop="0dp"
-                android:insetRight="0dp"
-                android:insetBottom="0dp"
-                android:padding="0dp"
-                android:rotation="180"
-                app:icon="@drawable/abc_vector_test"
-                app:iconGravity="textStart"
-                app:iconPadding="0dp"
-                app:iconSize="10dp"
-                app:shapeAppearanceOverlay="@style/Button.Circle"
-                app:strokeColor="@color/pTextColor5"
-                app:strokeWidth="1.5dp"
-                android:layout_marginRight="10dp"
-                />
-
-            <TextView
-                android:id="@+id/addPersonalTaskBtnLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:text="@string/addPersonalTaskBtnLabelText"
-                android:textSize="14sp"
-                android:textColor="@color/calendarColor"
-                />
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/selectedDateTxt"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Wed,November 26th"
-            android:textColor="@color/pTextColor3"
-            />
+            android:orientation="vertical"
+            android:padding="20dp">
 
 
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:gravity="end"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                >
-                <fragment
-                    android:id="@+id/award_card_frag"
-                    android:name="com.example.dutify.AwardsCard"
-                    android:layout_width="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_calendar_shape"
+                android:orientation="vertical">
+
+                <CalendarView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    tools:layout="@layout/fragment_awards_card" />
-                <fragment
-                    android:id="@+id/award_card_frag1"
-                    android:name="com.example.dutify.AwardsCard"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    tools:layout="@layout/fragment_awards_card" />
-                <fragment
-                    android:id="@+id/award_card_frag2"
-                    android:name="com.example.dutify.AwardsCard"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    tools:layout="@layout/fragment_awards_card" />
+                    android:dateTextAppearance="@style/CalenderViewDateCustomText"
+                    android:focusedMonthDateColor="@color/frontEnd"
+                    android:theme="@style/CalenderViewCustom"
+                    android:weekDayTextAppearance="@style/CalenderViewWeekCustomText" />
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:orientation="horizontal">
 
-        </HorizontalScrollView>
+                <TextView
+                    android:id="@+id/addPersonalTaskBtnLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:text="@string/addPersonalTaskBtnLabelText"
+                    android:textColor="@color/calendarColor"
+                    android:textSize="14sp"
+                    android:drawablePadding="14dp"
+                    app:drawableStartCompat="@drawable/ic_plus_button_purple" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/selectedDateTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="26dp"
+                android:text="Wed,November 26th"
+                android:textColor="@color/pTextColor3" />
 
 
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/ForTheDayCardsHolder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="end"
+                    android:orientation="horizontal"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp">
+
+                    <fragment
+                        android:id="@+id/ForTheDayCard1"
+                        android:name="com.example.dutify.TodayTodoCard"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        tools:layout="@layout/fragment_today_todo_card" />
+
+                    <fragment
+                        android:id="@+id/ForTheDayCard2"
+                        android:name="com.example.dutify.TodayTodoCard"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        tools:layout="@layout/fragment_today_todo_card" />
+
+                    <fragment
+                        android:id="@+id/ForTheDayCard3"
+                        android:name="com.example.dutify.TodayTodoCard"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        tools:layout="@layout/fragment_today_todo_card" />
+                </LinearLayout>
 
 
+            </HorizontalScrollView>
 
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/selectedMonth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="January 2020"
+                android:textColor="@color/pTextColor3" />
+
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/ProjectCardsHolder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="end"
+                    android:orientation="horizontal"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp">
+
+                    <fragment
+                        android:id="@+id/projectCard1"
+                        android:name="com.example.dutify.ProjectCard"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        tools:layout="@layout/fragment_project_card" />
+
+                    <fragment
+                        android:id="@+id/projectCard2"
+                        android:name="com.example.dutify.ProjectCard"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        tools:layout="@layout/fragment_project_card" />
+
+
+                    <fragment
+                        android:id="@+id/projectCard3"
+                        android:name="com.example.dutify.ProjectCard"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        tools:layout="@layout/fragment_project_card" />
+
+                </LinearLayout>
+
+
+            </HorizontalScrollView>
+
+
+        </LinearLayout>
     </ScrollView>
 
 
