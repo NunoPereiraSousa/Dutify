@@ -31,7 +31,6 @@
         android:textSize="14sp" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/usernameInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -41,6 +40,7 @@
         app:boxStrokeWidthFocused="1dp">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/emailInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/colorPrimary"
@@ -50,7 +50,6 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/passwordInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/passwordHint"
@@ -59,6 +58,7 @@
         app:boxStrokeWidthFocused="1dp">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/passwordInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/colorPrimary"
@@ -80,10 +80,11 @@
         app:drawableStartCompat="@drawable/ic_google" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/outlinedButton"
+        android:id="@+id/loginBtn"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_gravity="end"
+        android:onClick="login"
         android:layout_marginTop="40dp"
         android:insetLeft="0dp"
         android:insetTop="0dp"

@@ -14,18 +14,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void welcome(View view) {
-        Intent intent = new Intent(this, Welcome.class);
-        startActivity(intent);
+    public void openLogin(View view){
+        Intent i = new Intent(this, Login.class);
+        startActivity(i);
     }
 
-    public void login(View view) {
-        Intent intent = new Intent(this, Calendar.class);
-        startActivity(intent);
-    }
-
-    public void profile(View view) {
-        Intent intent = new Intent(this, Profile.class);
-        startActivity(intent);
+    public void openCalendar(View view){
+        Intent i = new Intent(this, Calendar.class);
+        startActivity(i);
     }
 }
