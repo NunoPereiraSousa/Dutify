@@ -21,7 +21,7 @@
         android:contentDescription="@string/userImageDescription" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/userNameTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -65,7 +65,7 @@
         android:background="@drawable/circle_shape" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/dayNameAndTimeTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -76,7 +76,7 @@
         android:textSize="16sp" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/monthAndDayTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

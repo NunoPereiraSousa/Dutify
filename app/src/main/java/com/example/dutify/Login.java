@@ -101,52 +101,51 @@ public class Login extends AppCompatActivity {
 
 
     public void loginFunction(View v) {
-        String postUrl = "https://dutify.herokuapp.com/login";
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        JSONObject postData = new JSONObject();
-        try {
-            emailInput = findViewById(R.id.emailInput);
-            passwordInput = findViewById(R.id.passwordInput);
-            String emailTxt = emailInput.getEditableText().toString();
-            String passwordTxt = passwordInput.getEditableText().toString();
+        emailInput = findViewById(R.id.emailInput);
+        passwordInput = findViewById(R.id.passwordInput);
+        if (emailInput.getEditableText().toString().equals("") || passwordInput.getEditableText().toString().equals("")) {
+            Toast.makeText( getApplicationContext(), "Please fill all your inputs", Toast.LENGTH_SHORT).show();
 
-            postData.put("email", emailTxt);
-            postData.put("password", passwordTxt);
+        }else{
+            String postUrl = "https://dutify.herokuapp.com/login";
+            RequestQueue requestQueue = Volley.newRequestQueue(this);
+            JSONObject postData = new JSONObject();
+            try {
 
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+                String emailTxt = emailInput.getEditableText().toString();
+                String passwordTxt = passwordInput.getEditableText().toString();
 
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, postUrl, postData, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                String token = null;
-                Integer personName = null;
-                String userFullName = null;
+                postData.put("email", emailTxt);
+                postData.put("password", passwordTxt);
 
-                try {
-                    token = response.getString("token");
-                    personName = response.getInt("userType");
-                    userFullName = response.getString("useFullName");
-                } catch (JSONException e) {
-                    e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, postUrl, postData, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    Integer userId = null;
+                    String token = null;
+                    Integer userType = null;
+                    String userFullName = null;
+                    try {
+                        token = response.getString("token");
+                        userType = response.getInt("userType");
+                        userFullName = response.getString("userFullName");
+                        enterApp(token, userType, userFullName);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
                 }
-
-                Context context = getApplicationContext();
-                CharSequence text = String.valueOf(response);
-                Toast toast = Toast.makeText(context, token, Toast.LENGTH_SHORT);
-                toast.show();
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                // String message1 = String.valueOf(error.networkResponse.statusCode);
-                String message = new String(error.networkResponse.data, StandardCharsets.UTF_8);
-                Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
-            }
-        });
-        requestQueue.add(jsonObjectRequest);
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(getApplicationContext(), new String(error.networkResponse.data, StandardCharsets.UTF_8), Toast.LENGTH_LONG).show();
+                }
+            });
+            requestQueue.add(jsonObjectRequest);
+        }
     }
 
 
@@ -164,5 +163,17 @@ public class Login extends AppCompatActivity {
 //        }
 
 
+    }
+
+    private void enterApp(String token, Integer userType, String userFullName) {
+        if (userType != 3) {
+            Intent welcomeIntent = new Intent(this, Welcome.class);
+            welcomeIntent.putExtra("token", token);
+            welcomeIntent.putExtra("userFullName", userFullName);
+            startActivity(welcomeIntent);
+        } else {
+            CharSequence message = "Administration dashboard is underdevelopment";
+            Toast.makeText( getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+        }
     }
 }

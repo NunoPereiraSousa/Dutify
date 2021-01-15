@@ -23,4 +23,10 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(this, Calendar.class);
         startActivity(i);
     }
+
+
+    public void openWelcome(View view){
+        Intent i = new Intent(this, Welcome.class);
+        startActivity(i);
+    }
 }
