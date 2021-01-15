@@ -35,7 +35,6 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:background="@color/colorPrimary"
-            android:paddingVertical="5dp"
             app:itemIconTint="@color/pTextColor5"
             app:itemTextColor="@color/pTextColor5"
             app:labelVisibilityMode="labeled"
@@ -45,7 +44,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:layout_marginBottom="80dp">
+            android:layout_marginBottom="60dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -86,16 +85,17 @@
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/selectedDateTxt"
+                    android:id="@+id/currentDateTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="26dp"
-                    android:text="Wed,November 26th"
+                    android:text="Wed, November 26th"
                     android:textColor="@color/pTextColor3" />
 
                 <HorizontalScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:scrollbars="none">
 
                     <LinearLayout
                         android:id="@+id/ForTheDayCardsHolder"
@@ -134,17 +134,18 @@
                 </HorizontalScrollView>
 
                 <TextView
-                    android:id="@+id/selectedMonth"
+                    android:id="@+id/selectedMonthTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="January 2020"
+                    android:text=""
                     android:textColor="@color/pTextColor3" />
 
 
                 <HorizontalScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:scrollbars="none">
 
                     <LinearLayout
                         android:id="@+id/ProjectCardsHolder"
@@ -236,7 +237,6 @@
                     android:textSize="20sp" />
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/titleTxt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
@@ -246,6 +246,7 @@
                     app:boxStrokeWidthFocused="1dp">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/taskNameTxt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/colorPrimary"
@@ -282,7 +283,7 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/startDateTxt"
-                        android:layout_width="120dp"
+                        android:layout_width="160dp"
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
                         android:layout_gravity="start"
@@ -292,12 +293,12 @@
                         app:boxStrokeWidthFocused="1dp">
 
                         <com.google.android.material.textfield.TextInputEditText
-
-                            android:layout_width="120dp"
+                            android:layout_width="160dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="start"
                             android:backgroundTint="@color/colorPrimary"
                             android:textColor="@color/pTextColor5"
+                            android:drawableEnd="@drawable/ic_calendar_form"
                             android:textSize="14sp"
                             app:boxStrokeColor="@color/pTextColor4" />
 
@@ -305,7 +306,7 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/endDateTxt"
-                        android:layout_width="120dp"
+                        android:layout_width="160dp"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
                         android:hint="@string/endingDateLabelHint"
@@ -314,9 +315,11 @@
                         app:boxStrokeWidthFocused="1dp">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
+                            android:layout_width="160dp"
                             android:layout_height="wrap_content"
                             android:backgroundTint="@color/colorPrimary"
+                            android:drawableEnd="@drawable/ic_calendar_form"
+                            android:layout_gravity="center_horizontal"
                             android:textColor="@color/pTextColor5"
                             android:textSize="14sp"
                             app:boxStrokeColor="@color/pTextColor4" />

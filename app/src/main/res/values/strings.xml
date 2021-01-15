@@ -54,4 +54,9 @@
     <string name="PersonalTaskDescriptionHintLabel">Personal Task Description</string>
     <string name="endingDateLabelHint">Ending Date</string>
     <string name="startingDateLabelHintTxt">Starting Date</string>
+    <string name="anything_you_may_need">Anything you may need,,</string>
+    <string name="we_are_here_for_you">we are here for you.</string>
+    <string name="another_day">Another day,</string>
+    <string name="another_grind">another grind.</string>
+    <string name="hi">👋 Hi,&#160;</string>
 </resources>

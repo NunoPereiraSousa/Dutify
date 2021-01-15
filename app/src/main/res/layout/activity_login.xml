@@ -36,6 +36,7 @@
         android:layout_marginTop="50dp"
         android:hint="@string/emailHint"
         android:textColorHint="@color/pTextColor4"
+        android:background="@drawable/form_stroke"
         app:boxStrokeColor="@color/pTextColor5"
         app:boxStrokeWidthFocused="1dp">
 
@@ -55,12 +56,14 @@
         android:hint="@string/passwordHint"
         android:textColorHint="@color/pTextColor4"
         app:boxStrokeColor="@color/pTextColor5"
+        android:background="@drawable/form_stroke"
         app:boxStrokeWidthFocused="1dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/passwordInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textPassword"
             android:backgroundTint="@color/colorPrimary"
             android:textColor="@color/pTextColor5"
             android:textSize="14sp" />
