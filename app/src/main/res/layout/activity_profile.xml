@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context=".Login">
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation3"
+        style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorPrimary"
+        android:paddingVertical="5dp"
+        app:itemIconTint="@color/pTextColor5"
+        app:itemTextColor="@color/pTextColor5"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/bottom_navigation_menu" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/profileBk"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/profileImg"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:contentDescription="@string/userImageDescription"
+                    tools:src="@tools:sample/avatars" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorPrimary"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MaterialCardView.Cut">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <!-- Title, secondary and supporting text -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:text="@string/profileUserName"
+                            android:textAppearance="?attr/textAppearanceHeadline6"
+                            android:textColor="@color/pTextColor5"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:text="@string/profileUserName"
+                            android:textAppearance="?attr/textAppearanceHeadline6"
+                            android:textColor="@color/pTextColor4"
+                            android:textSize="12sp" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="20dp"
+                            android:orientation="horizontal">
+
+
+                            <com.google.android.material.chip.Chip
+                                android:id="@+id/chip"
+                                style="@style/chipTextAppearance"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="12dp"
+                                android:backgroundTint="@color/colorPrimary"
+                                android:text="@string/profileCategory"
+                                android:textAppearance="@style/chipTextAppearance"
+                                android:textColor="@color/pTextColor5"
+                                app:chipStrokeColor="@color/mobileDev"
+                                app:chipStrokeWidth="1.5dp" />
+
+                            <com.google.android.material.chip.Chip
+                                android:id="@+id/chip2"
+                                style="@style/chipTextAppearance"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="12dp"
+                                android:backgroundTint="@color/colorPrimary"
+                                android:text="@string/profileCategory"
+                                android:textAppearance="@style/chipTextAppearance"
+                                android:textColor="@color/pTextColor5"
+                                app:chipStrokeColor="@color/uiUx"
+                                app:chipStrokeWidth="1.5dp" />
+
+                            <com.google.android.material.chip.Chip
+                                android:id="@+id/chip3"
+                                style="@style/chipTextAppearance"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12dp"
+                                android:backgroundTint="@color/colorPrimary"
+                                android:text="@string/profileCategory"
+                                android:textAppearance="@style/chipTextAppearance"
+                                android:textColor="@color/pTextColor5"
+                                app:chipStrokeColor="@color/frontEnd"
+                                app:chipStrokeWidth="1.5dp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorPrimary"
+                android:orientation="vertical"
+                android:paddingHorizontal="20dp"
+                android:paddingBottom="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="80dp"
+                    android:text="@string/profileDescTitle"
+                    android:textAppearance="?attr/textAppearanceHeadline6"
+                    android:textColor="@color/pTextColor4"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:lineHeight="18dp"
+                    android:text="@string/descriptionProfileEx"
+                    android:textColor="@color/pTextColor5"
+                    android:textFontWeight="400"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:text="@string/getInTouch"
+                    android:textColor="@color/pTextColor4"
+                    android:textSize="12sp" />
+
+                <fragment
+                    android:id="@+id/phone_email_webite_frag"
+                    android:name="com.example.dutify.PhoneEmailWebsite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    tools:layout="@layout/fragment_phone_email_website" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:text="@string/recentProjProfileTitle"
+                    android:textColor="@color/pTextColor4"
+                    android:textSize="12sp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <fragment
+                        android:id="@+id/project_stats_frag"
+                        android:name="com.example.dutify.ProjectCard"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:layout="@layout/fragment_project_card" />
+
+                    <fragment
+                        android:id="@+id/project_stats_frag2"
+                        android:name="com.example.dutify.ProjectCard"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:layout="@layout/fragment_project_card" />
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:text="@string/tasksStatisticsTitle"
+                    android:textColor="@color/pTextColor4"
+                    android:textSize="12sp" />
+
+                <fragment
+                    android:id="@+id/task_stats_frag"
+                    android:name="com.example.dutify.TaskStatsCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:layout="@layout/fragment_task_stats_card" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context=".Login">
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation3"
+        style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorPrimary"
+        android:paddingVertical="5dp"
+        app:itemIconTint="@color/pTextColor5"
+        app:itemTextColor="@color/pTextColor5"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/bottom_navigation_menu" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="30dp"
+        android:paddingTop="20dp"
+        android:paddingRight="30dp"
+        android:paddingBottom="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:letterSpacing="0.06"
+                android:text="Climb Hill"
+                android:textColor="@color/pTextColor5"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/profileDescTitle"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textColor="@color/pTextColor4"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:lineHeight="20dp"
+                android:text="@string/descriptionProfileEx"
+                android:textColor="@color/pTextColor5"
+                android:textFontWeight="400"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="@string/timelineProjectHeader"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textColor="@color/pTextColor4"
+                android:textSize="12sp" />
+
+            <com.google.android.flexbox.FlexboxLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                app:alignItems="center"
+                app:flexDirection="row"
+                app:justifyContent="space_between">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/timeLeftBall"
+                        android:layout_width="7dp"
+                        android:layout_height="7dp"
+                        android:layout_marginRight="12dp"
+                        android:background="@drawable/circle_shape_green" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/timeLeft"
+                        android:textColor="@color/pTextColor5"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/timeLeftBall2"
+                        android:layout_width="7dp"
+                        android:layout_height="7dp"
+                        android:layout_marginRight="12dp"
+                        android:background="@drawable/circle_shape_blue" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/projectStatus"
+                        android:textColor="@color/pTextColor5"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+            </com.google.android.flexbox.FlexboxLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="@string/teamProjectHeader"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textColor="@color/pTextColor4"
+                android:textSize="12sp" />
+
+            <com.google.android.flexbox.FlexboxLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                app:alignItems="center"
+                app:flexDirection="row">
+
+                <fragment
+                    android:id="@+id/project_stats_frag"
+                    android:name="com.example.dutify.ProjectTeamMember"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    tools:layout="@layout/fragment_project_team_member" />
+
+                <fragment
+                    android:id="@+id/project_stats_frag2"
+                    android:name="com.example.dutify.ProjectTeamMember"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    tools:layout="@layout/fragment_project_team_member" />
+
+                <fragment
+                    android:id="@+id/project_stats_frag3"
+                    android:name="com.example.dutify.ProjectTeamMember"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    tools:layout="@layout/fragment_project_team_member" />
+
+                <fragment
+                    android:id="@+id/project_stats_frag4"
+                    android:name="com.example.dutify.ProjectTeamMember"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    tools:layout="@layout/fragment_project_team_member" />
+
+
+            </com.google.android.flexbox.FlexboxLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="@string/actionsProjectHeader"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textColor="@color/pTextColor4"
+                android:textSize="12sp" />
+
+            <fragment
+                android:id="@+id/phone_email_webite_frag"
+                android:name="com.example.dutify.PhoneEmailWebsite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                tools:layout="@layout/fragment_phone_email_website" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end|center"
+                android:orientation="vertical"
+                >
+
+                <TextView
+                    android:id="@+id/timeLeftBall3"
+                    android:layout_width="3.5dp"
+                    android:layout_height="3.5dp"
+                    android:layout_marginRight="4.5dp"
+                    android:background="@drawable/circle_shape_blue" />
+
+                <TextView
+                    android:id="@+id/timeLeftBall4"
+                    android:layout_width="3.5dp"
+                    android:layout_height="3.5dp"
+                    android:layout_marginRight="4.5dp"
+                    android:background="@drawable/circle_shape_blue" />
+
+                <TextView
+                    android:id="@+id/timeLeftBall5"
+                    android:layout_width="3.5dp"
+                    android:layout_height="3.5dp"
+                    android:layout_marginRight="9dp"
+                    android:background="@drawable/circle_shape_blue" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/enterCompanyButton"
+                    style="@style/Widget.MaterialComponents.Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:padding="0dp"
+                    android:text="@string/taskChatBtn"
+                    android:textAllCaps="false"
+                    android:textColor="@color/profileColor"
+                    android:textFontWeight="600"
+                    android:textSize="15sp"
+                    app:strokeColor="@color/colorPrimary" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

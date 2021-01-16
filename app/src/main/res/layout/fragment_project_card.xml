@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context=".ProjectCard">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card"
+        android:layout_width="225dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/frontEndCard"
+        app:shapeAppearance="@style/ShapeAppearanceOverlay.MaterialCardView.Cut">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/projectTileProfile"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/projectCategoryProfile"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textColor="@color/darkGrey"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/img"
+                    android:contentDescription="TODO" />
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@drawable/img"
+                    android:contentDescription="TODO" />
+
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@drawable/img"
+                    android:contentDescription="TODO" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Progress"
+                        android:textColor="@color/darkGrey"
+                        android:textSize="12sp" />
+
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent">
+
+                        <View
+                            android:layout_width="68dp"
+                            android:layout_height="4dp"
+                            android:background="@color/pTextColor5" />
+
+                        <View
+                            android:layout_width="28dp"
+                            android:layout_height="4dp"
+                            android:background="#FFB317" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</FrameLayout>

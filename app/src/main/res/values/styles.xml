@@ -1,10 +1,72 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="Button.Circle" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="chipTextAppearance" parent="TextAppearance.MaterialComponents.Chip">
+        <item name="android:textSize">11sp</item>
+    </style>
+
+    <style name="chipTextAppearance2" parent="TextAppearance.MaterialComponents.Chip">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.MaterialCardView.Cut" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">10dp</item>
+        <item name="cornerSizeTopLeft">10dp</item>
+        <item name="cornerSizeBottomRight">10dp</item>
+        <item name="cornerSizeBottomLeft">10dp</item>
+    </style>
+
+    <!--Days todo card -->
+    <style name="ShapeAppearanceOverlay.MaterialCardView.Cut.TodayTaskCard" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">10dp</item>
+        <item name="cornerSizeTopLeft">10dp</item>
+        <item name="cornerSizeBottomRight">10dp</item>
+        <item name="cornerSizeBottomLeft">10dp</item>
+    </style>
+
+    <!--Calendar Style-->
+    <style name="CalenderViewCustom" parent="Theme.AppCompat">
+        <item name="android:focusedMonthDateColor">@color/colorPrimaryDark</item>
+        <item name="android:textColorPrimary">@color/pTextColor5</item>
+        <item name="colorAccent">@color/calendarColor</item>
+        <item name="colorPrimary">@color/cardColor2</item>
+        <item name="strokeWidth">20dp</item>
+        <item name="borderWidth">10dp</item>
+        <item name="strokeColor">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="CalenderViewDateCustomText" parent="android:TextAppearance.DeviceDefault.Small">
+        <item name="android:textColor">@color/pTextColor5</item>
+        <item name="android:weekNumberColor">@color/pTextColor5</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:fontWeight">400</item>
+    </style>
+
+    <style name="CalenderViewWeekCustomText" parent="android:TextAppearance.DeviceDefault.Small">
+        <item name="android:textColor">@color/pTextColor4</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Widget.MaterialComponents.Toolbar.Primary1">
+        <item name="android:elevation">@dimen/design_appbar_elevation</item>
+        <item name="android:background">?attr/colorPrimary</item>
+        <item name="titleTextColor">?attr/colorOnPrimary</item>
+        <item name="android:textSize">9sp</item>
+        <item name="subtitleTextColor">@color/material_on_primary_emphasis_medium</item>
+        <!-- Note: this theme overlay will only work if the style is applied directly to a Toolbar. -->
+        <item name="android:theme">@style/ThemeOverlay.MaterialComponents.Toolbar.Primary</item>
+    </style>
 </resources>

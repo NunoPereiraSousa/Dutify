@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.sothree.slidinguppanel.SlidingUpPanelLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:sothree="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="bottom"
+    android:gravity="bottom"
+    sothree:umanoDragView="@id/dragView"
+    sothree:umanoOverlay="false"
+    sothree:umanoPanelHeight="10dp"
+    sothree:umanoParallaxOffset="20dp"
+    sothree:umanoShadowHeight="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="40dp"
+        android:paddingBottom="6dp"
+        tools:context=".Welcome">
+
+        <ImageView
+            android:id="@+id/userPicture"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:contentDescription="@string/userImageDescription" />
+
+        <TextView
+            android:id="@+id/userNameTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:text="@string/welcomeUser"
+            android:textColor="@color/pTextColor5"
+            android:textFontWeight="500"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:layout_width="23dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="60dp"
+            android:contentDescription="@string/arrowImageDescription"
+            android:src="@drawable/ic_arrow" />
+
+        <TextView
+            android:layout_width="2dp"
+            android:layout_height="2dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/circle_shape" />
+
+        <TextView
+            android:layout_width="2dp"
+            android:layout_height="2dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/circle_shape" />
+
+        <TextView
+            android:layout_width="2dp"
+            android:layout_height="2dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/circle_shape" />
+
+        <TextView
+            android:id="@+id/dayNameAndTimeTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="60dp"
+            android:text="@string/dayHour"
+            android:textColor="@color/pTextColor5"
+            android:textFontWeight="500"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/monthAndDayTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:text="@string/monthDay"
+            android:textColor="@color/pTextColor4"
+            android:textFontWeight="500"
+            android:textSize="15sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/enterCompanyButton"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="54dp"
+            android:backgroundTint="#fff"
+            android:paddingLeft="32dp"
+            android:paddingTop="11dp"
+            android:paddingRight="32dp"
+            android:paddingBottom="11dp"
+            android:text="@string/enterCompany"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimaryDark"
+            android:textFontWeight="600"
+            android:textSize="16sp"
+            app:cornerRadius="50dp"
+            app:strokeColor="@color/colorPrimary"
+            android:onClick="openMotivationPage"/>
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:text="@string/contactAdministrators"
+            android:textColor="@color/pTextColor5"
+            android:textFontWeight="400"
+            android:textSize="13sp"
+            android:onClick="contactAdmin"/>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center_horizontal">
+
+            <fragment
+                android:id="@+id/asd"
+                android:name="com.example.dutify.QuoteDutify"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                tools:layout="@layout/fragment_quote_dutify" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_add_personal_task_form_shape"
+        android:backgroundTint="@color/colorPrimary"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/dragView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/downBtn"
+                android:layout_width="27dp"
+                android:layout_height="15dp"
+                android:layout_gravity="center"
+                app:icon="@drawable/ic_arrow_down"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:iconTint="@color/formGrey" />
+
+            <TextView
+                android:id="@+id/swipeGreetingTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:text="@string/hi"
+                android:textColor="@color/pTextColor5"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="106dp"
+                android:text="@string/another_day"
+                android:textColor="@color/pTextColor5"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/another_grind"
+                android:textColor="@color/pTextColor5"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/ballOne"
+                android:layout_width="2dp"
+                android:layout_height="2dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                android:background="@drawable/circle_shape" />
+
+            <TextView
+                android:id="@+id/ballTwo"
+                android:layout_width="2dp"
+                android:layout_height="2dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/circle_shape" />
+
+            <TextView
+                android:id="@+id/ballThree"
+                android:layout_width="2dp"
+                android:layout_height="2dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/circle_shape" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="23dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="6dp"
+                android:contentDescription="@string/arrowImageDescription"
+                android:rotation="180"
+                android:src="@drawable/ic_arrow" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                android:text="@string/anything_you_may_need"
+                android:textColor="@color/pTextColor4"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/we_are_here_for_you"
+                android:textColor="@color/pTextColor4"
+                android:textSize="14sp" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="20dp"
+                android:layout_marginTop="80dp"
+                android:gravity="center_horizontal">
+
+                <fragment
+                    android:id="@+id/quoteSwipeEnter"
+                    android:name="com.example.dutify.QuoteDutify"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    tools:layout="@layout/fragment_quote_dutify" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.sothree.slidinguppanel.SlidingUpPanelLayout>
