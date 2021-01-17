@@ -140,11 +140,6 @@ public class Welcome extends AppCompatActivity {
                             .centerCrop()
                             .into(userPicture);
 
-                    /*String picture = response.getString("picture");
-
-                    JSONObject firstWeatherObject = response.getJSONObject(0);*/
-
-                    ///Log.d("picture", picture);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -173,9 +168,7 @@ public class Welcome extends AppCompatActivity {
         StringRequest jsonObjectRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                String userId = response;
-
-                getUserInformation(userId, token);
+                getUserInformation(response, token);
             }
         }, new Response.ErrorListener() {
             @Override

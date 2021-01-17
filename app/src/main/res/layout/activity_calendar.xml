@@ -29,7 +29,7 @@
             app:title="Calendar" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottom_navigation3"
+            android:id="@+id/bottomNavigation"
             style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -13,6 +13,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/contactTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -24,6 +25,7 @@
             app:drawableStartCompat="@drawable/ic_phone" />
 
         <TextView
+            android:id="@+id/emailTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -35,6 +37,7 @@
             app:drawableStartCompat="@drawable/ic_email" />
 
         <TextView
+            android:id="@+id/websiteTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"

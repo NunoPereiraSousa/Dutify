@@ -8,7 +8,7 @@
     tools:context=".Login">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation3"
+        android:id="@+id/bottomNavigation"
         style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -60,6 +60,7 @@
 
                         <!-- Title, secondary and supporting text -->
                         <TextView
+                            android:id="@+id/fullNameTxt"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
@@ -69,6 +70,7 @@
                             android:textSize="14sp" />
 
                         <TextView
+                            android:id="@+id/levelTxt"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
@@ -151,6 +153,7 @@
                     android:textSize="12sp" />
 
                 <TextView
+                    android:id="@+id/descriptionTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -168,8 +171,8 @@
                     android:textColor="@color/pTextColor4"
                     android:textSize="12sp" />
 
-                <fragment
-                    android:id="@+id/phone_email_webite_frag"
+                <FrameLayout
+                    android:id="@+id/contacts_placeholder"
                     android:name="com.example.dutify.PhoneEmailWebsite"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
