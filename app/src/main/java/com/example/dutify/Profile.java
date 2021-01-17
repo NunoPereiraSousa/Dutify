@@ -158,12 +158,14 @@ public class Profile extends AppCompatActivity {
         //#4-Display Contact, email and website
 
         PhoneEmailWebsite contactsFragment = new PhoneEmailWebsite();
-
-        FrameLayout contactsPlaceholder = (FrameLayout) findViewById(R.id.contacts_placeholder);
+        Bundle myBundle = new Bundle();
+        myBundle.putString("contact",contact);
+        myBundle.putString("email",email);
+        myBundle.putString("website",website);
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        contactsFragment.setArguments(myBundle);
         ft.add(R.id.contacts_placeholder, contactsFragment);
         ft.commit();
-//        contactsFragment.changeTextViews(contact,email,website);
 
 
 

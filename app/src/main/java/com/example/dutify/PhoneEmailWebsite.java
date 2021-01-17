@@ -13,21 +13,16 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 public class PhoneEmailWebsite extends Fragment {
-    private PhoneEmailWebsiteListener listener;
 
     TextView contactTxt;
     TextView emailTxt;
     TextView websiteTxt;
 
 
+    public PhoneEmailWebsite() {
 
-    public interface PhoneEmailWebsiteListener {
-        void changeTextViews(String contact, String email, String website);
+
     }
-
-
-
-
 
     @Nullable
     @Override
@@ -37,32 +32,23 @@ public class PhoneEmailWebsite extends Fragment {
         contactTxt = (TextView) v.findViewById(R.id.contactTxt);
         emailTxt = (TextView) v.findViewById(R.id.emailTxt);
         websiteTxt = (TextView) v.findViewById(R.id.websiteTxt);
+        Bundle receivingBundle = getArguments();
 
-        // Inflate the layout for this fragment
+        contactTxt.setText(receivingBundle.getString("contact"));
+        emailTxt.setText(receivingBundle.getString("email"));
+        websiteTxt.setText(receivingBundle.getString("website"));
+
+
+        // this particular code is needed in the future, do not deleted
+        // https://www.youtube.com/watch?v=pd88QirXk2I
+        //https://www.youtube.com/watch?v=T_tEWiFGrsI // not important
+
         return v;
     }
 
 
-    public void changeTextViews(String contact, String email, String website) {
-        contactTxt.setText(contact);
-        emailTxt.setText(email);
-        websiteTxt.setText(website);
-    }
 
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        if (context instanceof PhoneEmailWebsiteListener) {
-            listener = (PhoneEmailWebsiteListener) context;
-        } else {
-            throw new RuntimeException(context.toString() + " must implement PhoneEmailWebsiteAListener");
-        }
-        ;
-    }
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        listener = null;
-    }
+
+
 }
