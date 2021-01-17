@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    tools:context=".DashboardCard">
+
+    <!-- TODO: Update blank fragment layout -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/frontEndCard"
+        app:shapeAppearance="@style/Dashboard.MaterialCardView.Cut">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="6dp"
+            android:layout_gravity="end">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/enterCompanyButton"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:drawableTop="@drawable/ic_cross_x"
+                android:backgroundTint="@color/cardColor2"
+                android:textColor="@color/pTextColor5"
+                app:cornerRadius="100dp"/>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="30dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/projectTileProfile"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/projectCategoryProfile"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textColor="@color/darkGrey"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:gravity="bottom">
+
+                <RelativeLayout
+                    android:layout_width="220dp"
+                    android:layout_height="wrap_content">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="13dp"
+                        android:background="@color/pTextColor5" />
+
+                    <View
+                        android:layout_width="150dp"
+                        android:layout_height="13dp"
+                        android:background="@color/cardColor2" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Progress"
+                    android:layout_marginLeft="26dp"
+                    android:textColor="@color/darkGrey"
+                    android:textSize="16sp"
+                    android:textFontWeight="600"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</FrameLayout>

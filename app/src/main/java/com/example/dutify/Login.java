@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -67,11 +68,19 @@ public class Login extends AppCompatActivity {
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
+                    if (error.networkResponse.statusCode >= 500) {
+                        openErrorPage();
+                    }
                     Toast.makeText(getApplicationContext(), new String(error.networkResponse.data, StandardCharsets.UTF_8), Toast.LENGTH_LONG).show();
                 }
             });
             requestQueue.add(jsonObjectRequest);
         }
+    }
+
+    public void openErrorPage() {
+        Intent i = new Intent(this, ErrorPage.class);
+        startActivity(i);
     }
 
     public void saveToken(String Token) {

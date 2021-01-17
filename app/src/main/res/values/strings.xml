@@ -59,4 +59,5 @@
     <string name="another_day">Another day,</string>
     <string name="another_grind">another grind.</string>
     <string name="hi">👋 Hi,&#160;</string>
+    <string name="dashboard_hello">Hello,</string>
 </resources>

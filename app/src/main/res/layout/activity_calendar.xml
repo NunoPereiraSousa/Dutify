@@ -26,7 +26,8 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:menu="@menu/calendar_top_menu"
-            app:title="Calendar" />
+            app:title="Calendar"
+            app:titleTextAppearance="@style/BottomNav" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNavigation"
