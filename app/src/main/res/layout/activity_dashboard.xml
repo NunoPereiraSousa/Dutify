@@ -1,24 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
     tools:context=".Dashboard">
 
-    <RelativeLayout
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/topAppBar"
+        style="@style/Widget.MaterialComponents.Toolbar.Primary1"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:menu="@menu/calendar_top_menu"
+        app:title="Dashboard"
+        app:titleTextAppearance="@style/BottomNav" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorPrimary"
+        app:itemIconTint="@color/pTextColor5"
+        app:itemTextColor="@color/pTextColor5"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/bottom_navigation_menu" />
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorPrimary">
-
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/topAppBar"
-            style="@style/Widget.MaterialComponents.Toolbar.Primary1"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:menu="@menu/calendar_top_menu"
-            app:title="Dashboard"
-            app:titleTextAppearance="@style/BottomNav"/>
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="60dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -29,77 +44,63 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="80dp"
-                android:lineHeight="34dp"
+                android:fontFamily="@font/poppins_semibold"
                 android:text="@string/dashboard_hello"
                 android:textColor="@color/pTextColor5"
-                android:textSize="24sp"
-                android:textStyle="normal" />
+                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/dashboardHelloTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:lineHeight="34dp"
-                android:text=""
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Tim Brady 👋"
                 android:textColor="@color/pTextColor5"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+                android:textSize="24sp" />
 
-            <LinearLayout
+            <fragment
+                android:id="@+id/first_dashboard_card"
+                android:name="com.example.dutify.DashboardCard"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_marginTop="24dp"
-                android:layout_marginBottom="34dp">
-
-                <fragment
-                    android:name="com.example.dutify.DashboardCard"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:layout="@layout/fragment_dashboard_card" />
-
-            </LinearLayout>
+                android:layout_height="wrap_content"
+                android:layout_marginTop="34dp"
+                android:layout_marginBottom="20dp"
+                tools:layout="@layout/fragment_dashboard_card" />
 
             <fragment
+                android:id="@+id/first_stats_card"
                 android:name="com.example.dutify.TaskStatsCard"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
                 tools:layout="@layout/fragment_task_stats_card" />
 
             <fragment
+                android:id="@+id/second_stats_card"
                 android:name="com.example.dutify.TaskStatsCard"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
                 tools:layout="@layout/fragment_task_stats_card" />
 
             <fragment
+                android:id="@+id/third_stats_card"
                 android:name="com.example.dutify.TaskStatsCard"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
                 tools:layout="@layout/fragment_task_stats_card" />
 
             <fragment
+                android:id="@+id/fourth_stats_card"
                 android:name="com.example.dutify.TaskStatsCard"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
                 tools:layout="@layout/fragment_task_stats_card" />
 
         </LinearLayout>
 
+    </ScrollView>
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomNavigation"
-            style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:background="@color/colorPrimary"
-            app:itemIconTint="@color/pTextColor5"
-            app:itemTextColor="@color/pTextColor5"
-            app:labelVisibilityMode="labeled"
-            app:menu="@menu/bottom_navigation_menu" />
-
-    </RelativeLayout>
-
-</LinearLayout>
+</RelativeLayout>

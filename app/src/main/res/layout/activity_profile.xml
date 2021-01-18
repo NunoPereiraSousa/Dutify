@@ -20,9 +20,20 @@
         app:labelVisibilityMode="labeled"
         app:menu="@menu/bottom_navigation_menu" />
 
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/topAppBar"
+        style="@style/Widget.MaterialComponents.Toolbar.Primary1"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:menu="@menu/calendar_top_menu"
+        app:title="Calendar"
+        app:titleTextAppearance="@style/BottomNav" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="60dp"
         android:orientation="vertical">
 
         <LinearLayout
@@ -64,8 +75,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
+                            android:fontFamily="@font/raleway_semibold"
                             android:text="@string/profileUserName"
-                            android:textAppearance="?attr/textAppearanceHeadline6"
                             android:textColor="@color/pTextColor5"
                             android:textSize="14sp" />
 
@@ -74,8 +85,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
+                            android:fontFamily="@font/poppins_medium"
                             android:text="@string/profileUserName"
-                            android:textAppearance="?attr/textAppearanceHeadline6"
                             android:textColor="@color/pTextColor4"
                             android:textSize="12sp" />
 
@@ -86,7 +97,6 @@
                             android:layout_marginTop="20dp"
                             android:orientation="horizontal">
 
-
                             <com.google.android.material.chip.Chip
                                 android:id="@+id/chip"
                                 style="@style/chipTextAppearance"
@@ -94,8 +104,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginEnd="12dp"
                                 android:backgroundTint="@color/colorPrimary"
+                                android:fontFamily="@font/poppins_medium"
                                 android:text="@string/profileCategory"
-                                android:textAppearance="@style/chipTextAppearance"
                                 android:textColor="@color/pTextColor5"
                                 app:chipStrokeColor="@color/mobileDev"
                                 app:chipStrokeWidth="1.5dp" />
@@ -107,8 +117,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginHorizontal="12dp"
                                 android:backgroundTint="@color/colorPrimary"
+                                android:fontFamily="@font/poppins_medium"
                                 android:text="@string/profileCategory"
-                                android:textAppearance="@style/chipTextAppearance"
                                 android:textColor="@color/pTextColor5"
                                 app:chipStrokeColor="@color/uiUx"
                                 app:chipStrokeWidth="1.5dp" />
@@ -120,8 +130,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="12dp"
                                 android:backgroundTint="@color/colorPrimary"
+                                android:fontFamily="@font/poppins_medium"
                                 android:text="@string/profileCategory"
-                                android:textAppearance="@style/chipTextAppearance"
                                 android:textColor="@color/pTextColor5"
                                 app:chipStrokeColor="@color/frontEnd"
                                 app:chipStrokeWidth="1.5dp" />
@@ -146,30 +156,32 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="80dp"
+                    android:layout_marginTop="30dp"
+                    android:fontFamily="@font/poppins_medium"
                     android:text="@string/profileDescTitle"
-                    android:textAppearance="?attr/textAppearanceHeadline6"
                     android:textColor="@color/pTextColor4"
-                    android:textSize="12sp" />
+                    android:textSize="13sp" />
 
                 <TextView
                     android:id="@+id/descriptionTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:lineHeight="18dp"
+                    android:fontFamily="@font/raleway_medium"
+                    android:letterSpacing="0.05"
+                    android:lineHeight="20dp"
                     android:text="@string/descriptionProfileEx"
                     android:textColor="@color/pTextColor5"
-                    android:textFontWeight="400"
                     android:textSize="14sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
+                    android:fontFamily="@font/poppins_medium"
                     android:text="@string/getInTouch"
                     android:textColor="@color/pTextColor4"
-                    android:textSize="12sp" />
+                    android:textSize="13sp" />
 
                 <FrameLayout
                     android:id="@+id/contacts_placeholder"
@@ -183,9 +195,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/poppins_medium"
                     android:text="@string/recentProjProfileTitle"
                     android:textColor="@color/pTextColor4"
-                    android:textSize="12sp" />
+                    android:textSize="13sp" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -208,14 +222,15 @@
 
                 </LinearLayout>
 
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/poppins_medium"
                     android:text="@string/tasksStatisticsTitle"
                     android:textColor="@color/pTextColor4"
-                    android:textSize="12sp" />
+                    android:textSize="13sp" />
 
                 <fragment
                     android:id="@+id/task_stats_frag"

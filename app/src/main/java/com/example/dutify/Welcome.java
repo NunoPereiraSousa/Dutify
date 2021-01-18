@@ -128,6 +128,8 @@ public class Welcome extends AppCompatActivity {
                     JSONObject user = userArray.getJSONObject(0);
                     picture = user.getString("picture");
 
+                    Log.d("image", picture);
+
                     ImageView userPicture = (ImageView) findViewById(R.id.userPicture);
                     Picasso.get()
                             .load(picture)

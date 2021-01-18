@@ -4,32 +4,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="20dp"
     tools:context=".DashboardCard">
 
-    <!-- TODO: Update blank fragment layout -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/frontEndCard"
-        app:shapeAppearance="@style/Dashboard.MaterialCardView.Cut">
+        app:cardCornerRadius="20dp">
 
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="6dp"
-            android:layout_gravity="end">
+            android:layout_gravity="end"
+            android:padding="8dp">
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/enterCompanyButton"
-                style="@style/Widget.MaterialComponents.Button"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:drawableTop="@drawable/ic_cross_x"
+                android:id="@+id/loginBtn"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_gravity="end"
                 android:backgroundTint="@color/cardColor2"
-                android:textColor="@color/pTextColor5"
-                app:cornerRadius="100dp"/>
+                android:insetLeft="0dp"
+                android:insetTop="0dp"
+                android:insetRight="0dp"
+                android:insetBottom="0dp"
+                app:icon="@drawable/ic_cross_x"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:iconSize="14dp"
+                app:shapeAppearanceOverlay="@style/Button.Circle" />
 
         </RelativeLayout>
 
@@ -37,11 +41,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="30dp">
+            android:paddingLeft="28dp"
+            android:paddingTop="22dp"
+            android:paddingRight="28dp"
+            android:paddingBottom="22dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
                 android:text="@string/projectTileProfile"
                 android:textAppearance="?attr/textAppearanceHeadline6"
                 android:textColor="@color/colorPrimaryDark"
@@ -50,43 +58,46 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:fontFamily="@font/raleway_semibold"
                 android:text="@string/projectCategoryProfile"
-                android:textAppearance="?attr/textAppearanceHeadline6"
                 android:textColor="@color/darkGrey"
-                android:layout_marginTop="10dp"
                 android:textSize="16sp" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:orientation="horizontal"
-                android:gravity="bottom">
+                android:gravity="bottom"
+                android:orientation="horizontal">
 
                 <RelativeLayout
                     android:layout_width="220dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center">
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="13dp"
-                        android:background="@color/pTextColor5" />
+                        android:background="@drawable/progress_bar_rounded"
+                        android:backgroundTint="@color/pTextColor5" />
 
                     <View
                         android:layout_width="150dp"
                         android:layout_height="13dp"
-                        android:background="@color/cardColor2" />
+                        android:background="@drawable/progress_bar_rounded"
+                        android:backgroundTint="@color/cardColor2" />
 
                 </RelativeLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Progress"
-                    android:layout_marginLeft="26dp"
+                    android:layout_marginStart="26dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="68.4%"
                     android:textColor="@color/darkGrey"
-                    android:textSize="16sp"
-                    android:textFontWeight="600"/>
+                    android:textSize="16sp" />
 
             </LinearLayout>
 

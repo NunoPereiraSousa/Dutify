@@ -60,4 +60,8 @@
     <string name="another_grind">another grind.</string>
     <string name="hi">👋 Hi,&#160;</string>
     <string name="dashboard_hello">Hello,</string>
+    <string name="project_desc_name">Climb Hill</string>
+    <string name="submit_form_button">SUBMIT</string>
+    <string name="glad_to_see_you_here">Glad to see you here! 🥳</string>
+    <string name="awesome">Awesome!</string>
 </resources>

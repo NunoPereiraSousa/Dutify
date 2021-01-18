@@ -13,7 +13,7 @@
     </style>
 
     <style name="chipTextAppearance" parent="TextAppearance.MaterialComponents.Chip">
-        <item name="android:textSize">11sp</item>
+        <item name="android:textSize">12sp</item>
     </style>
 
     <style name="chipTextAppearance2" parent="TextAppearance.MaterialComponents.Chip">
@@ -59,12 +59,13 @@
         <item name="android:textColor">@color/pTextColor5</item>
         <item name="android:weekNumberColor">@color/pTextColor5</item>
         <item name="android:textSize">13sp</item>
-        <item name="android:fontWeight">400</item>
+        <item name="android:fontFamily">@font/poppins</item>
     </style>
 
     <style name="CalenderViewWeekCustomText" parent="android:TextAppearance.DeviceDefault.Small">
         <item name="android:textColor">@color/pTextColor4</item>
         <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/poppins_medium</item>
     </style>
 
     <style name="Widget.MaterialComponents.Toolbar.Primary1">

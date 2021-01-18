@@ -21,138 +21,152 @@
         app:labelVisibilityMode="labeled"
         app:menu="@menu/bottom_navigation_menu" />
 
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/topAppBar"
+        style="@style/Widget.MaterialComponents.Toolbar.Primary1"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:menu="@menu/calendar_top_menu"
+        app:title="Dashboard"
+        app:titleTextAppearance="@style/BottomNav" />
 
-    <LinearLayout
-        android:layout_marginTop="20dp"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-
+        android:orientation="vertical"
+        android:paddingTop="20dp"
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="30dp"
-            android:gravity="start"
-            android:orientation="horizontal">
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/allTasksBtn"
-                style="@style/chipTextAppearance"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="20dp"
-                android:backgroundTint="#676A81"
-                android:text="@string/allTasksBtnText"
-                android:textAppearance="@style/chipTextAppearance2"
-                android:textColor="@color/pTextColor5"
-                app:chipStrokeColor="@color/colorAccent"
-                app:chipStrokeWidth="1.5dp" />
-
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/workTasksBtn"
-                style="@style/chipTextAppearance"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="20dp"
-                android:backgroundTint="@color/colorPrimary"
-                android:text="@string/workTasksBtnText"
-                android:textAppearance="@style/chipTextAppearance2"
-                android:textColor="@color/pTextColor5"
-                app:chipStrokeColor="@color/calendarColor"
-                app:chipStrokeWidth="0dp" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/personalTasksBtn"
-                style="@style/chipTextAppearance"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="20dp"
-                android:backgroundTint="@color/colorPrimary"
-                android:text="@string/BtnPersonalTasksText"
-                android:textAppearance="@style/chipTextAppearance2"
-                android:textColor="@color/pTextColor5"
-                app:chipStrokeColor="@color/mainYellow"
-                app:chipStrokeWidth="0dp" />
-        </LinearLayout>
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="20dp"
+            android:layout_marginTop="20dp"
             android:orientation="vertical">
 
             <LinearLayout
-                android:id="@+id/cardsFragmentPlacerLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="start"
-                android:orientation="vertical">
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
 
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/allTasksBtn"
+                    style="@style/chipTextAppearance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#676A81"
+                    android:fontFamily="@font/poppins"
+                    android:text="@string/allTasksBtnText"
+                    android:textColor="@color/pTextColor5"
+                    app:chipEndPadding="10dp"
+                    app:chipStartPadding="10dp"
+                    app:chipStrokeColor="@color/colorAccent"
+                    app:chipStrokeWidth="1.5dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/workTasksBtn"
+                    style="@style/chipTextAppearance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:fontFamily="@font/poppins"
+                    android:text="@string/workTasksBtnText"
+                    android:textColor="@color/pTextColor5"
+                    app:chipEndPadding="10dp"
+                    app:chipStartPadding="10dp"
+                    app:chipStrokeColor="@color/calendarColor"
+                    app:chipStrokeWidth="0dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/personalTasksBtn"
+                    style="@style/chipTextAppearance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:fontFamily="@font/poppins"
+                    android:text="@string/BtnPersonalTasksText"
+                    android:textColor="@color/pTextColor5"
+                    app:chipEndPadding="10dp"
+                    app:chipStartPadding="10dp"
+                    app:chipStrokeColor="@color/mainYellow"
+                    app:chipStrokeWidth="0dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/cardsFragmentPlacerLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
                 <fragment
                     android:id="@+id/task_stats_frag2"
                     android:name="com.example.dutify.TaskStatsCard"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
                     tools:layout="@layout/fragment_task_stats_card" />
-
 
                 <fragment
                     android:id="@+id/task_stats_frag3"
                     android:name="com.example.dutify.TaskStatsCard"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
                     tools:layout="@layout/fragment_task_stats_card" />
 
                 <fragment
                     android:id="@+id/task_stats_frag4"
                     android:name="com.example.dutify.TaskStatsCard"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
                     tools:layout="@layout/fragment_task_stats_card" />
 
                 <fragment
                     android:id="@+id/task_stats_frag5"
                     android:name="com.example.dutify.TaskStatsCard"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
                     tools:layout="@layout/fragment_task_stats_card" />
 
                 <fragment
                     android:id="@+id/task_stats_frag6"
                     android:name="com.example.dutify.TaskStatsCard"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
                     tools:layout="@layout/fragment_task_stats_card" />
 
                 <fragment
                     android:id="@+id/task_stats_frag7"
                     android:name="com.example.dutify.TaskStatsCard"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
                     tools:layout="@layout/fragment_task_stats_card" />
 
                 <fragment
                     android:id="@+id/task_stats_frag8"
                     android:name="com.example.dutify.TaskStatsCard"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
                     tools:layout="@layout/fragment_task_stats_card" />
 
                 <fragment
                     android:id="@+id/task_stats_frag9"
                     android:name="com.example.dutify.TaskStatsCard"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
                     tools:layout="@layout/fragment_task_stats_card" />
 
             </LinearLayout>
-        </ScrollView>
 
-    </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
 
 </RelativeLayout>

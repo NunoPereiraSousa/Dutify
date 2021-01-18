@@ -19,24 +19,24 @@ public class PhoneEmailWebsite extends Fragment {
     TextView websiteTxt;
 
 
-    public PhoneEmailWebsite() {
+    /*public PhoneEmailWebsite() {
 
 
-    }
+    }*/
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_phone_email_website, container, false);
-        contactTxt = (TextView) v.findViewById(R.id.contactTxt);
+        /*contactTxt = (TextView) v.findViewById(R.id.contactTxt);
         emailTxt = (TextView) v.findViewById(R.id.emailTxt);
         websiteTxt = (TextView) v.findViewById(R.id.websiteTxt);
         Bundle receivingBundle = getArguments();
 
         contactTxt.setText(receivingBundle.getString("contact"));
         emailTxt.setText(receivingBundle.getString("email"));
-        websiteTxt.setText(receivingBundle.getString("website"));
+        websiteTxt.setText(receivingBundle.getString("website"));*/
 
 
         // this particular code is needed in the future, do not deleted

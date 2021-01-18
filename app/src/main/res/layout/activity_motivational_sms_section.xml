@@ -22,6 +22,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
             android:text="@string/makeYourDayCount"
             android:textColor="@color/pTextColor5"
             android:textSize="18sp" />
@@ -30,6 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="200dp"
+            android:fontFamily="@font/poppins"
             android:text="@string/letsGetItText"
             android:textColor="@color/pTextColor5"
             android:textSize="18sp" />

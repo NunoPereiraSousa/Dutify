@@ -16,19 +16,20 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/downBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="27dp"
+            android:layout_height="15dp"
             android:layout_gravity="center"
-            android:backgroundTint="@color/cardColor"
+            android:layout_marginTop="16dp"
             app:icon="@drawable/ic_arrow_down"
             app:iconGravity="textStart"
             app:iconPadding="0dp"
-            app:iconTint="@color/cardColor2" />
+            app:iconTint="@color/formGrey" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Awesome!"
+            android:layout_marginTop="50dp"
+            android:text="@string/awesome"
             android:textColor="@color/pTextColor5"
             android:textSize="20sp" />
 
@@ -36,12 +37,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            android:text="Glad to see you here! 🧐"
+            android:text="@string/glad_to_see_you_here"
             android:textColor="@color/pTextColor5"
             android:textSize="20sp" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/titleTxt"
+            android:id="@+id/personalTaskNameInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
@@ -51,9 +52,12 @@
             app:boxStrokeWidthFocused="1dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/emailInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/cardColor"
+                android:backgroundTint="@color/colorPrimary"
+                android:fontFamily="@font/poppins"
+                android:paddingBottom="10dp"
                 android:textColor="@color/pTextColor5"
                 android:textSize="14sp" />
 
@@ -63,18 +67,21 @@
             android:id="@+id/descriptionTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
             android:hint="@string/PersonalTaskDescriptionHintLabel"
             android:textColorHint="@color/pTextColor4"
             app:boxStrokeColor="@color/pTextColor4"
             app:boxStrokeWidthFocused="1dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/personalTaskDescInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/cardColor"
+                android:backgroundTint="@color/colorPrimary"
+                android:fontFamily="@font/poppins"
+                android:paddingBottom="10dp"
                 android:textColor="@color/pTextColor5"
-                android:textSize="14sp"
-                app:boxStrokeColor="@color/pTextColor4" />
+                android:textSize="14sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -87,21 +94,23 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/startDateTxt"
-                android:layout_width="120dp"
+                android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_gravity="start"
                 android:hint="@string/startingDateLabelHintTxt"
                 android:textColorHint="@color/pTextColor4"
                 app:boxStrokeColor="@color/pTextColor5"
-                app:boxStrokeWidthFocused="1dp">
+                app:boxStrokeWidthFocused="1dp"
+                app:startIconDrawable="@drawable/ic_calendar_form"
+                app:startIconTint="@color/pTextColor4">
 
                 <com.google.android.material.textfield.TextInputEditText
-
-                    android:layout_width="120dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
-                    android:backgroundTint="@color/cardColor"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:paddingBottom="10dp"
                     android:textColor="@color/pTextColor5"
                     android:textSize="14sp"
                     app:boxStrokeColor="@color/pTextColor4" />
@@ -110,18 +119,22 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/endDateTxt"
-                android:layout_width="120dp"
+                android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:hint="@string/endingDateLabelHint"
                 android:textColorHint="@color/pTextColor4"
                 app:boxStrokeColor="@color/pTextColor5"
-                app:boxStrokeWidthFocused="1dp">
+                app:boxStrokeWidthFocused="1dp"
+                app:startIconDrawable="@drawable/ic_calendar_form"
+                app:startIconTint="@color/pTextColor4">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/cardColor"
+                    android:layout_gravity="center_horizontal"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:paddingBottom="10dp"
                     android:textColor="@color/pTextColor5"
                     android:textSize="14sp"
                     app:boxStrokeColor="@color/pTextColor4" />
@@ -136,18 +149,17 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="54dp"
-            android:backgroundTint="#353846"
+            android:backgroundTint="@color/formGrey"
+            android:fontFamily="@font/poppins_medium"
             android:paddingLeft="32dp"
-            android:paddingTop="11dp"
+            android:paddingTop="13dp"
             android:paddingRight="32dp"
             android:paddingBottom="11dp"
-            android:text="SUBMIT"
+            android:text="@string/submit_form_button"
             android:textAllCaps="false"
             android:textColor="@color/mainYellow"
-            android:textFontWeight="600"
             android:textSize="16sp"
-            app:cornerRadius="50dp"
-            app:strokeColor="@color/colorPrimary" />
+            app:cornerRadius="22dp" />
 
     </LinearLayout>
 

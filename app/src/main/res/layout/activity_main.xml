@@ -34,4 +34,36 @@
         android:text="Force Welcome Open"
         android:onClick="openWelcome"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#fff"
+        android:textColor="#000"
+        android:text="Open Dashboard"
+        android:onClick="openDashboard"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#fff"
+        android:textColor="#000"
+        android:text="Open Dashboard Stats"
+        android:onClick="openDashboardStats"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#fff"
+        android:textColor="#000"
+        android:text="Open Dashboard Project"
+        android:onClick="openDashboardProject"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#fff"
+        android:textColor="#000"
+        android:text="Open Profile"
+        android:onClick="openProfile"/>
+
 </LinearLayout>

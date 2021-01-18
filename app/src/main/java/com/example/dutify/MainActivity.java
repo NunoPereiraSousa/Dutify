@@ -29,4 +29,28 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(this, Welcome.class);
         startActivity(i);
     }
+
+
+    public void openDashboard(View view){
+        Intent i = new Intent(this, Dashboard.class);
+        startActivity(i);
+    }
+
+
+    public void openDashboardStats(View view){
+        Intent i = new Intent(this, DashboardBoard.class);
+        startActivity(i);
+    }
+
+
+    public void openDashboardProject(View view){
+        Intent i = new Intent(this, DashboardProjectDescription.class);
+        startActivity(i);
+    }
+
+
+    public void openProfile(View view){
+        Intent i = new Intent(this, Profile.class);
+        startActivity(i);
+    }
 }

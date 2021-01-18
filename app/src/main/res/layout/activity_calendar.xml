@@ -79,6 +79,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="20dp"
                         android:drawablePadding="14dp"
+                        android:fontFamily="@font/poppins"
                         android:text="@string/addPersonalTaskBtnLabelText"
                         android:textColor="@color/calendarColor"
                         android:textSize="14sp"
@@ -90,8 +91,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="26dp"
+                    android:fontFamily="@font/poppins_medium"
                     android:text="Wed, November 26th"
-                    android:textColor="@color/pTextColor3" />
+                    android:textColor="@color/pTextColor3"
+                    android:textSize="13sp" />
 
                 <HorizontalScrollView
                     android:layout_width="match_parent"
@@ -139,9 +142,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
+                    android:fontFamily="@font/poppins_medium"
                     android:text=""
-                    android:textColor="@color/pTextColor3" />
-
+                    android:textColor="@color/pTextColor3"
+                    android:textSize="13sp" />
 
                 <HorizontalScrollView
                     android:layout_width="match_parent"
@@ -162,7 +166,6 @@
                             android:name="com.example.dutify.ProjectCard"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="10dp"
                             tools:layout="@layout/fragment_project_card" />
 
                         <fragment
@@ -170,15 +173,6 @@
                             android:name="com.example.dutify.ProjectCard"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="10dp"
-                            tools:layout="@layout/fragment_project_card" />
-
-                        <fragment
-                            android:id="@+id/projectCard3"
-                            android:name="com.example.dutify.ProjectCard"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="10dp"
                             tools:layout="@layout/fragment_project_card" />
 
                     </LinearLayout>
@@ -198,159 +192,13 @@
         android:backgroundTint="@color/colorPrimary"
         android:orientation="vertical">
 
-        <com.google.android.material.card.MaterialCardView
+        <fragment
             android:id="@+id/dragView"
+            android:name="com.example.dutify.PersonalTaskAddingForm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/ic_add_personal_task_form_shape"
-            android:backgroundTint="@color/colorPrimary">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="20dp">
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/downBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:backgroundTint="@color/colorPrimary"
-                    app:icon="@drawable/ic_arrow_down"
-                    app:iconGravity="textStart"
-                    app:iconPadding="0dp"
-                    app:iconTint="@color/cardColor2" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Awesome!"
-                    android:textColor="@color/pTextColor5"
-                    android:textSize="20sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
-                    android:text="Glad to see you here! 🧐"
-                    android:textColor="@color/pTextColor5"
-                    android:textSize="20sp" />
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
-                    android:hint="@string/PersonalTaksNameHintLabel"
-                    android:textColorHint="@color/pTextColor4"
-                    app:boxStrokeColor="@color/pTextColor5"
-                    app:boxStrokeWidthFocused="1dp">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/taskNameTxt"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:backgroundTint="@color/colorPrimary"
-                        android:textColor="@color/pTextColor5"
-                        android:textSize="14sp" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/descriptionTxt"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/PersonalTaskDescriptionHintLabel"
-                    android:textColorHint="@color/pTextColor4"
-                    app:boxStrokeColor="@color/pTextColor4"
-                    app:boxStrokeWidthFocused="1dp">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:backgroundTint="@color/colorPrimary"
-                        android:textColor="@color/pTextColor5"
-                        android:textSize="14sp"
-                        app:boxStrokeColor="@color/pTextColor4" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
-                    android:gravity="start"
-                    android:orientation="horizontal">
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/startDateTxt"
-                        android:layout_width="160dp"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_gravity="start"
-                        android:hint="@string/startingDateLabelHintTxt"
-                        android:textColorHint="@color/pTextColor4"
-                        app:boxStrokeColor="@color/pTextColor5"
-                        app:boxStrokeWidthFocused="1dp">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="160dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="start"
-                            android:backgroundTint="@color/colorPrimary"
-                            android:textColor="@color/pTextColor5"
-                            android:drawableEnd="@drawable/ic_calendar_form"
-                            android:textSize="14sp"
-                            app:boxStrokeColor="@color/pTextColor4" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/endDateTxt"
-                        android:layout_width="160dp"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:hint="@string/endingDateLabelHint"
-                        android:textColorHint="@color/pTextColor4"
-                        app:boxStrokeColor="@color/pTextColor5"
-                        app:boxStrokeWidthFocused="1dp">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="160dp"
-                            android:layout_height="wrap_content"
-                            android:backgroundTint="@color/colorPrimary"
-                            android:drawableEnd="@drawable/ic_calendar_form"
-                            android:layout_gravity="center_horizontal"
-                            android:textColor="@color/pTextColor5"
-                            android:textSize="14sp"
-                            app:boxStrokeColor="@color/pTextColor4" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-                </RelativeLayout>
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/enterCompanyButton"
-                    style="@style/Widget.MaterialComponents.Button"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="54dp"
-                    android:backgroundTint="#353846"
-                    android:paddingLeft="32dp"
-                    android:paddingTop="11dp"
-                    android:paddingRight="32dp"
-                    android:paddingBottom="11dp"
-                    android:text="SUBMIT"
-                    android:textAllCaps="false"
-                    android:textColor="@color/mainYellow"
-                    android:textFontWeight="600"
-                    android:textSize="16sp"
-                    app:cornerRadius="50dp"
-                    app:strokeColor="@color/colorPrimary" />
-
-            </LinearLayout>
-
-        </com.google.android.material.card.MaterialCardView>
+            android:layout_alignParentBottom="true"
+            tools:layout="@layout/fragment_personal_task_adding_form" />
 
     </LinearLayout>
 
