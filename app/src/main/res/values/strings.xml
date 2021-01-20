@@ -64,4 +64,8 @@
     <string name="submit_form_button">SUBMIT</string>
     <string name="glad_to_see_you_here">Glad to see you here! 🥳</string>
     <string name="awesome">Awesome!</string>
+    <string name="tasksUnderDevelopmentTxt">Tasks Under Development</string>
+    <string name="tasksNotCompletedTxt">Tasks Not Completed</string>
+    <string name="totalTasksTxt">Total Tasks</string>
+    <string name="awardPictureHolder">Award Picture Holder</string>
 </resources>

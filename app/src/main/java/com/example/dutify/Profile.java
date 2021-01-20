@@ -4,15 +4,21 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -21,19 +27,30 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.dutify.RecyclerViewAdapterProfileAwards.Award;
+import com.example.dutify.RecyclerViewAdapterProfileAwards.ProfileAwardsViewAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.chip.Chip;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-public class Profile extends AppCompatActivity {
+public class Profile extends AppCompatActivity implements  ProfileAwardsViewAdapter.ItemClickListener  {
     BottomNavigationView bottomNavigation;
     private String tokenToBeSent;
+
+    //Needs for view adapter
+    ProfileAwardsViewAdapter adapter;
+    RecyclerView recyclerView;
+    List<Award> awards;
 
 
     @Override
@@ -51,6 +68,8 @@ public class Profile extends AppCompatActivity {
             tokenToBeSent = intendExtras.getString("token");
             IdentificationByToken(intendExtras.getString("token"));
 
+
+
             Log.d("Calendar token", tokenToBeSent);
         } else {
             Log.d("justTest", "An idea is being cooked");
@@ -67,6 +86,9 @@ public class Profile extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 getUserInformation(response, token);
+                displayUserCategoriesTag(response, token);
+                getUserTasks(response,token);
+                getUserAwards(response,token);
             }
         }, new Response.ErrorListener() {
             @Override
@@ -92,9 +114,6 @@ public class Profile extends AppCompatActivity {
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                String data = response;
-                Log.d("date", data);
-
                 try {
                     JSONArray userArray = new JSONArray(response);
                     String picture = null;
@@ -103,7 +122,7 @@ public class Profile extends AppCompatActivity {
                     String contact = null;
                     String email = null;
                     Integer userType = null;
-                    String website = "nothing to show";
+                    String website = null;
 
                     JSONObject user = userArray.getJSONObject(0);
                     picture = user.getString("picture");
@@ -112,6 +131,7 @@ public class Profile extends AppCompatActivity {
                     contact = user.getString("contact");
                     email = user.getString("email");
                     userType = user.getInt("id_user_type");
+                    website = user.getString("website");
                     displayUserInformation(picture, fullName, description, contact, email, website, userType);
 
                 } catch (JSONException e) {
@@ -156,22 +176,156 @@ public class Profile extends AppCompatActivity {
         TextView descriptionTxt = (TextView) findViewById(R.id.descriptionTxt);
         descriptionTxt.setText(description);
         //#4-Display Contact, email and website
-
         PhoneEmailWebsite contactsFragment = new PhoneEmailWebsite();
         Bundle myBundle = new Bundle();
-        myBundle.putString("contact",contact);
-        myBundle.putString("email",email);
-        myBundle.putString("website",website);
+        myBundle.putString("contact", contact);
+        myBundle.putString("email", email);
+        myBundle.putString("website", website);
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         contactsFragment.setArguments(myBundle);
         ft.add(R.id.contacts_placeholder, contactsFragment);
         ft.commit();
-
-
-
-
-
     }
+
+    //Function that displays the user category
+    private void displayUserCategoriesTag(String userId, final String token) {
+        String url = "https://dutify.herokuapp.com/users/" + userId + "/tags";
+        RequestQueue queue = Volley.newRequestQueue(this);
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONArray tagsArray = new JSONArray(response);
+
+                    Chip firstChip = (Chip) findViewById(R.id.firstChip);
+                    Chip secondChip = (Chip) findViewById(R.id.secondChip);
+                    Chip thirdChip = (Chip) findViewById(R.id.thirdChip);
+                    for (int i = 0; i < tagsArray.length(); i++) {
+                        JSONObject dataObj = tagsArray.getJSONObject(i);
+                        if (i == 0) {
+                            firstChip.setText(dataObj.getString("description"));
+                        } else if (i == 1) {
+                            secondChip.setText(dataObj.getString("description"));
+                        } else {
+                            thirdChip.setText(dataObj.getString("description"));
+                        }
+                    }
+                    Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("authorization", token);
+                return params;
+            }
+        };
+        queue.add(stringRequest);
+    }
+
+
+    private void getUserAwards(String userId, final String token) {
+        String url = "https://dutify.herokuapp.com/users/" + userId + "/awards";
+        RequestQueue queue = Volley.newRequestQueue(this);
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    awards = new ArrayList<>();
+                    JSONArray awardsArray = new JSONArray(response);
+                    for (int i = 0; i < awardsArray.length(); i++) {
+                        JSONObject dataObj = awardsArray.getJSONObject(i);
+                        awards.add(new Award(dataObj.getString("name"),dataObj.getString("description"),dataObj.getInt("price"), dataObj.getString("picture")));
+                    }
+
+
+
+                    recyclerView = findViewById(R.id.awardsRecycleView); // Alterar com o id da vossa RecyclerView
+                    recyclerView.setHasFixedSize(true);
+                    recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                    adapter = new ProfileAwardsViewAdapter(getApplicationContext(),awards); // Alterar com os vossos dados
+                    //adapter.setClickListener(this); ASK TEACHER
+                    recyclerView.setAdapter(adapter);
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("authorization", token);
+                return params;
+            }
+        };
+        queue.add(stringRequest);
+    }
+
+
+    private void getUserTasks(String userId, final String token) {
+        String url = "https://dutify.herokuapp.com/users/" + userId + "/tasks";
+        RequestQueue queue = Volley.newRequestQueue(this);
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    int nFailed= 0;
+                    int nUnderDevelopment = 0;
+
+                    JSONArray tasksArray = new JSONArray(response);
+                    for (int i = 0; i < tasksArray.length(); i++) {
+                        JSONObject dataObj = tasksArray.getJSONObject(i);
+                       if (dataObj.getInt("id_progress_status")==1){
+                           nUnderDevelopment +=1;
+                       }else if (dataObj.getInt("id_progress_status")==3){
+                           nFailed+=1;
+                       }
+                    }
+                    TextView totalTaskTxt=(TextView) findViewById(R.id.totalTaskTxt);
+                    totalTaskTxt.setText(String.valueOf(tasksArray.length()));
+                    TextView notCompletedTxt=(TextView) findViewById(R.id.notCompletedTxt);
+                    notCompletedTxt.setText(String.valueOf(nFailed));
+                    TextView underDevTxt=(TextView) findViewById(R.id.underDevTxt);
+                    underDevTxt.setText(String.valueOf(nUnderDevelopment));
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("authorization", token);
+                return params;
+            }
+        };
+        queue.add(stringRequest);
+    }
+
 
 
     // Navigation codes are bellow (!Important)
@@ -188,7 +342,6 @@ public class Profile extends AppCompatActivity {
             myIntent.putExtra("token", tokenToBeSent);
             startActivity(myIntent);
         }
-
     }
 
     private final BottomNavigationView.OnNavigationItemSelectedListener navListener
@@ -213,8 +366,10 @@ public class Profile extends AppCompatActivity {
             }
             return true;
         }
-
     };
 
-
+    @Override
+    public void onItemClick(View view, int position) {
+        Toast.makeText(this, "Carregaste no " + adapter.getName(position) + " na linha " + position , Toast.LENGTH_SHORT).show();
+    }
 }

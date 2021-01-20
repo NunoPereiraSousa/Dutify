@@ -18,25 +18,40 @@
         app:flexWrap="wrap"
         app:justifyContent="space_between">
 
-        <TextView
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawablePadding="26dp"
-            android:text="@string/projectTileProfile"
-            android:textAppearance="?attr/textAppearanceHeadline6"
-            android:textColor="@color/pTextColor5"
-            android:textFontWeight="800"
-            android:textSize="15sp"
-            app:drawableStartCompat="@drawable/ic_correct" />
+            android:layout_height="wrap_content">
 
+
+            <ImageView
+                android:id="@+id/imageHolder"
+                android:contentDescription="@string/awardPictureHolder"
+                android:maxWidth="25dp"
+                android:maxHeight="25dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:src=""
+                >
+
+            </ImageView>
+            <TextView
+                android:id="@+id/awardNameTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="26dp"
+                android:text="@string/projectTileProfile"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textColor="@color/pTextColor5"
+                android:textSize="15sp"/>
+        </LinearLayout>
         <TextView
+            android:id="@+id/priceTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawablePadding="26dp"
             android:text="@string/numberTasks"
-            android:textColor="@color/totalStatsTextColor"
-            android:textSize="15sp"
-            app:drawableEndCompat="@drawable/ic_arrow_right" />
+            android:textColor="@color/blueishPurple"
+            android:textSize="15sp"/>
 
     </com.google.android.flexbox.FlexboxLayout>
 
