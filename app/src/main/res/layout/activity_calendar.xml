@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:sothree="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/calendarPanel"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="bottom"
@@ -83,6 +84,7 @@
                         android:text="@string/addPersonalTaskBtnLabelText"
                         android:textColor="@color/calendarColor"
                         android:textSize="14sp"
+                        android:onClick="openPanel"
                         app:drawableStartCompat="@drawable/ic_plus_button_purple" />
                 </LinearLayout>
 
@@ -96,46 +98,18 @@
                     android:textColor="@color/pTextColor3"
                     android:textSize="13sp" />
 
-                <HorizontalScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scrollbars="none">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp">
 
-                    <LinearLayout
-                        android:id="@+id/ForTheDayCardsHolder"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:gravity="end"
-                        android:orientation="horizontal"
-                        android:paddingTop="10dp"
-                        android:paddingBottom="10dp">
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/calendarTaskRecycleView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
 
-                        <fragment
-                            android:id="@+id/ForTheDayCard1"
-                            android:name="com.example.dutify.TodayTodoCard"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="10dp"
-                            tools:layout="@layout/fragment_today_todo_card" />
-
-                        <fragment
-                            android:id="@+id/ForTheDayCard2"
-                            android:name="com.example.dutify.TodayTodoCard"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="10dp"
-                            tools:layout="@layout/fragment_today_todo_card" />
-
-                        <fragment
-                            android:id="@+id/ForTheDayCard3"
-                            android:name="com.example.dutify.TodayTodoCard"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="10dp"
-                            tools:layout="@layout/fragment_today_todo_card" />
-                    </LinearLayout>
-
-                </HorizontalScrollView>
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/selectedMonthTxt"
@@ -192,13 +166,163 @@
         android:backgroundTint="@color/colorPrimary"
         android:orientation="vertical">
 
-        <fragment
-            android:id="@+id/dragView"
-            android:name="com.example.dutify.PersonalTaskAddingForm"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            tools:layout="@layout/fragment_personal_task_adding_form" />
+            android:background="@drawable/ic_add_personal_task_form_shape"
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp"
+            android:paddingBottom="30dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/downBtn"
+                android:layout_width="27dp"
+                android:layout_height="15dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                app:icon="@drawable/ic_arrow_down"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:iconTint="@color/formGrey" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:text="@string/awesome"
+                android:textColor="@color/pTextColor5"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="@string/glad_to_see_you_here"
+                android:textColor="@color/pTextColor5"
+                android:textSize="20sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:hint="@string/PersonalTaksNameHintLabel"
+                android:textColorHint="@color/pTextColor4"
+                app:boxStrokeColor="@color/pTextColor5"
+                app:boxStrokeWidthFocused="1dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/personalTaskNameInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:fontFamily="@font/poppins"
+                    android:paddingBottom="10dp"
+                    android:textColor="@color/pTextColor5"
+                    android:textSize="14sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="36dp"
+                android:hint="@string/PersonalTaskDescriptionHintLabel"
+                android:textColorHint="@color/pTextColor4"
+                app:boxStrokeColor="@color/pTextColor4"
+                app:boxStrokeWidthFocused="1dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/personalTaskDescInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:fontFamily="@font/poppins"
+                    android:paddingBottom="10dp"
+                    android:textColor="@color/pTextColor5"
+                    android:textSize="14sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:gravity="start"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_gravity="start"
+                    android:hint="@string/startingDateLabelHintTxt"
+                    android:textColorHint="@color/pTextColor4"
+                    app:boxStrokeColor="@color/pTextColor5"
+                    app:boxStrokeWidthFocused="1dp"
+                    app:startIconDrawable="@drawable/ic_calendar_form"
+                    app:startIconTint="@color/pTextColor4">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/startingDateInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:backgroundTint="@color/colorPrimary"
+                        android:inputType="date"
+                        android:paddingBottom="10dp"
+                        android:textColor="@color/pTextColor5"
+                        android:textSize="14sp"
+                        app:boxStrokeColor="@color/pTextColor4" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:hint="@string/endingDateLabelHint"
+                    android:textColorHint="@color/pTextColor4"
+                    app:boxStrokeColor="@color/pTextColor5"
+                    app:boxStrokeWidthFocused="1dp"
+                    app:startIconDrawable="@drawable/ic_calendar_form"
+                    app:startIconTint="@color/pTextColor4">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/endingDateInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:backgroundTint="@color/colorPrimary"
+                        android:inputType="date"
+                        android:paddingBottom="10dp"
+                        android:textColor="@color/pTextColor5"
+                        android:textSize="14sp"
+                        app:boxStrokeColor="@color/pTextColor4" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+            </RelativeLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/enterCompanyButton"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="54dp"
+                android:backgroundTint="@color/formGrey"
+                android:fontFamily="@font/poppins_medium"
+                android:onClick="submitPersonalTask"
+                android:paddingLeft="32dp"
+                android:paddingTop="13dp"
+                android:paddingRight="32dp"
+                android:paddingBottom="11dp"
+                android:text="@string/submit_form_button"
+                android:textAllCaps="false"
+                android:textColor="@color/mainYellow"
+                android:textSize="16sp"
+                app:cornerRadius="22dp" />
+
+        </LinearLayout>
 
     </LinearLayout>
 

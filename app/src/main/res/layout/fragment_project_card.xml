@@ -26,6 +26,7 @@
             app:justifyContent="space_between">
 
             <TextView
+                android:id="@+id/projectTitleTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_medium"
@@ -53,6 +54,7 @@
                     app:shapeAppearanceOverlay="@style/Button.Circle" />
 
                 <TextView
+                    android:id="@+id/daysLeftTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
@@ -66,6 +68,7 @@
         </com.google.android.flexbox.FlexboxLayout>
 
         <TextView
+            android:id="@+id/projectCategoryTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/raleway_semibold"
@@ -99,7 +102,7 @@
                         app:cardCornerRadius="250dp">
 
                         <ImageView
-                            android:id="@+id/userPicture2"
+                            android:id="@+id/teamMember1"
                             android:layout_width="26dp"
                             android:layout_height="26dp"
                             android:layout_gravity="center"
@@ -116,7 +119,7 @@
                         app:cardCornerRadius="250dp">
 
                         <ImageView
-                            android:id="@+id/userPicture3"
+                            android:id="@+id/teamMember2"
                             android:layout_width="26dp"
                             android:layout_height="26dp"
                             android:layout_gravity="center"
@@ -133,7 +136,7 @@
                         app:cardCornerRadius="250dp">
 
                         <ImageView
-                            android:id="@+id/userPicture4"
+                            android:id="@+id/teamMember3"
                             android:layout_width="26dp"
                             android:layout_height="26dp"
                             android:layout_gravity="center"
@@ -169,6 +172,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/projectCounterTxt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end"

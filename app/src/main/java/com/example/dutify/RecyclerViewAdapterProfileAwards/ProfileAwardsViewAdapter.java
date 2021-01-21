@@ -15,7 +15,7 @@ import com.example.dutify.R;
 import java.util.List;
 
 public class ProfileAwardsViewAdapter extends RecyclerView.Adapter<ProfileAwardsViewAdapter.ViewHolder> {
-    private List<Award> data; // Alterar tendo em conta o vosso tipo de dados
+    private List<Award> data;
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
 
@@ -47,12 +47,13 @@ public class ProfileAwardsViewAdapter extends RecyclerView.Adapter<ProfileAwards
 
         TextView awardNameTxt;
         TextView priceTxt;
+
         ViewHolder(View itemView) {
             super(itemView);
             // Views that will display our data
             awardNameTxt = itemView.findViewById(R.id.awardNameTxt);
             priceTxt = itemView.findViewById(R.id.priceTxt);
-//            itemView.setOnClickListener((View.OnClickListener) this);
+            //itemView.setOnClickListener((View.OnClickListener) this);
         }
 
         public void onClick(View view) {
@@ -60,17 +61,13 @@ public class ProfileAwardsViewAdapter extends RecyclerView.Adapter<ProfileAwards
         }
     }
 
-
-    // Método utilitário para obter o nome do estudante no clique da linha
     public String getName(int id) {
         return data.get(id).getName();
     }
 
-
     public void setClickListener(ItemClickListener itemClickListener) {
         this.mClickListener = itemClickListener;
     }
-
 
     public interface ItemClickListener {
         void onItemClick(View view, int position);

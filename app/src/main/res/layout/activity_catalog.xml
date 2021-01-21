@@ -15,13 +15,12 @@
         app:titleTextAppearance="@style/BottomNav" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation3"
+        android:id="@+id/bottomNavigation"
         style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@color/colorPrimary"
-        android:paddingVertical="5dp"
         app:itemIconTint="@color/pTextColor5"
         app:itemTextColor="@color/pTextColor5"
         app:labelVisibilityMode="labeled"
@@ -52,15 +51,12 @@
                     app:flexWrap="wrap"
                     app:justifyContent="space_around">
 
-                    <fragment
-                        android:id="@+id/award_card_frag"
-                        android:name="com.example.dutify.AwardsCard"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        tools:layout="@layout/fragment_awards_card" />
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/catalogAwardRecycleView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
 
-                    <fragment
+                    <!--<fragment
                         android:id="@+id/award_card_frag2"
                         android:name="com.example.dutify.AwardsCard"
                         android:layout_width="wrap_content"
@@ -82,7 +78,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        tools:layout="@layout/fragment_awards_card" />
+                        tools:layout="@layout/fragment_awards_card" />-->
 
                 </com.google.android.flexbox.FlexboxLayout>
 

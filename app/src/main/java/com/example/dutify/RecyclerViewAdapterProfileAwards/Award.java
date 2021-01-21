@@ -6,14 +6,12 @@ public class Award {
     private int price;
     private String pictureUrl;
 
-
     public Award(String name, String description, int price, String url) {
         this.description = description;
         this.name = name;
         this.price = price;
         this.pictureUrl = url;
     }
-
 
     public String getName() {
         return name;
@@ -46,6 +44,5 @@ public class Award {
     public void setPictureUrl(String pictureUrl) {
         this.pictureUrl = pictureUrl;
     }
-
 
 }

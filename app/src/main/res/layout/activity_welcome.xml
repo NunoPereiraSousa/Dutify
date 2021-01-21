@@ -25,16 +25,16 @@
         tools:context=".Welcome">
 
         <androidx.cardview.widget.CardView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
             android:layout_gravity="center"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="30dp"
             app:cardCornerRadius="250dp">
 
             <ImageView
                 android:id="@+id/userPicture"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
                 android:layout_gravity="center"
                 android:contentDescription="@string/userImageDescription" />
 
@@ -45,7 +45,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/poppins"
             android:text="@string/welcomeUser"
             android:textColor="@color/pTextColor5"
@@ -55,7 +55,7 @@
             android:layout_width="23dp"
             android:layout_height="30dp"
             android:layout_gravity="center"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="40dp"
             android:contentDescription="@string/arrowImageDescription"
             android:src="@drawable/ic_arrow" />
 
@@ -85,7 +85,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="40dp"
             android:fontFamily="@font/poppins"
             android:text="@string/dayHour"
             android:textColor="@color/pTextColor5"
@@ -108,7 +108,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="54dp"
+            android:layout_marginTop="44dp"
             android:backgroundTint="#fff"
             android:fontFamily="@font/poppins_semibold"
             android:onClick="openMotivationPage"

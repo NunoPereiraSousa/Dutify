@@ -201,26 +201,38 @@
                     android:textColor="@color/pTextColor4"
                     android:textSize="13sp" />
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scrollbars="none">
 
-                    <fragment
-                        android:id="@+id/project_stats_frag"
-                        android:name="com.example.dutify.ProjectCard"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        tools:layout="@layout/fragment_project_card" />
+                        android:orientation="horizontal">
 
-                    <fragment
-                        android:id="@+id/project_stats_frag2"
-                        android:name="com.example.dutify.ProjectCard"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        tools:layout="@layout/fragment_project_card" />
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/projectRecycleView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
 
-                </LinearLayout>
+                        <!--<fragment
+                            android:id="@+id/project_stats_frag"
+                            android:name="com.example.dutify.ProjectCard"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:layout="@layout/fragment_project_card" />
+
+                        <fragment
+                            android:id="@+id/project_stats_frag2"
+                            android:name="com.example.dutify.ProjectCard"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:layout="@layout/fragment_project_card" />-->
+
+                    </LinearLayout>
+
+                </HorizontalScrollView>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -231,7 +243,6 @@
                     android:text="@string/tasksStatisticsTitle"
                     android:textColor="@color/pTextColor4"
                     android:textSize="13sp" />
-
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -270,8 +281,8 @@
                             android:textSize="15sp" />
 
                     </com.google.android.flexbox.FlexboxLayout>
-                </LinearLayout>
 
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -350,23 +361,32 @@
                             android:textColor="@color/mobileDev"
                             android:textSize="15sp" />
                     </com.google.android.flexbox.FlexboxLayout>
+
                 </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="@string/awards_statistics"
+                    android:textColor="@color/pTextColor4"
+                    android:textSize="13sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/batata"
-
-                    >
+                    android:orientation="vertical">
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/awardsRecycleView"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />
+
                 </LinearLayout>
 
             </LinearLayout>
-
 
         </LinearLayout>
 
