@@ -2,6 +2,7 @@ package com.example.dutify;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -9,10 +10,9 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
+import android.widget.CalendarView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,15 +21,10 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.dutify.RecyclerViewAdapterProfileAwards.Award;
-import com.example.dutify.RecyclerViewAdapterProfileAwards.ProfileAwardsViewAdapter;
 import com.example.dutify.RecyclerViewAdapterTaskCard.Task;
 import com.example.dutify.RecyclerViewAdapterTaskCard.TaskViewAdapter;
-import com.example.dutify.RecyleViewAdapterProjectsCard.Project;
-import com.example.dutify.RecyleViewAdapterProjectsCard.ProjectsViewAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
@@ -38,8 +33,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -50,11 +46,6 @@ import java.util.Map;
 public class Calendar extends AppCompatActivity {
     BottomNavigationView bottomNavigation;
 
-    private Button calendarBtn;
-    private Button dashboardBtn;
-    private Button awardsBtn;
-    private Button profileBtn;
-
     private TextView currentDateTxt;
     private TextView selectedMonthTxt;
     private String tokenToBeSent;
@@ -64,9 +55,12 @@ public class Calendar extends AppCompatActivity {
     private TextInputEditText startingDateInput;
     private TextInputEditText endingDateInput;
 
+    private CalendarView calendar;
+
     TaskViewAdapter adapterTasks;
     RecyclerView recyclerViewTasks;
     List<Task> tasks;
+    ArrayList<JSONObject> dayTasks;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,6 +105,7 @@ public class Calendar extends AppCompatActivity {
     private String setDayFormat(String currentDay) {
         switch (currentDay) {
             case "01":
+            case "21":
             case "31":
                 currentDay += "st";
                 break;
@@ -173,6 +168,7 @@ public class Calendar extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 getUserTodayTasks(response, token);
+                getUserTasks(response, token);
             }
         }, new Response.ErrorListener() {
             @Override
@@ -191,6 +187,86 @@ public class Calendar extends AppCompatActivity {
         queue.add(jsonObjectRequest);
     }
 
+    private void getCalendarSelectedDay(final ArrayList<JSONObject> dayTasks) {
+        calendar = (CalendarView) findViewById(R.id.calendar);
+
+        calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int day) {
+
+                int monthInt = month + 1;
+                String monthConverted = "" + monthInt;
+                if (month < 10) monthConverted = "0" + monthConverted;
+
+                String dayConverted = "" + day;
+                if (day < 10) dayConverted = "0" + dayConverted;
+
+                String date = year + "-" + monthConverted + "-" + dayConverted;
+
+                for (int i = 0; i < dayTasks.size(); i++) {
+                    JSONObject dataObj = dayTasks.get(i);
+
+                    try {
+                        if (date.equals(dataObj.getString("endDate"))) {
+                            Toast.makeText(getApplicationContext(), dataObj.getString("title") + " task end here!", Toast.LENGTH_SHORT).show();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+    }
+
+    private void getUserTasks(String userId, final String token) {
+        String url = "https://dutify.herokuapp.com/users/" + userId + "/tasks/endDate";
+        RequestQueue queue = Volley.newRequestQueue(this);
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    dayTasks = new ArrayList<>();
+
+                    JSONArray tasksArray = new JSONArray(response);
+                    for (int i = 0; i < tasksArray.length(); i++) {
+                        JSONObject dataObj = tasksArray.getJSONObject(i);
+
+                        dayTasks.add(dataObj);
+                    }
+
+                    getCalendarSelectedDay(dayTasks);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("authorization", token);
+                return params;
+            }
+        };
+        queue.add(stringRequest);
+    }
+
+    public String currentDate() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        LocalDate date = LocalDate.now();
+        return date.format(formatter);
+    }
+
+    public Boolean compareDates(String a, String b, String d) {
+        return a.compareTo(d) * b.compareTo(d) >= 0;
+    }
+
     private void getUserTodayTasks(String userId, final String token) {
         String url = "https://dutify.herokuapp.com/users/" + userId + "/tasks/project";
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -203,7 +279,20 @@ public class Calendar extends AppCompatActivity {
                     JSONArray tasksArray = new JSONArray(response);
                     for (int i = 0; i < tasksArray.length(); i++) {
                         JSONObject dataObj = tasksArray.getJSONObject(i);
-                        tasks.add(new Task(dataObj.getString("title"), dataObj.getString("description")));
+
+                        String startDate = dataObj.getString("startDate");
+
+                        if (startDate.equals(currentDate()) ) {
+                            Log.d("today", "check");
+                        } else {
+                            Log.d("not today", "upsi");
+                        }
+
+                        tasks.add(new Task(dataObj.getString("title"),
+                                dataObj.getString("description"),
+                                dataObj.getString("startDate"),
+                                dataObj.getString("endDate"),
+                                dataObj.getInt("id_progress_status")));
                     }
 
                     LinearLayoutManager layoutManager
@@ -213,8 +302,6 @@ public class Calendar extends AppCompatActivity {
                     recyclerViewTasks.setHasFixedSize(true);
                     recyclerViewTasks.setLayoutManager(layoutManager);
                     adapterTasks = new TaskViewAdapter(getApplicationContext(), tasks);
-                    // problem
-                    //adapterProjects.setClickListener(this);
                     recyclerViewTasks.setAdapter(adapterTasks);
 
                 } catch (JSONException e) {

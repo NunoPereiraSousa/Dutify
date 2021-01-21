@@ -86,6 +86,7 @@ public class Welcome extends AppCompatActivity {
     private String setDayFormat(String currentDay) {
         switch (currentDay) {
             case "01":
+            case "21":
             case "31":
                 currentDay += "st";
                 break;

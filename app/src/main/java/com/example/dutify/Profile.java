@@ -434,30 +434,29 @@ public class Profile extends AppCompatActivity implements ProjectsViewClickInter
 
                         for (int j = 0; j < selectedInformation.size(); j++) {
                             if (selectedInformation.get(j).getInt("id_project") == projectsIds.get(i)) {
-                                if (projectTitle.equals("") ) {
+                                if (projectTitle.equals("")) {
                                     projectTitle = selectedInformation.get(j).getString("projectTitle");
                                 }
-                                if (toSavePictureIn ==1){
+                                if (toSavePictureIn == 1) {
                                     firstUrl = selectedInformation.get(j).getString("picture");
-                                    toSavePictureIn+=1;
-                                }else if(toSavePictureIn ==2){
+                                    toSavePictureIn += 1;
+                                } else if (toSavePictureIn == 2) {
                                     secondUrl = selectedInformation.get(j).getString("picture");
-                                    toSavePictureIn+=1;
-                                }else if(toSavePictureIn ==3){
+                                    toSavePictureIn += 1;
+                                } else if (toSavePictureIn == 3) {
                                     thirdUrl = selectedInformation.get(j).getString("picture");
-                                    toSavePictureIn+=1;
+                                    toSavePictureIn += 1;
                                     break;
                                 }
                             }
                         }
 
                         Log.d("moka", projectTitle);
-                        projects.add(new Project(projectTitle,"something",firstUrl,secondUrl,thirdUrl,projectsIds.get(i)));
+                        projects.add(new Project(projectTitle, "something", firstUrl, secondUrl, thirdUrl, projectsIds.get(i)));
                     }
 
                     LinearLayoutManager layoutManager
                             = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
-
 
                     recyclerViewProject = findViewById(R.id.projectRecycleView);
                     recyclerViewProject.setHasFixedSize(true);
@@ -466,10 +465,6 @@ public class Profile extends AppCompatActivity implements ProjectsViewClickInter
                     // problem
                     //adapterProjects.setClickListener(this);
                     recyclerViewProject.setAdapter(adapterProjects);
-
-
-
-
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -491,15 +486,13 @@ public class Profile extends AppCompatActivity implements ProjectsViewClickInter
         queue.add(stringRequest);
     }
 
-
-    // Navigation codes are bellow (!Important)
     private void changePage(String toPage) {
         if (!toPage.equals("profile")) {
             Intent myIntent = null;
             if (toPage.equals("calendar")) {
                 myIntent = new Intent(this, Calendar.class);
             } else if (toPage.equals("dashboard")) {
-//            myIntent = new Intent(this,DashboardBoard.class);
+                myIntent = new Intent(this, Dashboard.class);
             } else if (toPage.equals("awards")) {
                 myIntent = new Intent(this, Catalog.class);
             }

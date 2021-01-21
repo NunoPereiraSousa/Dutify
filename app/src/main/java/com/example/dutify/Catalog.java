@@ -24,6 +24,10 @@ import com.example.dutify.RecyclerViewAdapterProfileAwards.Award;
 import com.example.dutify.RecyclerViewAdapterProfileAwards.ProfileAwardsViewAdapter;
 import com.example.dutify.RecyleViewAdapterProjectsCard.Project;
 import com.example.dutify.RecyleViewAdapterProjectsCard.ProjectsViewAdapter;
+import com.google.android.flexbox.AlignItems;
+import com.google.android.flexbox.FlexDirection;
+import com.google.android.flexbox.FlexboxLayoutManager;
+import com.google.android.flexbox.JustifyContent;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONArray;
@@ -107,13 +111,22 @@ public class Catalog extends AppCompatActivity {
                         Log.d("dataObj", String.valueOf(dataObj));
                     }
 
+                    FlexboxLayoutManager layoutManager = new FlexboxLayoutManager(Catalog.this);
+                    layoutManager.setFlexDirection(FlexDirection.ROW);
+                    layoutManager.setJustifyContent(JustifyContent.SPACE_AROUND);
+                    //layoutManager.setAlignItems(AlignItems.CENTER);
                     recyclerView = findViewById(R.id.catalogAwardRecycleView);
-                    recyclerView.setHasFixedSize(true);
-                    recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                    recyclerView.setLayoutManager(layoutManager);
                     adapter = new CatalogAwardsViewAdapter(getApplicationContext(), awards);
+                    recyclerView.setAdapter(adapter);
+
+                    /*recyclerView = findViewById(R.id.catalogAwardRecycleView);
+                    recyclerView.setHasFixedSize(true);
+                    recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));*/
+                    //adapter = new CatalogAwardsViewAdapter(getApplicationContext(), awards);
                     // problem
                     //adapter.setClickListener(this);
-                    recyclerView.setAdapter(adapter);
+                    //recyclerView.setAdapter(adapter);
 
                 } catch (JSONException e) {
                     e.printStackTrace();

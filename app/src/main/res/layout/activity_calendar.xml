@@ -61,6 +61,7 @@
                     android:orientation="vertical">
 
                     <CalendarView
+                        android:id="@+id/calendar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:dateTextAppearance="@style/CalenderViewDateCustomText"
@@ -81,10 +82,10 @@
                         android:layout_height="20dp"
                         android:drawablePadding="14dp"
                         android:fontFamily="@font/poppins"
+                        android:onClick="openPanel"
                         android:text="@string/addPersonalTaskBtnLabelText"
                         android:textColor="@color/calendarColor"
                         android:textSize="14sp"
-                        android:onClick="openPanel"
                         app:drawableStartCompat="@drawable/ic_plus_button_purple" />
                 </LinearLayout>
 

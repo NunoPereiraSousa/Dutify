@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dutify.R;
-import com.example.dutify.RecyclerViewAdapterProfileAwards.Award;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -20,6 +19,7 @@ public class CatalogAwardsViewAdapter extends RecyclerView.Adapter<CatalogAwards
     private List<CatalogAward> data;
     private LayoutInflater mInflater;
     private CatalogAwardsViewAdapter.ItemClickListener mClickListener;
+    private ImageView imageAward;
 
     public CatalogAwardsViewAdapter(Context context, List<CatalogAward> data) {
         this.mInflater = LayoutInflater.from(context);
@@ -36,15 +36,13 @@ public class CatalogAwardsViewAdapter extends RecyclerView.Adapter<CatalogAwards
     public void onBindViewHolder(@NonNull CatalogAwardsViewAdapter.ViewHolder holder, int position) {
         CatalogAward myAward = data.get(position);
 
-
-        /*holder.imageAward.setText(myAward.getPicture());
         Picasso.get()
                 .load(myAward.getPicture())
                 .resize(256, 256)
                 .centerCrop()
-                .into(userPicture);*/
+                .into(imageAward);
         holder.awardName.setText(String.valueOf(myAward.getName()));
-        holder.awardPrice.setText(String.valueOf(myAward.getPrice()));
+        holder.awardPrice.setText(" - " + myAward.getPrice());
     }
 
     @Override
@@ -53,14 +51,12 @@ public class CatalogAwardsViewAdapter extends RecyclerView.Adapter<CatalogAwards
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-
-        ImageView imageAward;
         TextView awardName;
         TextView awardPrice;
 
         ViewHolder(View itemView) {
             super(itemView);
-            //imageAward = itemView.findViewById(R.id.imageAward);
+            imageAward = itemView.findViewById(R.id.imageAward);
             awardName = itemView.findViewById(R.id.awardName);
             awardPrice = itemView.findViewById(R.id.awardPrice);
             //itemView.setOnClickListener((View.OnClickListener) this);
