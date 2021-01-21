@@ -1,18 +1,21 @@
 package com.example.dutify.RecyleViewAdapterProjectsCard;
 
 public class Project {
+    private int id;
     private String title;
     private String category;
     private String pictureUrl1;
     private String pictureUrl2;
     private String pictureUrl3;
 
-    public Project(String title, String category) {
+    public Project(String title, String category, String pictureUrl1, String pictureUrl2, String pictureUrl3, int id) {
         this.category = category;
         this.title = title;
-        /*this.pictureUrl1 = pictureUrl1;
+        this.pictureUrl1 = pictureUrl1;
         this.pictureUrl2 = pictureUrl2;
-        this.pictureUrl3 = pictureUrl3;  String pictureUrl1, String pictureUrl2, String pictureUrl3*/
+        this.pictureUrl3 = pictureUrl3;
+        this.id = id;
+//        String pictureUrl1, String pictureUrl2, String pictureUrl3
     }
 
     public String getTitle() {
@@ -54,5 +57,16 @@ public class Project {
     public void setPictureUrl3(String pictureUrl3) {
         this.pictureUrl3 = pictureUrl3;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+
+
 
 }

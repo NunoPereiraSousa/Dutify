@@ -10,22 +10,25 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dutify.R;
+import com.example.dutify.RecyclerViewAdapterProfileAwards.ProfileAwardsViewClickInterface;
 
 import java.util.List;
 
-public class ProjectsViewAdapter extends RecyclerView.Adapter<ProjectsViewAdapter.ViewHolder>{
+public class ProjectsViewAdapter extends RecyclerView.Adapter<ProjectsViewAdapter.ViewHolder> {
     private List<Project> data;
-    private LayoutInflater mInflater;
+    private ProjectsViewClickInterface projectsViewClickInterface;
     private ProjectsViewAdapter.ItemClickListener mClickListener;
 
-    public ProjectsViewAdapter(Context context, List<Project> data) {
-        this.mInflater = LayoutInflater.from(context);
+    public ProjectsViewAdapter(List<Project> data, ProjectsViewClickInterface projectsViewClickInterface) {
+        this.projectsViewClickInterface = projectsViewClickInterface;
         this.data = data;
     }
 
     @Override
-    public ProjectsViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.projects_card, parent, false); // Define the data display layout
+    public ProjectsViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
+        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
+        View view = layoutInflater.inflate(R.layout.projects_card, parent, false); // Define the data display layout
         return new ProjectsViewAdapter.ViewHolder(view);
     }
 
@@ -52,11 +55,12 @@ public class ProjectsViewAdapter extends RecyclerView.Adapter<ProjectsViewAdapte
             // Views that will display our data
             projectTitleTxt = itemView.findViewById(R.id.projectTitleTxt);
             projectCategoryTxt = itemView.findViewById(R.id.projectCategoryTxt);
-            //itemView.setOnClickListener((View.OnClickListener) this);
-        }
-
-        public void onClick(View view) {
-            if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    projectsViewClickInterface.onProjectCardClick(getAdapterPosition());
+                }
+            });
         }
     }
 

@@ -68,7 +68,7 @@ public class Login extends AppCompatActivity {
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    if (error.networkResponse.statusCode >= 500) {
+                    if (Integer.parseInt(String.valueOf(error.networkResponse.statusCode))>= 500) {
                         openErrorPage();
                     }
                     Toast.makeText(getApplicationContext(), new String(error.networkResponse.data, StandardCharsets.UTF_8), Toast.LENGTH_LONG).show();

@@ -29,8 +29,10 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.dutify.RecyclerViewAdapterProfileAwards.Award;
 import com.example.dutify.RecyclerViewAdapterProfileAwards.ProfileAwardsViewAdapter;
+import com.example.dutify.RecyclerViewAdapterProfileAwards.ProfileAwardsViewClickInterface;
 import com.example.dutify.RecyleViewAdapterProjectsCard.Project;
 import com.example.dutify.RecyleViewAdapterProjectsCard.ProjectsViewAdapter;
+import com.example.dutify.RecyleViewAdapterProjectsCard.ProjectsViewClickInterface;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.chip.Chip;
 import com.squareup.picasso.Picasso;
@@ -45,7 +47,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Profile extends AppCompatActivity implements ProfileAwardsViewAdapter.ItemClickListener, ProjectsViewAdapter.ItemClickListener {
+public class Profile extends AppCompatActivity implements ProjectsViewClickInterface {
     BottomNavigationView bottomNavigation;
     private String tokenToBeSent;
 
@@ -55,11 +57,13 @@ public class Profile extends AppCompatActivity implements ProfileAwardsViewAdapt
     RecyclerView recyclerViewProject;
     List<Award> awards;
     List<Project> projects;
+    Profile self;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        self = this;
 
         Intent receivedIntend = getIntent();
         Bundle intendExtras = receivedIntend.getExtras();
@@ -77,6 +81,7 @@ public class Profile extends AppCompatActivity implements ProfileAwardsViewAdapt
         }
     }
 
+
     public void IdentificationByToken(final String token) {
         String url = "https://dutify.herokuapp.com/identification";
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -88,7 +93,8 @@ public class Profile extends AppCompatActivity implements ProfileAwardsViewAdapt
                 displayUserCategoriesTag(response, token);
                 getUserTasks(response, token);
                 getUserAwards(response, token);
-                getUserProjects(response, token);
+//                getUserProjects(response, token);
+                getOperationsData(response, token);
             }
         }, new Response.ErrorListener() {
             @Override
@@ -210,7 +216,7 @@ public class Profile extends AppCompatActivity implements ProfileAwardsViewAdapt
                             thirdChip.setText(dataObj.getString("description"));
                         }
                     }
-                    Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -249,7 +255,7 @@ public class Profile extends AppCompatActivity implements ProfileAwardsViewAdapt
                     recyclerView = findViewById(R.id.awardsRecycleView);
                     recyclerView.setHasFixedSize(true);
                     recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-                    adapter = new ProfileAwardsViewAdapter(getApplicationContext(), awards);
+                    adapter = new ProfileAwardsViewAdapter(awards);
                     // problem
                     //adapter.setClickListener(this);
                     recyclerView.setAdapter(adapter);
@@ -286,19 +292,19 @@ public class Profile extends AppCompatActivity implements ProfileAwardsViewAdapt
                     JSONArray projectsArray = new JSONArray(response);
                     for (int i = 0; i < projectsArray.length(); i++) {
                         JSONObject dataObj = projectsArray.getJSONObject(i);
-                        projects.add(new Project(dataObj.getString("title"), dataObj.getString("description")));
+//                        projects.add(new Project(dataObj.getString("title"), dataObj.getString("description")));
                     }
 
                     LinearLayoutManager layoutManager
                             = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
 
-                    recyclerViewProject = findViewById(R.id.projectRecycleView);
-                    recyclerViewProject.setHasFixedSize(true);
-                    recyclerViewProject.setLayoutManager(layoutManager);
-                    adapterProjects = new ProjectsViewAdapter(getApplicationContext(), projects);
-                    // problem
-                    //adapterProjects.setClickListener(this);
-                    recyclerViewProject.setAdapter(adapterProjects);
+//                    recyclerViewProject = findViewById(R.id.projectRecycleView);
+//                    recyclerViewProject.setHasFixedSize(true);
+//                    recyclerViewProject.setLayoutManager(layoutManager);
+//                    adapterProjects = new ProjectsViewAdapter(projects, self);
+//                    // problem
+//                    //adapterProjects.setClickListener(this);
+//                    recyclerViewProject.setAdapter(adapterProjects);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -367,6 +373,125 @@ public class Profile extends AppCompatActivity implements ProfileAwardsViewAdapt
         queue.add(stringRequest);
     }
 
+    private void getOperationsData(final String userId, final String token) {
+        projects = new ArrayList<>();
+        String url = "https://dutify.herokuapp.com/operations/data";
+        RequestQueue queue = Volley.newRequestQueue(this);
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    ArrayList<Integer> projectsIds = new ArrayList<Integer>(); // Create an ArrayList object
+                    ArrayList<JSONObject> selectedInformation = new ArrayList<JSONObject>(); // Create an ArrayList object
+                    JSONArray operations = new JSONArray(response);
+
+                    //#1-GET ALL PROJECTS IDS THAT THE USER IS INSIDE
+                    for (int i = 0; i < operations.length(); i++) {
+                        int permitted = 1;
+                        JSONObject dataObj = operations.getJSONObject(i);
+
+                        if (dataObj.getInt("id_user") == Integer.parseInt(userId)) {
+                            for (int j = 0; j < projectsIds.size(); j++) {
+                                if (dataObj.getInt("id_project") == projectsIds.get(j)) {
+                                    permitted = 0;
+                                    break;
+                                }
+                            }
+                            if (permitted == 1) {
+                                projectsIds.add(dataObj.getInt("id_project"));
+                            }
+                        }
+                    }
+
+                    //#2-GET ALL data that  can relate with the project defined
+                    for (int i = 0; i < operations.length(); i++) {
+                        int permitted = 1;
+                        JSONObject dataObj = operations.getJSONObject(i);
+
+                        for (int j = 0; j < projectsIds.size(); j++) {
+                            if (dataObj.getInt("id_project") == projectsIds.get(j)) {
+                                for (int x = 0; x < selectedInformation.size(); x++) {
+                                    if (selectedInformation.get(x).getInt("id_user") == dataObj.getInt("id_user")) {
+                                        permitted = 0;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                        if (permitted == 1) {
+                            selectedInformation.add(dataObj);
+                        }
+                    }
+                    //#3-DISPLAY THE INFORMATION
+                    for (int i = 0; i < projectsIds.size(); i++) {
+                        String projectTitle = "";
+                        String team = null;
+                        String firstUrl = null;
+                        String secondUrl = null;
+                        String thirdUrl = null;
+                        int toSavePictureIn = 1;
+
+                        for (int j = 0; j < selectedInformation.size(); j++) {
+                            if (selectedInformation.get(j).getInt("id_project") == projectsIds.get(i)) {
+                                if (projectTitle.equals("") ) {
+                                    projectTitle = selectedInformation.get(j).getString("projectTitle");
+                                }
+                                if (toSavePictureIn ==1){
+                                    firstUrl = selectedInformation.get(j).getString("picture");
+                                    toSavePictureIn+=1;
+                                }else if(toSavePictureIn ==2){
+                                    secondUrl = selectedInformation.get(j).getString("picture");
+                                    toSavePictureIn+=1;
+                                }else if(toSavePictureIn ==3){
+                                    thirdUrl = selectedInformation.get(j).getString("picture");
+                                    toSavePictureIn+=1;
+                                    break;
+                                }
+                            }
+                        }
+
+                        Log.d("moka", projectTitle);
+                        projects.add(new Project(projectTitle,"something",firstUrl,secondUrl,thirdUrl,projectsIds.get(i)));
+                    }
+
+                    LinearLayoutManager layoutManager
+                            = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
+
+
+                    recyclerViewProject = findViewById(R.id.projectRecycleView);
+                    recyclerViewProject.setHasFixedSize(true);
+                    recyclerViewProject.setLayoutManager(layoutManager);
+                    adapterProjects = new ProjectsViewAdapter(projects, self);
+                    // problem
+                    //adapterProjects.setClickListener(this);
+                    recyclerViewProject.setAdapter(adapterProjects);
+
+
+
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("authorization", token);
+                return params;
+            }
+        };
+        queue.add(stringRequest);
+    }
+
+
     // Navigation codes are bellow (!Important)
     private void changePage(String toPage) {
         if (!toPage.equals("profile")) {
@@ -408,7 +533,12 @@ public class Profile extends AppCompatActivity implements ProfileAwardsViewAdapt
     };
 
     @Override
-    public void onItemClick(View view, int position) {
-        Toast.makeText(this, "Carregaste no " + adapter.getName(position) + " na linha " + position, Toast.LENGTH_SHORT).show();
+    public void onProjectCardClick(int position) {
+        Toast.makeText(this, String.valueOf(position), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onLongClick(int position) {
+
     }
 }

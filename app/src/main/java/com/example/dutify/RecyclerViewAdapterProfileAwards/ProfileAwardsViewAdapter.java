@@ -16,17 +16,18 @@ import java.util.List;
 
 public class ProfileAwardsViewAdapter extends RecyclerView.Adapter<ProfileAwardsViewAdapter.ViewHolder> {
     private List<Award> data;
-    private LayoutInflater mInflater;
-    private ItemClickListener mClickListener;
 
-    public ProfileAwardsViewAdapter(Context context, List<Award> data) {
-        this.mInflater = LayoutInflater.from(context);
+
+
+    public ProfileAwardsViewAdapter(List<Award> data) {
         this.data = data;
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.profile_awards_card, parent, false); // Define the data display layout
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
+        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
+        View view = layoutInflater.inflate(R.layout.profile_awards_card, parent, false); // Define the data display layout
         return new ViewHolder(view);
     }
 
@@ -43,33 +44,18 @@ public class ProfileAwardsViewAdapter extends RecyclerView.Adapter<ProfileAwards
         return data.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder  extends  RecyclerView.ViewHolder {
 
         TextView awardNameTxt;
         TextView priceTxt;
 
-        ViewHolder(View itemView) {
+        ViewHolder(@NonNull View itemView) {
             super(itemView);
             // Views that will display our data
             awardNameTxt = itemView.findViewById(R.id.awardNameTxt);
             priceTxt = itemView.findViewById(R.id.priceTxt);
-            //itemView.setOnClickListener((View.OnClickListener) this);
-        }
-
-        public void onClick(View view) {
-            if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
         }
     }
 
-    public String getName(int id) {
-        return data.get(id).getName();
-    }
 
-    public void setClickListener(ItemClickListener itemClickListener) {
-        this.mClickListener = itemClickListener;
-    }
-
-    public interface ItemClickListener {
-        void onItemClick(View view, int position);
-    }
 }
