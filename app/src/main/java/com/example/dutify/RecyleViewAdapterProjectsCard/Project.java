@@ -7,15 +7,19 @@ public class Project {
     private String pictureUrl1;
     private String pictureUrl2;
     private String pictureUrl3;
+    private String teamName;
+    private String color;
 
-    public Project(String title, String category, String pictureUrl1, String pictureUrl2, String pictureUrl3, int id) {
+    public Project(String title, String category, String pictureUrl1, String pictureUrl2, String pictureUrl3, int id,String teamName, String color) {
         this.category = category;
         this.title = title;
         this.pictureUrl1 = pictureUrl1;
         this.pictureUrl2 = pictureUrl2;
         this.pictureUrl3 = pictureUrl3;
         this.id = id;
-//        String pictureUrl1, String pictureUrl2, String pictureUrl3
+        this.teamName = teamName;
+        this.color = color;
+
     }
 
     public String getTitle() {
@@ -39,7 +43,7 @@ public class Project {
     }
 
     public void setPictureUrl1(String pictureUrl1) {
-        this.title = pictureUrl1;
+        this.pictureUrl1 = pictureUrl1;
     }
 
     public String getPictureUrl2() {
@@ -67,6 +71,18 @@ public class Project {
     }
 
 
+    public String getTeamName() {
+        return teamName;
+    }
+    public  void  setTeamName(String teamName){
+        this.teamName = teamName;
 
+    }
 
+    public String getColor() {
+        return color;
+    }
+    public void setColor() {
+        this.color = color;
+    }
 }

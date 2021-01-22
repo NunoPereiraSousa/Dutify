@@ -5,80 +5,19 @@
     android:layout_width="330dp"
     android:layout_height="wrap_content"
     android:layout_marginEnd="30dp"
-    android:background="@drawable/shadow_categories"
-    android:paddingLeft="28dp"
-    android:paddingTop="30dp"
-    android:paddingRight="28dp"
-    android:paddingBottom="30dp"
-    android:orientation="vertical">
+    android:background="@drawable/shadow_categories">
 
-    <com.google.android.flexbox.FlexboxLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:alignItems="center"
-        app:flexDirection="row"
-        app:flexWrap="wrap"
-        app:justifyContent="space_between">
-
-        <TextView
-            android:id="@+id/projectTitleTxt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_medium"
-            android:text="@string/projectTileProfile"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="18sp" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="18dp"
-                android:layout_height="18dp"
-                android:background="@color/warning"
-                android:insetLeft="0dp"
-                android:insetTop="0dp"
-                android:insetRight="0dp"
-                android:insetBottom="0dp"
-                android:padding="0dp"
-                android:textAlignment="center"
-                android:text="!"
-                app:shapeAppearanceOverlay="@style/Button.Circle"
-                android:fontFamily="@font/poppins_medium"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="12sp" />
-
-            <TextView
-                android:id="@+id/daysLeftTxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:fontFamily="@font/poppins_medium"
-                android:text="4 days left"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="12sp" />
-
-        </LinearLayout>
-
-    </com.google.android.flexbox.FlexboxLayout>
-
-    <TextView
-        android:id="@+id/projectCategoryTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/raleway_semibold"
-        android:text="@string/projectCategoryProfile"
-        android:textColor="@color/darkGrey"
-        android:textSize="14sp" />
 
     <LinearLayout
+        android:id="@+id/cardHolder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:orientation="horizontal">
-
+        android:orientation="vertical"
+        android:paddingLeft="28dp"
+        android:paddingTop="30dp"
+        android:paddingRight="28dp"
+        android:paddingBottom="30dp"
+        >
         <com.google.android.flexbox.FlexboxLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -87,119 +26,187 @@
             app:flexWrap="wrap"
             app:justifyContent="space_between">
 
+            <TextView
+                android:id="@+id/projectTitleTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/projectTileProfile"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="18sp" />
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="26dp"
-                    android:layout_height="26dp"
-                    android:layout_gravity="center"
-                    app:cardCornerRadius="250dp">
-
-                    <ImageView
-                        android:id="@+id/teamMember1"
-                        android:layout_width="26dp"
-                        android:layout_height="26dp"
-                        android:layout_gravity="center"
-                        android:contentDescription="@string/userImageDescription"
-                        tools:src="@tools:sample/avatars" />
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="26dp"
-                    android:layout_height="26dp"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="-8dp"
-                    app:cardCornerRadius="250dp">
-
-                    <ImageView
-                        android:id="@+id/teamMember2"
-                        android:layout_width="26dp"
-                        android:layout_height="26dp"
-                        android:layout_gravity="center"
-                        android:contentDescription="@string/userImageDescription"
-                        tools:src="@tools:sample/avatars" />
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="26dp"
-                    android:layout_height="26dp"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="-8dp"
-                    app:cardCornerRadius="250dp">
-
-                    <ImageView
-                        android:id="@+id/teamMember3"
-                        android:layout_width="26dp"
-                        android:layout_height="26dp"
-                        android:layout_gravity="center"
-                        android:contentDescription="@string/userImageDescription"
-                        tools:src="@tools:sample/avatars" />
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="26dp"
-                    android:layout_height="26dp"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="-8dp"
-                    android:backgroundTint="#BFFCFCFC"
-                    app:cardCornerRadius="250dp">
-
-                    <ImageView
-                        android:id="@+id/userPicture5"
-                        android:layout_width="12dp"
-                        android:layout_height="12dp"
-                        android:layout_gravity="center"
-                        android:contentDescription="@string/userImageDescription"
-                        tools:src="@drawable/ic_plus_add" />
-
-                </androidx.cardview.widget.CardView>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:orientation="vertical">
+                <TextView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:background="@color/warning"
+                    android:fontFamily="@font/poppins_medium"
+                    android:insetLeft="0dp"
+                    android:insetTop="0dp"
+                    android:insetRight="0dp"
+                    android:insetBottom="0dp"
+                    android:padding="0dp"
+                    android:text="!"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="12sp"
+                    app:shapeAppearanceOverlay="@style/Button.Circle" />
 
                 <TextView
-                    android:id="@+id/projectCounterTxt"
+                    android:id="@+id/daysLeftTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="end"
+                    android:layout_marginStart="12dp"
                     android:fontFamily="@font/poppins_medium"
-                    android:text="76 / 100"
-                    android:textColor="@color/darkGrey"
+                    android:text="4 days left"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="12sp" />
-
-                <RelativeLayout
-                    android:layout_width="140dp"
-                    android:layout_height="fill_parent">
-
-                    <View
-                        android:layout_width="140dp"
-                        android:layout_height="8dp"
-                        android:background="@drawable/progress_bar_rounded"
-                        android:backgroundTint="@color/pTextColor5" />
-
-                    <View
-                        android:layout_width="28dp"
-                        android:layout_height="8dp"
-                        android:background="@drawable/progress_bar_rounded"
-                        android:backgroundTint="#FFB317" />
-
-                </RelativeLayout>
 
             </LinearLayout>
 
         </com.google.android.flexbox.FlexboxLayout>
 
+        <TextView
+            android:id="@+id/teamNameTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/raleway_semibold"
+            android:text="@string/projectCategoryProfile"
+            android:textColor="@color/darkGrey"
+            android:textSize="14sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal">
+
+            <com.google.android.flexbox.FlexboxLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:alignItems="center"
+                app:flexDirection="row"
+                app:flexWrap="wrap"
+                app:justifyContent="space_between">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:layout_gravity="center"
+                        app:cardCornerRadius="250dp">
+
+                        <ImageView
+                            android:id="@+id/teamMember1"
+                            android:layout_width="26dp"
+                            android:layout_height="26dp"
+                            android:layout_gravity="center"
+                            android:contentDescription="@string/userImageDescription"
+                            tools:src="@tools:sample/avatars" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="-8dp"
+                        app:cardCornerRadius="250dp">
+
+                        <ImageView
+                            android:id="@+id/teamMember2"
+                            android:layout_width="26dp"
+                            android:layout_height="26dp"
+                            android:layout_gravity="center"
+                            android:contentDescription="@string/userImageDescription"
+                            tools:src="@tools:sample/avatars" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="-8dp"
+                        app:cardCornerRadius="250dp">
+
+                        <ImageView
+                            android:id="@+id/teamMember3"
+                            android:layout_width="26dp"
+                            android:layout_height="26dp"
+                            android:layout_gravity="center"
+                            android:contentDescription="@string/userImageDescription"
+                            tools:src="@tools:sample/avatars" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="-8dp"
+                        android:backgroundTint="#BFFCFCFC"
+                        app:cardCornerRadius="250dp">
+
+                        <ImageView
+                            android:id="@+id/userPicture5"
+                            android:layout_width="12dp"
+                            android:layout_height="12dp"
+                            android:layout_gravity="center"
+                            android:contentDescription="@string/userImageDescription"
+                            tools:src="@drawable/ic_plus_add" />
+
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/projectCounterTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="76 / 100"
+                        android:textColor="@color/darkGrey"
+                        android:textSize="12sp" />
+
+                    <RelativeLayout
+                        android:layout_width="140dp"
+                        android:layout_height="fill_parent">
+
+                        <View
+                            android:layout_width="140dp"
+                            android:layout_height="8dp"
+                            android:background="@drawable/progress_bar_rounded"
+                            android:backgroundTint="@color/pTextColor5" />
+
+                        <View
+                            android:layout_width="28dp"
+                            android:layout_height="8dp"
+                            android:background="@drawable/progress_bar_rounded"
+                            android:backgroundTint="#FFB317" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+            </com.google.android.flexbox.FlexboxLayout>
+
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

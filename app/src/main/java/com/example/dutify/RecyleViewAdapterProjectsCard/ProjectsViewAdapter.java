@@ -1,9 +1,12 @@
 package com.example.dutify.RecyleViewAdapterProjectsCard;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -11,13 +14,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dutify.R;
 import com.example.dutify.RecyclerViewAdapterProfileAwards.ProfileAwardsViewClickInterface;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 public class ProjectsViewAdapter extends RecyclerView.Adapter<ProjectsViewAdapter.ViewHolder> {
     private List<Project> data;
-    private ProjectsViewClickInterface projectsViewClickInterface;
-    private ProjectsViewAdapter.ItemClickListener mClickListener;
+    private final ProjectsViewClickInterface projectsViewClickInterface;
+    ImageView teamMember1;
+    ImageView teamMember2;
+    ImageView teamMember3;
+
 
     public ProjectsViewAdapter(List<Project> data, ProjectsViewClickInterface projectsViewClickInterface) {
         this.projectsViewClickInterface = projectsViewClickInterface;
@@ -37,7 +44,26 @@ public class ProjectsViewAdapter extends RecyclerView.Adapter<ProjectsViewAdapte
     public void onBindViewHolder(@NonNull ProjectsViewAdapter.ViewHolder holder, int position) {
         Project myProject = data.get(position);
         holder.projectTitleTxt.setText(myProject.getTitle());
-        holder.projectCategoryTxt.setText(String.valueOf(myProject.getCategory()));
+        holder.teamNameTxt.setText(String.valueOf(myProject.getTeamName()));
+        holder.cardHolder.setBackgroundColor(Color.parseColor(myProject.getColor()));
+        Picasso.get()
+                .load(myProject.getPictureUrl1())
+                .resize(256, 256)
+                .centerCrop()
+                .into(teamMember1);
+
+        Picasso.get()
+                .load(myProject.getPictureUrl2())
+                .resize(256, 256)
+                .centerCrop()
+                .into(teamMember2);
+
+
+        Picasso.get()
+                .load(myProject.getPictureUrl3())
+                .resize(256, 256)
+                .centerCrop()
+                .into(teamMember3);
     }
 
     @Override
@@ -48,13 +74,19 @@ public class ProjectsViewAdapter extends RecyclerView.Adapter<ProjectsViewAdapte
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView projectTitleTxt;
-        TextView projectCategoryTxt;
+        TextView teamNameTxt;
+        LinearLayout cardHolder;
+
 
         ViewHolder(View itemView) {
             super(itemView);
             // Views that will display our data
+            cardHolder = itemView.findViewById(R.id.cardHolder);
+            teamMember1 = itemView.findViewById(R.id.teamMember1);
+            teamMember2 = itemView.findViewById(R.id.teamMember2);
+            teamMember3 = itemView.findViewById(R.id.teamMember3);
             projectTitleTxt = itemView.findViewById(R.id.projectTitleTxt);
-            projectCategoryTxt = itemView.findViewById(R.id.projectCategoryTxt);
+            teamNameTxt = itemView.findViewById(R.id.teamNameTxt);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -62,17 +94,5 @@ public class ProjectsViewAdapter extends RecyclerView.Adapter<ProjectsViewAdapte
                 }
             });
         }
-    }
-
-    public String getTitle(int id) {
-        return data.get(id).getTitle();
-    }
-
-    public void setClickListener(ProjectsViewAdapter.ItemClickListener itemClickListener) {
-        this.mClickListener = itemClickListener;
-    }
-
-    public interface ItemClickListener {
-        void onItemClick(View view, int position);
     }
 }

@@ -201,15 +201,10 @@
                     android:textColor="@color/pTextColor4"
                     android:textSize="13sp" />
 
-                <HorizontalScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scrollbars="none">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:layout_height="wrap_content">
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/projectRecycleView"
@@ -232,7 +227,7 @@
 
                     </LinearLayout>
 
-                </HorizontalScrollView>
+
 
                 <TextView
                     android:layout_width="wrap_content"
