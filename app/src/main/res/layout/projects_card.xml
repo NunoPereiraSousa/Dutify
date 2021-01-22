@@ -175,7 +175,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/projectCounterTxt"
+                        android:id="@+id/taskCounterTxt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end"
@@ -195,7 +195,8 @@
                             android:backgroundTint="@color/pTextColor5" />
 
                         <View
-                            android:layout_width="28dp"
+                            android:id="@+id/progressBar"
+                            android:layout_width="140dp"
                             android:layout_height="8dp"
                             android:background="@drawable/progress_bar_rounded"
                             android:backgroundTint="#FFB317" />

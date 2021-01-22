@@ -9,8 +9,11 @@ public class Project {
     private String pictureUrl3;
     private String teamName;
     private String color;
+    private int totalTask;
+    private int totalTasksTodo;
+    private String daysLeft;
 
-    public Project(String title, String category, String pictureUrl1, String pictureUrl2, String pictureUrl3, int id,String teamName, String color) {
+    public Project(String title, String category, String pictureUrl1, String pictureUrl2, String pictureUrl3, int id, String teamName, String color, int totalTask, int totalTasksTodo, String daysLeft) {
         this.category = category;
         this.title = title;
         this.pictureUrl1 = pictureUrl1;
@@ -19,7 +22,9 @@ public class Project {
         this.id = id;
         this.teamName = teamName;
         this.color = color;
-
+        this.totalTask= totalTask;
+        this.totalTasksTodo = totalTasksTodo;
+        this.daysLeft = daysLeft;
     }
 
     public String getTitle() {
@@ -84,5 +89,29 @@ public class Project {
     }
     public void setColor() {
         this.color = color;
+    }
+
+    public int getTotalTask() {
+        return totalTask;
+    }
+    public void setTotalTask() {
+        this.totalTask = this.totalTask;
+    }
+
+
+    public int getTotalTasksTodo() {
+        return totalTasksTodo;
+    }
+
+    public void setTotalTasksTodo(int totalTasksTodo) {
+        this.totalTasksTodo = totalTasksTodo;
+    }
+
+    public String getDaysLeft() {
+        return daysLeft;
+    }
+
+    public void setDaysLeft(String daysLeft) {
+        this.daysLeft = daysLeft;
     }
 }

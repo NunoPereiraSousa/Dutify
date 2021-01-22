@@ -43,9 +43,20 @@ public class ProjectsViewAdapter extends RecyclerView.Adapter<ProjectsViewAdapte
     @Override
     public void onBindViewHolder(@NonNull ProjectsViewAdapter.ViewHolder holder, int position) {
         Project myProject = data.get(position);
+
+        int totalTask= myProject.getTotalTask();
+        int totalToDoTask = myProject.getTotalTasksTodo();
+        holder.progressBar.getLayoutParams().width = totalToDoTask*holder.progressBar.getLayoutParams().width / totalTask;
+        holder.taskCounterTxt.setText(totalToDoTask+" / "+totalTask);
         holder.projectTitleTxt.setText(myProject.getTitle());
         holder.teamNameTxt.setText(String.valueOf(myProject.getTeamName()));
         holder.cardHolder.setBackgroundColor(Color.parseColor(myProject.getColor()));
+        String dayLeftSuffix = " days left";
+        if (myProject.getDaysLeft().equals("1")){
+            dayLeftSuffix = " day left";
+        }
+
+        holder.daysLeftTxt.setText(myProject.getDaysLeft()+ dayLeftSuffix);
         Picasso.get()
                 .load(myProject.getPictureUrl1())
                 .resize(256, 256)
@@ -76,11 +87,17 @@ public class ProjectsViewAdapter extends RecyclerView.Adapter<ProjectsViewAdapte
         TextView projectTitleTxt;
         TextView teamNameTxt;
         LinearLayout cardHolder;
+        TextView taskCounterTxt;
+        TextView daysLeftTxt;
+        View progressBar;
 
 
         ViewHolder(View itemView) {
             super(itemView);
             // Views that will display our data
+            daysLeftTxt = itemView.findViewById(R.id.daysLeftTxt);
+            progressBar = itemView.findViewById(R.id.progressBar);
+            taskCounterTxt = itemView.findViewById(R.id.taskCounterTxt);
             cardHolder = itemView.findViewById(R.id.cardHolder);
             teamMember1 = itemView.findViewById(R.id.teamMember1);
             teamMember2 = itemView.findViewById(R.id.teamMember2);

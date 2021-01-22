@@ -2,21 +2,16 @@ package com.example.dutify;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,7 +24,6 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.dutify.RecyclerViewAdapterProfileAwards.Award;
 import com.example.dutify.RecyclerViewAdapterProfileAwards.ProfileAwardsViewAdapter;
-import com.example.dutify.RecyclerViewAdapterProfileAwards.ProfileAwardsViewClickInterface;
 import com.example.dutify.RecyleViewAdapterProjectsCard.Project;
 import com.example.dutify.RecyleViewAdapterProjectsCard.ProjectsViewAdapter;
 import com.example.dutify.RecyleViewAdapterProjectsCard.ProjectsViewClickInterface;
@@ -40,12 +34,16 @@ import com.squareup.picasso.Picasso;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 public class Profile extends AppCompatActivity implements ProjectsViewClickInterface {
     BottomNavigationView bottomNavigation;
@@ -413,27 +411,39 @@ public class Profile extends AppCompatActivity implements ProjectsViewClickInter
                             }
                         }
                     }
-                    Log.d("Bitches",String.valueOf(selectedInformation));
-
+                    Log.d("Bitches", String.valueOf(selectedInformation));
+                    String needed = "";
                     //#4-DISPLAY THE INFORMATION
                     for (int i = 0; i < projectsIds.size(); i++) {
-                        for (int j = 0; j < projectsIds.size(); j++) {
+                        for (int j = 0; j < teamsInsideIds.size(); j++) {
                             String projectTitle = "";
                             String teamName = "";
                             String firstUrl = null;
                             String secondUrl = null;
                             String thirdUrl = null;
                             String color = "";
+                            String daysLeft ="";
+
                             int toSavePictureIn = 1;
                             for (int x = 0; x < selectedInformation.size(); x++) {
-                                if (selectedInformation.get(x).getInt("id_project") == projectsIds.get(i) && selectedInformation.get(x).getInt("id_team") == teamsInsideIds.get(j) ) {
+                                if (selectedInformation.get(x).getInt("id_project") == projectsIds.get(i) && selectedInformation.get(x).getInt("id_team") == teamsInsideIds.get(j)) {
                                     if (projectTitle.equals("") && teamName.equals("") && color.equals("")) {
                                         projectTitle = selectedInformation.get(x).getString("projectTitle");
                                         teamName = selectedInformation.get(x).getString("teamName");
-                                        for (int z = 0 ; z < categoryTags.size() ; z++){
-                                            if (categoryTags.get(z).getInt("id_category_tag")== selectedInformation.get(x).getInt("teamIdCategoryTag")){
+                                        for (int z = 0; z < categoryTags.size(); z++) {
+                                            if (categoryTags.get(z).getInt("id_category_tag") == selectedInformation.get(x).getInt("teamIdCategoryTag")) {
                                                 color = categoryTags.get(z).getString("color");
                                             }
+                                        }
+
+                                        SimpleDateFormat myFormat = new SimpleDateFormat("yyyy-MM-dd");
+                                        Date date1 = myFormat.parse(new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date()));
+                                        Date date2 = myFormat.parse(selectedInformation.get(x).getString("projectEndDate").split("T")[0]);
+                                        long diff = date2.getTime() - date1.getTime();
+                                        if (Integer.parseInt( String.valueOf(TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS)))<0){
+                                            daysLeft = "0";
+                                        }else {
+                                            daysLeft =  String.valueOf(TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS));
                                         }
                                     }
                                     if (toSavePictureIn == 1) {
@@ -447,8 +457,18 @@ public class Profile extends AppCompatActivity implements ProjectsViewClickInter
                                     toSavePictureIn += 1;
                                 }
                             }
-                            if (!projectTitle.equals("")&& firstUrl!=null&& secondUrl!=null && thirdUrl!=null && !teamName.equals("") && !color.equals("")){
-                                projects.add(new Project(projectTitle, "something", firstUrl, secondUrl, thirdUrl, projectsIds.get(i),teamName,color));
+                            if (!projectTitle.equals("") && firstUrl != null && secondUrl != null && thirdUrl != null && !teamName.equals("") && !color.equals("")) {
+                                int totalTasks = 0;
+                                int totalToDo = 0;
+                                for (int h = 0; h < operations.length(); h++) {
+                                    if (operations.getJSONObject(h).getInt("id_team") == teamsInsideIds.get(j) && operations.getJSONObject(h).getInt("id_project") == projectsIds.get(i)) {
+                                        totalTasks++;
+                                        if (operations.getJSONObject(h).getInt("taskIdProgressStatus") == 2) {
+                                            totalToDo++;
+                                        }
+                                    }
+                                }
+                                projects.add(new Project(projectTitle, "something", firstUrl, secondUrl, thirdUrl, projectsIds.get(i), teamName, color, totalTasks, totalToDo, daysLeft));
                             }
                         }
                     }
@@ -462,9 +482,8 @@ public class Profile extends AppCompatActivity implements ProjectsViewClickInter
                     adapterProjects = new ProjectsViewAdapter(projects, self);
                     recyclerViewProject.setAdapter(adapterProjects);
 
-                    Toast.makeText(getApplicationContext(), String.valueOf(projects.size()), Toast.LENGTH_SHORT).show();
 
-                } catch (JSONException e) {
+                } catch (JSONException | ParseException e) {
                     e.printStackTrace();
                 }
             }
@@ -516,9 +535,6 @@ public class Profile extends AppCompatActivity implements ProjectsViewClickInter
         };
         queue.add(stringRequest);
     }
-
-
-
 
 
     private void changePage(String toPage) {
