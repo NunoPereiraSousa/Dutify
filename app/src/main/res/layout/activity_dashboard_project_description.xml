@@ -30,6 +30,7 @@
         app:titleTextAppearance="@style/BottomNav" />
 
     <ScrollView
+        android:id="@+id/projectStatusTxt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="60dp"
@@ -47,6 +48,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/projectTitleTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
@@ -66,6 +68,7 @@
                 android:textSize="13sp" />
 
             <TextView
+                android:id="@+id/projectDescriptionTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -106,6 +109,7 @@
                         android:background="@drawable/circle_shape_green" />
 
                     <TextView
+                        android:id="@+id/projectsDaysLeftTxt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/raleway_medium"
@@ -128,10 +132,11 @@
                         android:background="@drawable/circle_shape_blue" />
 
                     <TextView
+                        android:id="@+id/projectDevelopmentTxt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/raleway_medium"
-                        android:text="@string/projectStatus"
+                        android:text=""
                         android:textColor="@color/pTextColor5"
                         android:textSize="14sp" />
 
@@ -148,47 +153,20 @@
                 android:textColor="@color/pTextColor4"
                 android:textSize="13sp" />
 
-            <com.google.android.flexbox.FlexboxLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
-                app:alignItems="center"
-                app:flexDirection="row">
-
-                <fragment
-                    android:id="@+id/project_stats_frag"
-                    android:name="com.example.dutify.ProjectTeamMember"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    tools:layout="@layout/fragment_project_team_member" />
-
-                <fragment
-                    android:id="@+id/project_stats_frag2"
-                    android:name="com.example.dutify.ProjectTeamMember"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    tools:layout="@layout/fragment_project_team_member" />
-
-                <fragment
-                    android:id="@+id/project_stats_frag3"
-                    android:name="com.example.dutify.ProjectTeamMember"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    tools:layout="@layout/fragment_project_team_member" />
-
-                <fragment
-                    android:id="@+id/project_stats_frag4"
-                    android:name="com.example.dutify.ProjectTeamMember"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    tools:layout="@layout/fragment_project_team_member" />
 
 
-            </com.google.android.flexbox.FlexboxLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/teamMembersHolder"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+
+
+
 
             <TextView
                 android:layout_width="wrap_content"
@@ -198,14 +176,6 @@
                 android:text="@string/actionsProjectHeader"
                 android:textColor="@color/pTextColor4"
                 android:textSize="13sp" />
-
-            <fragment
-                android:id="@+id/phone_email_webite_frag"
-                android:name="com.example.dutify.PhoneEmailWebsite"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                tools:layout="@layout/fragment_phone_email_website" />
 
             <LinearLayout
                 android:layout_width="match_parent"

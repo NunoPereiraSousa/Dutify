@@ -205,26 +205,10 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
-
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/projectRecycleView"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent" />
-
-                        <!--<fragment
-                            android:id="@+id/project_stats_frag"
-                            android:name="com.example.dutify.ProjectCard"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            tools:layout="@layout/fragment_project_card" />
-
-                        <fragment
-                            android:id="@+id/project_stats_frag2"
-                            android:name="com.example.dutify.ProjectCard"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            tools:layout="@layout/fragment_project_card" />-->
-
+                            android:layout_height="wrap_content" />
                     </LinearLayout>
 
 

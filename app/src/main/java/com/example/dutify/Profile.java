@@ -578,11 +578,14 @@ public class Profile extends AppCompatActivity implements ProjectsViewClickInter
 
     @Override
     public void onProjectCardClick(int position) {
-        Toast.makeText(this, String.valueOf(position), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, String.valueOf(projects.get(position).getId()), Toast.LENGTH_SHORT).show();
+            Intent dashboardProjectDescriptionIntent = new Intent(this, DashboardProjectDescription.class);
+            dashboardProjectDescriptionIntent.putExtra("token", tokenToBeSent);
+            dashboardProjectDescriptionIntent.putExtra("id_project", projects.get(position).getId());
+            startActivity(dashboardProjectDescriptionIntent);
     }
 
     @Override
     public void onLongClick(int position) {
-
     }
 }
