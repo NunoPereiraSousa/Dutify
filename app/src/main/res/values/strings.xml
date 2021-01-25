@@ -69,4 +69,5 @@
     <string name="totalTasksTxt">Total Tasks</string>
     <string name="awardPictureHolder">Award Picture Holder</string>
     <string name="awards_statistics">Awards Statistics</string>
+    <string name="myTasksTxt">My Tasks</string>
 </resources>
