@@ -2,14 +2,20 @@ package com.example.dutify;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
+import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -28,6 +34,7 @@ import com.google.android.flexbox.AlignItems;
 import com.google.android.flexbox.FlexDirection;
 import com.google.android.flexbox.FlexboxLayoutManager;
 import com.google.android.flexbox.JustifyContent;
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONArray;
@@ -46,6 +53,8 @@ public class Catalog extends AppCompatActivity {
     CatalogAwardsViewAdapter adapter;
     RecyclerView recyclerView;
     List<CatalogAward> awards;
+
+    MaterialToolbar topCatalogBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +85,7 @@ public class Catalog extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 getAwards(response, token);
+                getCredits(response, token);
             }
         }, new Response.ErrorListener() {
             @Override
@@ -94,6 +104,45 @@ public class Catalog extends AppCompatActivity {
         queue.add(jsonObjectRequest);
     }
 
+    private void getCredits(String userId, final String token) {
+        String url = "https://dutify.herokuapp.com/users/" + userId + "/credits";
+        RequestQueue queue = Volley.newRequestQueue(this);
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONArray userArray = new JSONArray(response);
+                    JSONObject user = userArray.getJSONObject(0);
+                    int credits = user.getInt("credits");
+
+                    View view = findViewById(R.id.navTopCredits);
+
+                    if (view != null && view instanceof TextView) {
+                        ((TextView) view).setTextColor(ResourcesCompat.getColor(getResources(), R.color.mainYellow, null));
+                        ((TextView) view).setText(credits + " " + getResources().getString(R.string.duties_top_navbar));
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("authorization", token);
+                return params;
+            }
+        };
+        queue.add(stringRequest);
+    }
+
     private void getAwards(String userId, final String token) {
         String url = "https://dutify.herokuapp.com/awards";
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -107,26 +156,16 @@ public class Catalog extends AppCompatActivity {
                     for (int i = 0; i < awardsArray.length(); i++) {
                         JSONObject dataObj = awardsArray.getJSONObject(i);
                         awards.add(new CatalogAward(dataObj.getString("name"), dataObj.getInt("price"), dataObj.getString("picture")));
-
-                        Log.d("dataObj", String.valueOf(dataObj));
                     }
 
                     FlexboxLayoutManager layoutManager = new FlexboxLayoutManager(Catalog.this);
                     layoutManager.setFlexDirection(FlexDirection.ROW);
                     layoutManager.setJustifyContent(JustifyContent.SPACE_AROUND);
-                    //layoutManager.setAlignItems(AlignItems.CENTER);
+
                     recyclerView = findViewById(R.id.catalogAwardRecycleView);
                     recyclerView.setLayoutManager(layoutManager);
                     adapter = new CatalogAwardsViewAdapter(getApplicationContext(), awards);
                     recyclerView.setAdapter(adapter);
-
-                    /*recyclerView = findViewById(R.id.catalogAwardRecycleView);
-                    recyclerView.setHasFixedSize(true);
-                    recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));*/
-                    //adapter = new CatalogAwardsViewAdapter(getApplicationContext(), awards);
-                    // problem
-                    //adapter.setClickListener(this);
-                    //recyclerView.setAdapter(adapter);
 
                 } catch (JSONException e) {
                     e.printStackTrace();

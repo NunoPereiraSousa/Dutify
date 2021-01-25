@@ -7,12 +7,14 @@
     android:background="@color/colorPrimary">
 
     <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/topAppBar"
+        android:id="@+id/topCatalogBar"
         style="@style/Widget.MaterialComponents.Toolbar.Primary1"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        app:menu="@menu/calendar_top_menu"
+        app:menu="@menu/catalog_navigation_menu"
         app:title="Awards"
+        android:elevation="4dp"
+        app:itemTextColor="@color/frontEnd"
         app:titleTextAppearance="@style/BottomNav" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -35,7 +37,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:paddingHorizontal="20dp"
             android:paddingBottom="20dp">
 

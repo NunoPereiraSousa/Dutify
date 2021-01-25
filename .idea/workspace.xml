@@ -21,8 +21,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="505792da-c298-4325-aeb5-b539b5c27c64" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_bought.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/menu/catalog_navigation_menu.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/dutify/Calendar.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/dutify/Calendar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/dutify/Catalog.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/dutify/Catalog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_catalog.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_catalog.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/award_card.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/award_card.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/calendar_top_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/calendar_top_menu.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,9 +52,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="resourceFile" />
         <option value="layoutResourceFile" />
         <option value="Class" />
+        <option value="resourceFile" />
       </list>
     </option>
   </component>
@@ -221,7 +228,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611256458668</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Calendar and Calendar tasks already filtered">
+      <created>1611457907549</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1611457907549</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -246,7 +260,8 @@
     <MESSAGE value="Design is rocking hard ✓" />
     <MESSAGE value="✓ Profile almost done&#10;✓ Calendar almost done&#10;✓ Catalog in progress" />
     <MESSAGE value="Calendar &amp; Awards Catalog Progress" />
-    <option name="LAST_COMMIT_MESSAGE" value="Calendar &amp; Awards Catalog Progress" />
+    <MESSAGE value="Calendar and Calendar tasks already filtered" />
+    <option name="LAST_COMMIT_MESSAGE" value="Calendar and Calendar tasks already filtered" />
   </component>
   <component name="WindowStateProjectService">
     <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser" timestamp="1611182306514">
@@ -261,42 +276,42 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-3840.0.1536.832/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1610909888973" />
-    <state x="818" y="333" key="AndroidCreateXmlResourceDialog" timestamp="1611153657498">
+    <state x="818" y="333" key="AndroidCreateXmlResourceDialog" timestamp="1611536519836">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="818" y="333" key="AndroidCreateXmlResourceDialog/-3840.0.1536.832/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1611153657498" />
-    <state x="614" y="114" key="CommitChangelistDialog2" timestamp="1611256456100">
+    <state x="818" y="333" key="AndroidCreateXmlResourceDialog/-3840.0.1536.832/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1611536519836" />
+    <state x="614" y="114" key="CommitChangelistDialog2" timestamp="1611457905740">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="614" y="114" key="CommitChangelistDialog2/-3840.0.1536.832/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1611256456100" />
+    <state x="614" y="114" key="CommitChangelistDialog2/-3840.0.1536.832/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1611457905740" />
     <state x="640" y="275" key="Downloadable.Font.Dialog.Size" timestamp="1610999008419">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="640" y="275" key="Downloadable.Font.Dialog.Size/-3840.0.1536.832/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1610999008419" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1611002666394">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1611542788931">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/-3840.0.1536.832/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1611002666394" />
-    <state width="1877" height="319" key="GridCell.Tab.0.bottom" timestamp="1611456887368">
+    <state x="740" y="275" key="FileChooserDialogImpl/-3840.0.1536.832/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1611542788931" />
+    <state width="1877" height="319" key="GridCell.Tab.0.bottom" timestamp="1611544527235">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="280" key="GridCell.Tab.0.bottom/-3840.0.1536.832/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1611235632945" />
-    <state width="1877" height="319" key="GridCell.Tab.0.bottom/-3840.0.1536.832/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1611456887368" />
-    <state width="1877" height="319" key="GridCell.Tab.0.center" timestamp="1611456887367">
+    <state width="1877" height="319" key="GridCell.Tab.0.bottom/-3840.0.1536.832/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1611544527235" />
+    <state width="1877" height="319" key="GridCell.Tab.0.center" timestamp="1611544527235">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="280" key="GridCell.Tab.0.center/-3840.0.1536.832/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1611235632944" />
-    <state width="1877" height="319" key="GridCell.Tab.0.center/-3840.0.1536.832/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1611456887367" />
-    <state width="1877" height="319" key="GridCell.Tab.0.left" timestamp="1611456887367">
+    <state width="1877" height="319" key="GridCell.Tab.0.center/-3840.0.1536.832/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1611544527235" />
+    <state width="1877" height="319" key="GridCell.Tab.0.left" timestamp="1611544527235">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="280" key="GridCell.Tab.0.left/-3840.0.1536.832/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1611235632944" />
-    <state width="1877" height="319" key="GridCell.Tab.0.left/-3840.0.1536.832/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1611456887367" />
-    <state width="1877" height="319" key="GridCell.Tab.0.right" timestamp="1611456887368">
+    <state width="1877" height="319" key="GridCell.Tab.0.left/-3840.0.1536.832/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1611544527235" />
+    <state width="1877" height="319" key="GridCell.Tab.0.right" timestamp="1611544527235">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="280" key="GridCell.Tab.0.right/-3840.0.1536.832/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1611235632945" />
-    <state width="1877" height="319" key="GridCell.Tab.0.right/-3840.0.1536.832/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1611456887368" />
+    <state width="1877" height="319" key="GridCell.Tab.0.right/-3840.0.1536.832/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1611544527235" />
     <state x="540" y="263" key="IDE.errors.dialog" timestamp="1610991821772">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -305,18 +320,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="498" height="446" key="SwitcherDM/-3840.0.1536.832/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1609635509442" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1611256473775">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1611457917088">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/-3840.0.1536.832/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1611256473775" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/-3840.0.1536.832/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1611457917088" />
     <state x="606" y="135" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1609634664435">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="606" y="135" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/-3840.0.1536.832/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1609634664435" />
-    <state x="695" y="311" key="git4idea.merge.GitPullDialog" timestamp="1611454420131">
+    <state x="695" y="311" key="git4idea.merge.GitPullDialog" timestamp="1611538160662">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1225" y="311" key="git4idea.merge.GitPullDialog/-3840.0.1536.832/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1611235640905" />
-    <state x="695" y="311" key="git4idea.merge.GitPullDialog/-3840.0.1536.832/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1611454420131" />
+    <state x="695" y="311" key="git4idea.merge.GitPullDialog/-3840.0.1536.832/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1611538160662" />
   </component>
 </project>
