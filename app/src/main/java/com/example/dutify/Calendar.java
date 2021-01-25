@@ -33,6 +33,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -258,13 +259,13 @@ public class Calendar extends AppCompatActivity {
     }
 
     public String currentDate() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate date = LocalDate.now();
         return date.format(formatter);
     }
 
     public Boolean compareDates(String a, String b, String d) {
-        return a.compareTo(d) * b.compareTo(d) >= 0;
+        return a.compareTo(d) * b.compareTo(d) > 0;
     }
 
     private void getUserTodayTasks(String userId, final String token) {
@@ -281,18 +282,19 @@ public class Calendar extends AppCompatActivity {
                         JSONObject dataObj = tasksArray.getJSONObject(i);
 
                         String startDate = dataObj.getString("startDate");
+                        String endDate = dataObj.getString("endDate");
+                        Log.d("asd", dataObj.getString("title"));
 
-                        if (startDate.equals(currentDate()) ) {
-                            Log.d("today", "check");
-                        } else {
-                            Log.d("not today", "upsi");
+                        if (!compareDates(startDate,
+                                endDate,
+                                currentDate())) {
+
+                            tasks.add(new Task(dataObj.getString("title"),
+                                    dataObj.getString("description"),
+                                    dataObj.getString("startDate"),
+                                    dataObj.getString("endDate"),
+                                    dataObj.getInt("id_progress_status")));
                         }
-
-                        tasks.add(new Task(dataObj.getString("title"),
-                                dataObj.getString("description"),
-                                dataObj.getString("startDate"),
-                                dataObj.getString("endDate"),
-                                dataObj.getInt("id_progress_status")));
                     }
 
                     LinearLayoutManager layoutManager
