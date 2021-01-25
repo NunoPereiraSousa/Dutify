@@ -174,7 +174,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:fontFamily="@font/poppins_medium"
-                android:text="@string/myTasksTxt"
+                android:text="My Tasks"
                 android:textColor="@color/pTextColor4"
                 android:textSize="13sp" />
             <LinearLayout
