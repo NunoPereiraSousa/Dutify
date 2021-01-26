@@ -17,11 +17,14 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.dutify.RecyclerViewAdapterDashDescMyTasks.DashDescTasksClickInterface;
+import com.example.dutify.RecyclerViewAdapterDashDescMyTasks.DashDescTasksViewAdapter;
+import com.example.dutify.RecyclerViewAdapterDashDescMyTasks.Task;
 import com.example.dutify.RecyclerViewAdapterProjectsTeamMember.TeamMember;
 import com.example.dutify.RecyclerViewAdapterProjectsTeamMember.TeamMembersViewAdapter;
 import com.example.dutify.RecyclerViewAdapterProjectsTeamMember.TeamMembersViewClickInterface;
-import com.example.dutify.RecyleViewAdapterProjectsCard.Project;
 import com.example.dutify.RecyleViewAdapterProjectsCard.ProjectsViewAdapter;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -35,9 +38,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
-public class DashboardProjectDescription extends AppCompatActivity implements TeamMembersViewClickInterface {
+
+public class DashboardProjectDescription extends AppCompatActivity implements TeamMembersViewClickInterface, DashDescTasksClickInterface {
     TextView projectTitleTxt;
     TextView projectDescriptionTxt;
     TextView projectsDaysLeftTxt;
@@ -48,8 +51,11 @@ public class DashboardProjectDescription extends AppCompatActivity implements Te
     List<TeamMember> teamMembers;
     List<JSONObject> categoryTags;
     List<JSONObject> progressStatus;
+    List<Task> myTasks;
     RecyclerView recyclerViewTeamMembers;
     TeamMembersViewAdapter adapterTeamMembers;
+    RecyclerView recyclerViewMyTasks;
+    DashDescTasksViewAdapter adapterMyTasks;
 
 
     @Override
@@ -62,7 +68,6 @@ public class DashboardProjectDescription extends AppCompatActivity implements Te
         if (intendExtras != null) {
             tokenToBeSent = intendExtras.getString("token");
             projectId = intendExtras.getInt("id_project");
-
             IdentificationByToken(intendExtras.getString("token"), String.valueOf(projectId));
         } else {
             Log.d("justTest", "An idea is being cooked");
@@ -80,6 +85,7 @@ public class DashboardProjectDescription extends AppCompatActivity implements Te
                 getCategoryTags(token);
                 getProgressStatus(token);
                 getOperationsData(response, token, projectId);
+                getUserProjectTasks(response,token,projectId);
             }
         }, new Response.ErrorListener() {
             @Override
@@ -167,13 +173,13 @@ public class DashboardProjectDescription extends AppCompatActivity implements Te
                         int personId = selectedInformation.get(i).getInt("id_user");
                         String personName = selectedInformation.get(i).getString("firstName");
                         String photoUrl = selectedInformation.get(i).getString("picture");
-                        String  teamColor ="";
+                        String teamColor = "";
                         for (int z = 0; z < categoryTags.size(); z++) {
                             if (categoryTags.get(z).getInt("id_category_tag") == selectedInformation.get(i).getInt("teamIdCategoryTag")) {
                                 teamColor = categoryTags.get(z).getString("color");
                             }
                         }
-                        teamMembers.add(new TeamMember(personId,personName,photoUrl,teamColor));
+                        teamMembers.add(new TeamMember(personId, personName, photoUrl, teamColor));
                     }
                     LinearLayoutManager layoutManager
                             = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
@@ -259,14 +265,10 @@ public class DashboardProjectDescription extends AppCompatActivity implements Te
             }
         };
         queue.add(stringRequest);
-
     }
 
 
     public void setProjectStatus(int id_progress_status) throws JSONException {
-
-//        Toast.makeText(getApplicationContext(), String.valueOf(progressStatus.size()), Toast.LENGTH_SHORT).show();
-
         for (int i = 0; i < progressStatus.size(); i++) {
             JSONObject dataObj = progressStatus.get(i);
             if (id_progress_status == dataObj.getInt("id_progress_status")) {
@@ -277,6 +279,56 @@ public class DashboardProjectDescription extends AppCompatActivity implements Te
 
     }
 
+    public void getUserProjectTasks(String userId, final String token, String projectId) {
+
+
+        myTasks = new ArrayList<>();
+
+        final String url = "https://dutify.herokuapp.com/projects/"+projectId+"/users/"+userId+"/tasks";
+        RequestQueue queue = Volley.newRequestQueue(this);
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONArray responseArray = new JSONArray(response);
+                    for (int i = 0; i < responseArray.length(); i++) {
+                        JSONObject dataObj = responseArray.getJSONObject(i);
+                        myTasks.add(new Task(dataObj.getInt("id_task"),dataObj.getString("title"),dataObj.getString("description"),dataObj.getInt("id_progress_status"),dataObj.getString("endDate"),dataObj.getInt("creditsValue")));
+                    }
+
+                    Toast.makeText(getApplicationContext(), String.valueOf(myTasks.size()), Toast.LENGTH_SHORT).show();
+
+                    LinearLayoutManager layoutManager
+                            = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
+
+                    recyclerViewMyTasks = findViewById(R.id.myTasksRecycleView);
+                    recyclerViewMyTasks.setHasFixedSize(true);
+                    recyclerViewMyTasks.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                    adapterMyTasks = new DashDescTasksViewAdapter(myTasks, self);
+                    recyclerViewMyTasks.setAdapter(adapterMyTasks);
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("authorization", token);
+                return params;
+            }
+        };
+        queue.add(stringRequest);
+    }
+
+
     @Override
     public void onTeamMemberClick(int position) {
 
@@ -284,6 +336,16 @@ public class DashboardProjectDescription extends AppCompatActivity implements Te
 
     @Override
     public void onTeamMemberLongClick(int position) {
+
+    }
+
+    @Override
+    public void onTaskCardClick(int position) {
+
+    }
+
+    @Override
+    public void onTaskCardLongClick(int position) {
 
     }
 }
