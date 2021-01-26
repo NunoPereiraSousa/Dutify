@@ -10,9 +10,13 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.CalendarView;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -208,8 +212,33 @@ public class Calendar extends AppCompatActivity {
                     JSONObject dataObj = dayTasks.get(i);
 
                     try {
-                        if (date.equals(dataObj.getString("endDate"))) {
-                            Toast.makeText(getApplicationContext(), dataObj.getString("title") + " task end here!", Toast.LENGTH_SHORT).show();
+                        String endDate = dataObj.getString("endDate");
+
+                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                        Date date1 = null;
+                        try {
+                            date1 = sdf.parse(dataObj.getString("endDate"));
+                            Date date2 = sdf.parse(currentDate());
+
+                            if (date1.compareTo(date2) > 0 && date.equals(endDate)) {
+                                LayoutInflater inflater = getLayoutInflater();
+                                View layout = inflater.inflate(R.layout.toast,
+                                        (ViewGroup) findViewById(R.id.toast_layout));
+
+                                ImageView image = (ImageView) layout.findViewById(R.id.image);
+                                image.setImageResource(R.drawable.ic_logo);
+                                TextView text = (TextView) layout.findViewById(R.id.text);
+
+                                text.setText(dataObj.getString("title") + getResources().getString(R.string.task_ending));
+
+                                Toast toast = new Toast(getApplicationContext());
+                                toast.setDuration(Toast.LENGTH_SHORT);
+                                toast.setView(layout);
+                                toast.show();
+
+                            }
+                        } catch (ParseException e) {
+                            e.printStackTrace();
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -266,6 +295,10 @@ public class Calendar extends AppCompatActivity {
 
     public Boolean compareDates(String a, String b, String d) {
         return a.compareTo(d) * b.compareTo(d) > 0;
+    }
+
+    public Boolean compareDates2(String a, String b, String d) {
+        return a.compareTo(d) * b.compareTo(d) < 0;
     }
 
     private void getUserTodayTasks(String userId, final String token) {

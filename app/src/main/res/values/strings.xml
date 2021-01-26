@@ -70,4 +70,5 @@
     <string name="awardPictureHolder">Award Picture Holder</string>
     <string name="awards_statistics">Awards Statistics</string>
     <string name="duties_top_navbar">Duties</string>
+    <string name="task_ending">&#160;task ends here!</string>
 </resources>
