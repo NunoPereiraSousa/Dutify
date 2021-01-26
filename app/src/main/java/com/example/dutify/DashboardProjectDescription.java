@@ -1,5 +1,6 @@
 package com.example.dutify;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -7,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,6 +17,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.dutify.RecyclerViewAdapterDashDescMyTasks.DashDescTasksClickInterface;
@@ -23,13 +26,14 @@ import com.example.dutify.RecyclerViewAdapterDashDescMyTasks.Task;
 import com.example.dutify.RecyclerViewAdapterProjectsTeamMember.TeamMember;
 import com.example.dutify.RecyclerViewAdapterProjectsTeamMember.TeamMembersViewAdapter;
 import com.example.dutify.RecyclerViewAdapterProjectsTeamMember.TeamMembersViewClickInterface;
-import com.example.dutify.RecyleViewAdapterProjectsCard.ProjectsViewAdapter;
+import com.google.android.material.button.MaterialButton;
 
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -47,6 +51,7 @@ public class DashboardProjectDescription extends AppCompatActivity implements Te
     TextView projectDevelopmentTxt;
     DashboardProjectDescription self;
     String tokenToBeSent = "";
+    String userId = "";
     int projectId;
     List<TeamMember> teamMembers;
     List<JSONObject> categoryTags;
@@ -56,6 +61,9 @@ public class DashboardProjectDescription extends AppCompatActivity implements Te
     TeamMembersViewAdapter adapterTeamMembers;
     RecyclerView recyclerViewMyTasks;
     DashDescTasksViewAdapter adapterMyTasks;
+
+    private AlertDialog.Builder dialogBuilder;
+    private AlertDialog dialog;
 
 
     @Override
@@ -82,10 +90,11 @@ public class DashboardProjectDescription extends AppCompatActivity implements Te
         StringRequest jsonObjectRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                userId = response;
                 getCategoryTags(token);
                 getProgressStatus(token);
                 getOperationsData(response, token, projectId);
-                getUserProjectTasks(response,token,projectId);
+                getUserProjectTasks(response, token, projectId);
             }
         }, new Response.ErrorListener() {
             @Override
@@ -168,7 +177,6 @@ public class DashboardProjectDescription extends AppCompatActivity implements Te
                     setProjectDaysLeft(selectedInformation.get(0).getString("projectEndDate").split("T")[0]);
                     setProjectStatus(selectedInformation.get(0).getInt("projectIdProgressStatus"));
 
-
                     for (int i = 0; i < selectedInformation.size(); i++) {
                         int personId = selectedInformation.get(i).getInt("id_user");
                         String personName = selectedInformation.get(i).getString("firstName");
@@ -246,7 +254,6 @@ public class DashboardProjectDescription extends AppCompatActivity implements Te
                     }
 //                    Toast.makeText(getApplicationContext(), "li", Toast.LENGTH_SHORT).show();
 //                    Toast.makeText(getApplicationContext(), String.valueOf(progressStatus.size()), Toast.LENGTH_SHORT).show();
-//
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -267,7 +274,6 @@ public class DashboardProjectDescription extends AppCompatActivity implements Te
         queue.add(stringRequest);
     }
 
-
     public void setProjectStatus(int id_progress_status) throws JSONException {
         for (int i = 0; i < progressStatus.size(); i++) {
             JSONObject dataObj = progressStatus.get(i);
@@ -280,11 +286,8 @@ public class DashboardProjectDescription extends AppCompatActivity implements Te
     }
 
     public void getUserProjectTasks(String userId, final String token, String projectId) {
-
-
         myTasks = new ArrayList<>();
-
-        final String url = "https://dutify.herokuapp.com/projects/"+projectId+"/users/"+userId+"/tasks";
+        final String url = "https://dutify.herokuapp.com/projects/" + projectId + "/users/" + userId + "/tasks";
         RequestQueue queue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
@@ -293,7 +296,7 @@ public class DashboardProjectDescription extends AppCompatActivity implements Te
                     JSONArray responseArray = new JSONArray(response);
                     for (int i = 0; i < responseArray.length(); i++) {
                         JSONObject dataObj = responseArray.getJSONObject(i);
-                        myTasks.add(new Task(dataObj.getInt("id_task"),dataObj.getString("title"),dataObj.getString("description"),dataObj.getInt("id_progress_status"),dataObj.getString("endDate"),dataObj.getInt("creditsValue")));
+                        myTasks.add(new Task(dataObj.getInt("id_task"), dataObj.getString("title"), dataObj.getString("description"), dataObj.getInt("id_progress_status"), dataObj.getString("endDate"), dataObj.getInt("creditsValue")));
                     }
 
                     Toast.makeText(getApplicationContext(), String.valueOf(myTasks.size()), Toast.LENGTH_SHORT).show();
@@ -328,24 +331,141 @@ public class DashboardProjectDescription extends AppCompatActivity implements Te
         queue.add(stringRequest);
     }
 
+    public void changeTaskStatus(int idTask) {
+
+        String postUrl = "https://dutify.herokuapp.com/tasks/" + String.valueOf(idTask) + "/status";
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        JSONObject postData = new JSONObject();
+        try {
+            postData.put("id_progress_status", "2");
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.PATCH, postUrl, postData, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Toast.makeText(getApplicationContext(), "The task Status has been updated, Good job", Toast.LENGTH_SHORT).show();
+                getUserProjectTasks(userId, tokenToBeSent, String.valueOf(projectId));
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                if (Integer.parseInt(String.valueOf(error.networkResponse.statusCode)) >= 500) {
+
+                }
+                Toast.makeText(getApplicationContext(), new String(error.networkResponse.data, StandardCharsets.UTF_8), Toast.LENGTH_LONG).show();
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("authorization", tokenToBeSent);
+                return params;
+            }
+        };
+        requestQueue.add(jsonObjectRequest);
+    }
+
+    public void addIncomeToUser() {
+        String postUrl = "https://dutify.herokuapp.com/users/" + String.valueOf(userId) + "/credits";
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        JSONObject postData = new JSONObject();
+        try {
+            postData.put("operation", 1);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.PATCH, postUrl, postData, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Toast.makeText(getApplicationContext(), "Your income has been updated", Toast.LENGTH_SHORT).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                if (Integer.parseInt(String.valueOf(error.networkResponse.statusCode)) >= 500) {
+
+                }
+                Toast.makeText(getApplicationContext(), new String(error.networkResponse.data, StandardCharsets.UTF_8), Toast.LENGTH_LONG).show();
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("authorization", tokenToBeSent);
+                return params;
+            }
+        };
+        requestQueue.add(jsonObjectRequest);
+
+    }
+
+    public void buildTasksDescriptionPopUp(String title, String description) {
+        dialogBuilder = new AlertDialog.Builder(self);
+        final View taskDescriptionPopUpView = getLayoutInflater().inflate(R.layout.tasks_desc_pop_up, null);
+        TextView tasksTitleTxt = (TextView) taskDescriptionPopUpView.findViewById(R.id.tasksTitleTxt);
+        TextView taskDescriptionTxt = (TextView) taskDescriptionPopUpView.findViewById(R.id.taskDescriptionTxt);
+        tasksTitleTxt.setText(title);
+        taskDescriptionTxt.setText(description);
+        MaterialButton backToMenuBtn = taskDescriptionPopUpView.findViewById(R.id.backToMenuBtn);
+        dialogBuilder.setView(taskDescriptionPopUpView);
+        dialog = dialogBuilder.create();
+        dialog.show();
+        backToMenuBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+    }
+
+    public void buildTasksStateChangePopUp(String title, final int idTask) {
+        dialogBuilder = new AlertDialog.Builder(self);
+        final View taskStateChangePopUpView = getLayoutInflater().inflate(R.layout.tasks_change_state_pop_up, null);
+        TextView tasksTitleTxt = (TextView) taskStateChangePopUpView.findViewById(R.id.tasksTitleTxt);
+        tasksTitleTxt.setText(title);
+        MaterialButton cancelBtn = taskStateChangePopUpView.findViewById(R.id.cancelBtn);
+        MaterialButton confirmBtn = taskStateChangePopUpView.findViewById(R.id.confirmBtn);
+        dialogBuilder.setView(taskStateChangePopUpView);
+        dialog = dialogBuilder.create();
+        dialog.show();
+
+        cancelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        confirmBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeTaskStatus(idTask);
+                addIncomeToUser();
+                dialog.dismiss();
+            }
+        });
+    }
 
     @Override
     public void onTeamMemberClick(int position) {
-
     }
 
     @Override
     public void onTeamMemberLongClick(int position) {
-
     }
 
     @Override
     public void onTaskCardClick(int position) {
-
+        buildTasksDescriptionPopUp(myTasks.get(position).getTaskTitle(), myTasks.get(position).getTasksDescription());
     }
 
     @Override
     public void onTaskCardLongClick(int position) {
-
+        if (myTasks.get(position).getId_progress_status() == 1) {
+            buildTasksStateChangePopUp(myTasks.get(position).getTaskTitle(), myTasks.get(position).getTaskId());
+        } else {
+            Toast.makeText(getApplicationContext(), "The task must be on development so u can access this feature", Toast.LENGTH_LONG).show();
+        }
     }
 }

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:sothree="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shadow"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:paddingLeft="28dp"
+        android:paddingTop="20dp"
+        android:paddingRight="28dp"
+        android:paddingBottom="20dp">
+
+        <TextView
+            android:id="@+id/tasksTitleTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Title"
+            android:textColor="@color/calendarColor"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/taskDescriptionTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/raleway_semibold"
+            android:text="Finish web design of main pages"
+            android:textColor="@color/pTextColor5"
+            android:textSize="14sp" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/backToMenuBtn"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/profileBk"
+            android:fontFamily="@font/poppins_semibold"
+            android:onClick="openMotivationPage"
+            android:paddingLeft="32dp"
+            android:paddingTop="11dp"
+            android:paddingRight="32dp"
+            android:paddingBottom="11dp"
+            android:text="Back to menu"
+            android:textAllCaps="false"
+            android:textColor="@color/pTextColor3"
+            android:textSize="14sp"
+            app:cornerRadius="50dp"
+            app:strokeColor="@color/colorPrimary" />
+
+    </LinearLayout>
+
+
+</LinearLayout>
