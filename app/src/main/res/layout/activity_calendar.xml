@@ -121,37 +121,15 @@
                     android:textColor="@color/pTextColor3"
                     android:textSize="13sp" />
 
-                <HorizontalScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scrollbars="none">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
-                    <LinearLayout
-                        android:id="@+id/ProjectCardsHolder"
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/projectRecycleView"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:gravity="end"
-                        android:orientation="horizontal"
-                        android:paddingTop="10dp"
-                        android:paddingBottom="10dp">
-
-                        <fragment
-                            android:id="@+id/projectCard1"
-                            android:name="com.example.dutify.ProjectCard"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            tools:layout="@layout/fragment_project_card" />
-
-                        <fragment
-                            android:id="@+id/projectCard2"
-                            android:name="com.example.dutify.ProjectCard"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            tools:layout="@layout/fragment_project_card" />
-
-                    </LinearLayout>
-
-                </HorizontalScrollView>
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
 
             </LinearLayout>
 

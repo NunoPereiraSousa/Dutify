@@ -18,17 +18,18 @@ import java.util.List;
 public class CatalogAwardsViewAdapter extends RecyclerView.Adapter<CatalogAwardsViewAdapter.ViewHolder> {
     private List<CatalogAward> data;
     private LayoutInflater mInflater;
-    private CatalogAwardsViewAdapter.ItemClickListener mClickListener;
+    private final CatalogAwardClickInterface catalogAwardClickInterface;
     private ImageView imageAward;
 
-    public CatalogAwardsViewAdapter(Context context, List<CatalogAward> data) {
-        this.mInflater = LayoutInflater.from(context);
+    public CatalogAwardsViewAdapter(List<CatalogAward> data, CatalogAwardClickInterface catalogAwardClickInterface) {
+        this.catalogAwardClickInterface = catalogAwardClickInterface;
         this.data = data;
     }
 
     @Override
     public CatalogAwardsViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.award_card, parent, false);
+        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
+        View view = layoutInflater.inflate(R.layout.award_card, parent, false);
         return new CatalogAwardsViewAdapter.ViewHolder(view);
     }
 
@@ -59,23 +60,20 @@ public class CatalogAwardsViewAdapter extends RecyclerView.Adapter<CatalogAwards
             imageAward = itemView.findViewById(R.id.imageAward);
             awardName = itemView.findViewById(R.id.awardName);
             awardPrice = itemView.findViewById(R.id.awardPrice);
-            //itemView.setOnClickListener((View.OnClickListener) this);
+
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    catalogAwardClickInterface.onAwardLongClick(getAdapterPosition());
+                    return false;
+                }
+            });
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    catalogAwardClickInterface.onAwardClick(getAdapterPosition());
+                }
+            });
         }
-
-        public void onClick(View view) {
-            if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
-        }
-    }
-
-    public String getName(int id) {
-        return data.get(id).getName();
-    }
-
-    public void setClickListener(CatalogAwardsViewAdapter.ItemClickListener itemClickListener) {
-        this.mClickListener = itemClickListener;
-    }
-
-    public interface ItemClickListener {
-        void onItemClick(View view, int position);
     }
 }

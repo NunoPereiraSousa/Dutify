@@ -25,7 +25,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tasksTitleTxt"
+                android:id="@+id/awardNameTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_semibold"
@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/raleway_semibold"
-                android:text="Are you sure that you"
+                android:text="@string/are_you_sure_you_want_to"
                 android:textColor="@color/pTextColor5"
                 android:textSize="14sp" />
 
@@ -46,15 +46,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/raleway_semibold"
-                android:text="have completed"
+                android:text="@string/purchase_a"
                 android:textColor="@color/pTextColor5"
                 android:textSize="14sp" />
 
             <TextView
+                android:id="@+id/forDutiesTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/raleway_semibold"
-                android:text="this task"
+                android:text="@string/for_duties"
                 android:textColor="@color/pTextColor5"
                 android:textSize="14sp" />
 
@@ -70,7 +71,7 @@
             app:justifyContent="space_between">
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/confirmBtn"
+                android:id="@+id/buyBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/profileBk"
@@ -80,7 +81,7 @@
                 android:paddingBottom="11dp"
                 android:paddingRight="11dp"
                 android:paddingLeft="11dp"
-                android:text="Yes"
+                android:text="@string/buy"
                 android:textAllCaps="false"
                 android:textColor="@color/mainYellow"
                 android:textSize="14sp"
@@ -98,7 +99,7 @@
                 android:onClick="openMotivationPage"
                 android:paddingTop="11dp"
                 android:paddingBottom="11dp"
-                android:text="No"
+                android:text="@string/cancel"
                 android:textAllCaps="false"
                 android:textColor="@color/pTextColor5"
                 android:textSize="14sp"
