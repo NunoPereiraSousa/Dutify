@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,6 +21,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.dutify.RecyclerViewAdapterProfileAwards.Award;
@@ -28,7 +30,9 @@ import com.example.dutify.RecyleViewAdapterProjectsCard.Project;
 import com.example.dutify.RecyleViewAdapterProjectsCard.ProjectsViewAdapter;
 import com.example.dutify.RecyleViewAdapterProjectsCard.ProjectsViewClickInterface;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.chip.Chip;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.squareup.picasso.Picasso;
 
@@ -36,6 +40,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -49,13 +54,23 @@ import java.util.concurrent.TimeUnit;
 public class Profile extends AppCompatActivity implements ProjectsViewClickInterface {
     BottomNavigationView bottomNavigation;
     private String tokenToBeSent;
+    private  String  id_user;
 
-    TextInputLayout nameInputLayout;
-    TextInputLayout locationInputLayout;
+    TextInputLayout firstNameInputLayout;
+    TextInputLayout lastNameInputLayout;
     TextInputLayout descInputLayout;
     TextInputLayout phoneInputLayout;
     TextInputLayout emailInputLayout;
     TextInputLayout websiteInputLayout;
+
+
+    TextInputEditText formFirstNameTxt;
+    TextInputEditText formLastNameTxt;
+    TextInputEditText formDescriptionTxt;
+    TextInputEditText formPhoneTxt;
+    TextInputEditText formEmailTxt;
+    TextInputEditText formWebsiteTxt;
+
 
     ProfileAwardsViewAdapter adapter;
     ProjectsViewAdapter adapterProjects;
@@ -66,6 +81,9 @@ public class Profile extends AppCompatActivity implements ProjectsViewClickInter
     List<JSONObject> categoryTags;
     Profile self;
 
+    //form Button
+    MaterialButton submitChangesBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,9 +93,10 @@ public class Profile extends AppCompatActivity implements ProjectsViewClickInter
         Intent receivedIntend = getIntent();
         Bundle intendExtras = receivedIntend.getExtras();
         if (intendExtras != null) {
-
+            prepareEditProfileForm();
             bottomNavigation = findViewById(R.id.bottomNavigation);
             bottomNavigation.setOnNavigationItemSelectedListener(navListener);
+            submitChangesBtn = findViewById(R.id.submitChangesBtn);
 
             tokenToBeSent = intendExtras.getString("token");
             IdentificationByToken(intendExtras.getString("token"));
@@ -92,9 +111,11 @@ public class Profile extends AppCompatActivity implements ProjectsViewClickInter
         String url = "https://dutify.herokuapp.com/identification";
         RequestQueue queue = Volley.newRequestQueue(this);
 
+
         StringRequest jsonObjectRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                id_user = response;
                 getCategoryTags(token);
                 getUserInformation(response, token);
                 displayUserCategoriesTag(response, token);
@@ -118,21 +139,100 @@ public class Profile extends AppCompatActivity implements ProjectsViewClickInter
         queue.add(jsonObjectRequest);
     }
 
-    public void fillSwipeHints(String name, String description, String email, String contact, String website) {
-        nameInputLayout = (TextInputLayout) findViewById(R.id.nameTextInput);
-        locationInputLayout = (TextInputLayout) findViewById(R.id.locationTextInput);
+    public void fillFormInput(String firstName, String lastName, String description, String email, String contact, String website) {
+        formFirstNameTxt = (TextInputEditText) findViewById(R.id.formFirstNameTxt);
+        formLastNameTxt = (TextInputEditText) findViewById(R.id.formLastNameTxt);
+        formDescriptionTxt = (TextInputEditText) findViewById(R.id.formDescriptionTxt);
+        formPhoneTxt = (TextInputEditText) findViewById(R.id.formPhoneTxt);
+        formEmailTxt = (TextInputEditText) findViewById(R.id.formEmailTxt);
+        formWebsiteTxt = (TextInputEditText) findViewById(R.id.formWebsiteTxt);
+
+
+        formFirstNameTxt.setText(firstName);
+        formLastNameTxt.setText(lastName);
+        formDescriptionTxt.setText(description);
+        formPhoneTxt.setText(contact);
+        formEmailTxt.setText(email);
+        formWebsiteTxt.setText(website);
+
+
+    }
+
+    public void prepareEditProfileForm() {
+
+        firstNameInputLayout = (TextInputLayout) findViewById(R.id.firstNameTextInput);
+        lastNameInputLayout = (TextInputLayout) findViewById(R.id.lastNameTextInput);
         descInputLayout = (TextInputLayout) findViewById(R.id.descTextInput);
         phoneInputLayout = (TextInputLayout) findViewById(R.id.phoneTextInput);
         emailInputLayout = (TextInputLayout) findViewById(R.id.emailTextInput);
         websiteInputLayout = (TextInputLayout) findViewById(R.id.websiteTextInput);
+        submitChangesBtn = findViewById(R.id.submitChangesBtn);
+        submitChangesBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!formFirstNameTxt.getText().equals("") &&!formLastNameTxt.getText().equals("") &&!formDescriptionTxt.getText().equals("") &&!formPhoneTxt.getText().equals("") &&!formEmailTxt.getText().equals("") &&!formWebsiteTxt.getText().equals("")  ){
+                    updateProfile(id_user);
+//                    Toast.makeText(getApplicationContext(), "It is here", Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(getApplicationContext(), "Please fill all your inputs", Toast.LENGTH_SHORT).show();
+                }
 
-        nameInputLayout.setHint(name);
-        //locationInputLayout.setHint(location);
-        descInputLayout.setHint(description);
-        phoneInputLayout.setHint(contact);
-        emailInputLayout.setHint(email);
-        websiteInputLayout.setHint(website);
+            }
+        });
+
+        firstNameInputLayout.setHint("First Name");
+        lastNameInputLayout.setHint("Last Name");
+        descInputLayout.setHint("Description");
+        phoneInputLayout.setHint("Contact");
+        emailInputLayout.setHint("Email");
+        websiteInputLayout.setHint("Website");
     }
+
+
+
+    public void updateProfile(final String userId) {
+        String postUrl = "https://dutify.herokuapp.com/users/" + String.valueOf(userId) + "/profile";
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        JSONObject postData = new JSONObject();
+        try {
+            postData.put("firstName", formFirstNameTxt.getText());
+            postData.put("lastName", formLastNameTxt.getText());
+            postData.put("description", formDescriptionTxt.getText());
+            postData.put("contact", formPhoneTxt.getText());
+            postData.put("email", formEmailTxt.getText());
+            postData.put("website", formWebsiteTxt.getText());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.PUT, postUrl, postData, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Toast.makeText(getApplicationContext(), "Profile has been updated", Toast.LENGTH_SHORT).show();
+                getUserInformation(userId, tokenToBeSent);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                if (Integer.parseInt(String.valueOf(error.networkResponse.statusCode)) >= 500) {
+
+                }
+                Toast.makeText(getApplicationContext(), new String(error.networkResponse.data, StandardCharsets.UTF_8), Toast.LENGTH_LONG).show();
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("authorization", tokenToBeSent);
+                return params;
+            }
+        };
+        requestQueue.add(jsonObjectRequest);
+    }
+
+
+
+
+
 
     private void getUserInformation(String userId, final String token) {
         String url = "https://dutify.herokuapp.com/users/" + userId;
@@ -160,7 +260,7 @@ public class Profile extends AppCompatActivity implements ProjectsViewClickInter
                     userType = user.getInt("id_user_type");
                     website = user.getString("website");
                     displayUserInformation(picture, fullName, description, contact, email, website, userType);
-                    fillSwipeHints(fullName, description, email, contact, website);
+                    fillFormInput(user.getString("firstName"), user.getString("lastName"), description, email, contact, website);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -446,7 +546,7 @@ public class Profile extends AppCompatActivity implements ProjectsViewClickInter
                             String secondUrl = null;
                             String thirdUrl = null;
                             String color = "";
-                            String daysLeft ="";
+                            String daysLeft = "";
 
                             int toSavePictureIn = 1;
                             for (int x = 0; x < selectedInformation.size(); x++) {
@@ -464,10 +564,10 @@ public class Profile extends AppCompatActivity implements ProjectsViewClickInter
                                         Date date1 = myFormat.parse(new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date()));
                                         Date date2 = myFormat.parse(selectedInformation.get(x).getString("projectEndDate").split("T")[0]);
                                         long diff = date2.getTime() - date1.getTime();
-                                        if (Integer.parseInt( String.valueOf(TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS)))<0){
+                                        if (Integer.parseInt(String.valueOf(TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS))) < 0) {
                                             daysLeft = "0";
-                                        }else {
-                                            daysLeft =  String.valueOf(TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS));
+                                        } else {
+                                            daysLeft = String.valueOf(TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS));
                                         }
                                     }
                                     if (toSavePictureIn == 1) {
@@ -603,10 +703,10 @@ public class Profile extends AppCompatActivity implements ProjectsViewClickInter
     @Override
     public void onProjectCardClick(int position) {
 //        Toast.makeText(this, String.valueOf(projects.get(position).getId()), Toast.LENGTH_SHORT).show();
-            Intent dashboardProjectDescriptionIntent = new Intent(this, DashboardProjectDescription.class);
-            dashboardProjectDescriptionIntent.putExtra("token", tokenToBeSent);
-            dashboardProjectDescriptionIntent.putExtra("id_project", projects.get(position).getId());
-            startActivity(dashboardProjectDescriptionIntent);
+        Intent dashboardProjectDescriptionIntent = new Intent(this, DashboardProjectDescription.class);
+        dashboardProjectDescriptionIntent.putExtra("token", tokenToBeSent);
+        dashboardProjectDescriptionIntent.putExtra("id_project", projects.get(position).getId());
+        startActivity(dashboardProjectDescriptionIntent);
     }
 
     @Override

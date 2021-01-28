@@ -391,6 +391,7 @@
         android:backgroundTint="@color/colorPrimary"
         android:orientation="vertical">
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -418,179 +419,188 @@
                 android:textColor="@color/pTextColor5"
                 android:textSize="20sp" />
 
-            <RelativeLayout
+
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:gravity="start"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/nameTextInput"
-                    android:layout_width="160dp"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_gravity="start"
-                    android:hint=""
-                    android:textColorHint="@color/pTextColor4"
-                    app:boxStrokeColor="@color/pTextColor5"
-                    app:boxStrokeWidthFocused="1dp">
+                    android:orientation="vertical">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/nameInput"
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/firstNameTextInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
                         android:layout_gravity="start"
-                        android:backgroundTint="@color/colorPrimary"
-                        android:inputType="text"
-                        android:paddingBottom="10dp"
-                        android:textColor="@color/pTextColor5"
-                        android:textSize="14sp"
-                        app:boxStrokeColor="@color/pTextColor4" />
+                        android:hint=""
+                        android:textColorHint="@color/pTextColor4"
+                        app:boxStrokeColor="@color/pTextColor5"
+                        app:boxStrokeWidthFocused="1dp">
 
-                </com.google.android.material.textfield.TextInputLayout>
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/formFirstNameTxt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:backgroundTint="@color/colorPrimary"
+                            android:inputType="text"
+                            android:paddingBottom="10dp"
+                            android:textColor="@color/pTextColor5"
+                            android:textSize="14sp"
+                            app:boxStrokeColor="@color/pTextColor4" />
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/locationTextInput"
-                    android:layout_width="160dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:hint=""
-                    android:textColorHint="@color/pTextColor4"
-                    app:boxStrokeColor="@color/pTextColor5"
-                    app:boxStrokeWidthFocused="1dp">
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/locationTxt"
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/lastNameTextInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:backgroundTint="@color/colorPrimary"
-                        android:inputType="text"
-                        android:paddingBottom="10dp"
-                        android:textColor="@color/pTextColor5"
-                        android:textSize="14sp"
-                        app:boxStrokeColor="@color/pTextColor4" />
+                        android:layout_alignParentEnd="true"
+                        android:hint=""
+                        android:textColorHint="@color/pTextColor4"
+                        app:boxStrokeColor="@color/pTextColor5"
+                        app:boxStrokeWidthFocused="1dp">
 
-                </com.google.android.material.textfield.TextInputLayout>
-            </RelativeLayout>
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/formLastNameTxt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:backgroundTint="@color/colorPrimary"
+                            android:inputType="text"
+                            android:paddingBottom="10dp"
+                            android:textColor="@color/pTextColor5"
+                            android:textSize="14sp"
+                            app:boxStrokeColor="@color/pTextColor4" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/descTextInput"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="26dp"
-                android:hint=""
-                android:textColorHint="@color/pTextColor4"
-                app:boxStrokeColor="@color/pTextColor5"
-                app:boxStrokeWidthFocused="1dp">
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/descriptionInput"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/colorPrimary"
-                    android:fontFamily="@font/poppins"
-                    android:paddingBottom="10dp"
-                    android:textColor="@color/pTextColor5"
-                    android:textSize="14sp" />
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/descTextInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="26dp"
+                        android:hint=""
+                        android:textColorHint="@color/pTextColor4"
+                        app:boxStrokeColor="@color/pTextColor5"
+                        app:boxStrokeWidthFocused="1dp">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/phoneTextInput"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="26dp"
-                android:hint="@string/PersonalTaskDescriptionHintLabel"
-                android:textColorHint="@color/pTextColor4"
-                app:boxStrokeColor="@color/pTextColor4"
-                app:boxStrokeWidthFocused="1dp"
-                app:startIconDrawable="@drawable/ic_phone"
-                app:startIconTint="@color/pTextColor4">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/formDescriptionTxt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/colorPrimary"
+                            android:fontFamily="@font/poppins"
+                            android:paddingBottom="10dp"
+                            android:textColor="@color/pTextColor5"
+                            android:textSize="14sp" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/phoneTxt"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/colorPrimary"
-                    android:fontFamily="@font/poppins"
-                    android:inputType="number"
-                    android:paddingBottom="10dp"
-                    android:textColor="@color/pTextColor5"
-                    android:textSize="14sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/phoneTextInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="26dp"
+                        android:hint="@string/PersonalTaskDescriptionHintLabel"
+                        android:textColorHint="@color/pTextColor4"
+                        app:boxStrokeColor="@color/pTextColor4"
+                        app:boxStrokeWidthFocused="1dp"
+                        app:startIconDrawable="@drawable/ic_phone"
+                        app:startIconTint="@color/pTextColor4">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/emailTextInput"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="26dp"
-                android:hint=""
-                android:textColorHint="@color/pTextColor4"
-                app:boxStrokeColor="@color/pTextColor4"
-                app:boxStrokeWidthFocused="1dp"
-                app:startIconDrawable="@drawable/ic_email"
-                app:startIconTint="@color/pTextColor4">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/formPhoneTxt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/colorPrimary"
+                            android:fontFamily="@font/poppins"
+                            android:inputType="number"
+                            android:paddingBottom="10dp"
+                            android:textColor="@color/pTextColor5"
+                            android:textSize="14sp" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/emailTxt"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/colorPrimary"
-                    android:fontFamily="@font/poppins"
-                    android:inputType="textEmailAddress"
-                    android:paddingBottom="10dp"
-                    android:textColor="@color/pTextColor5"
-                    android:textSize="14sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/emailTextInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="26dp"
+                        android:hint=""
+                        android:textColorHint="@color/pTextColor4"
+                        app:boxStrokeColor="@color/pTextColor4"
+                        app:boxStrokeWidthFocused="1dp"
+                        app:startIconDrawable="@drawable/ic_email"
+                        app:startIconTint="@color/pTextColor4">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/websiteTextInput"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="26dp"
-                android:hint=""
-                android:textColorHint="@color/pTextColor4"
-                app:boxStrokeColor="@color/pTextColor4"
-                app:boxStrokeWidthFocused="1dp"
-                app:startIconDrawable="@drawable/ic_globe"
-                app:startIconTint="@color/pTextColor4">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/formEmailTxt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/colorPrimary"
+                            android:fontFamily="@font/poppins"
+                            android:inputType="textEmailAddress"
+                            android:paddingBottom="10dp"
+                            android:textColor="@color/pTextColor5"
+                            android:textSize="14sp" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/websiteTxt"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/colorPrimary"
-                    android:fontFamily="@font/poppins"
-                    android:paddingBottom="10dp"
-                    android:textColor="@color/pTextColor5"
-                    android:textSize="14sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/websiteTextInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="26dp"
+                        android:hint=""
+                        android:textColorHint="@color/pTextColor4"
+                        app:boxStrokeColor="@color/pTextColor4"
+                        app:boxStrokeWidthFocused="1dp"
+                        app:startIconDrawable="@drawable/ic_globe"
+                        app:startIconTint="@color/pTextColor4">
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/enterCompanyButton"
-                style="@style/Widget.MaterialComponents.Button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="24dp"
-                android:backgroundTint="@color/formGrey"
-                android:fontFamily="@font/poppins_medium"
-                android:paddingLeft="32dp"
-                android:paddingTop="13dp"
-                android:paddingRight="32dp"
-                android:paddingBottom="11dp"
-                android:text="@string/submit_form_button"
-                android:textAllCaps="false"
-                android:textColor="@color/mainYellow"
-                android:textSize="16sp"
-                app:cornerRadius="22dp" />
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/formWebsiteTxt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/colorPrimary"
+                            android:fontFamily="@font/poppins"
+                            android:paddingBottom="10dp"
+                            android:textColor="@color/pTextColor5"
+                            android:textSize="14sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/submitChangesBtn"
+                        style="@style/Widget.MaterialComponents.Button"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="24dp"
+                        android:backgroundTint="@color/formGrey"
+                        android:fontFamily="@font/poppins_medium"
+                        android:paddingLeft="32dp"
+                        android:paddingTop="13dp"
+                        android:paddingRight="32dp"
+                        android:paddingBottom="11dp"
+                        android:text="@string/submit_form_button"
+                        android:textAllCaps="false"
+                        android:textColor="@color/mainYellow"
+                        android:textSize="16sp"
+                        app:cornerRadius="22dp" />
+
+                </LinearLayout>
+
+            </ScrollView>
 
         </LinearLayout>
+
 
     </LinearLayout>
 

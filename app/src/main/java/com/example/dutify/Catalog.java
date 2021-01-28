@@ -354,14 +354,14 @@ public class Catalog extends AppCompatActivity implements CatalogAwardClickInter
     }
 
     private void changePage(String toPage) {
-        if (!toPage.equals("calendar")) {
+        if (!toPage.equals("awards")) {
             Intent myIntent = null;
             if (toPage.equals("profile")) {
                 myIntent = new Intent(this, Profile.class);
             } else if (toPage.equals("dashboard")) {
                 myIntent = new Intent(this, DashboardBoard.class);
-            } else if (toPage.equals("awards")) {
-                myIntent = new Intent(this, Catalog.class);
+            } else if (toPage.equals("calendar")) {
+                myIntent = new Intent(this, Calendar.class);
             }
             myIntent.putExtra("token", tokenToBeSent);
             startActivity(myIntent);
@@ -372,7 +372,6 @@ public class Catalog extends AppCompatActivity implements CatalogAwardClickInter
         Intent i = new Intent(this, ErrorPage.class);
         startActivity(i);
     }
-
     private final BottomNavigationView.OnNavigationItemSelectedListener navListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
