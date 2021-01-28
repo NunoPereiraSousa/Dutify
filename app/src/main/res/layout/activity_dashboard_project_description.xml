@@ -149,34 +149,32 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
+                android:layout_marginBottom="10dp"
                 android:fontFamily="@font/poppins_medium"
                 android:text="@string/teamProjectHeader"
                 android:textColor="@color/pTextColor4"
                 android:textSize="13sp" />
 
-
-
-
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/teamMembersHolder"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
             </LinearLayout>
 
-
-
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
+                android:layout_marginBottom="10dp"
                 android:fontFamily="@font/poppins_medium"
                 android:text="My Tasks"
                 android:textColor="@color/pTextColor4"
                 android:textSize="13sp" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -187,11 +185,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </LinearLayout>
-
-
-
-
-
 
             <LinearLayout
                 android:layout_width="match_parent"

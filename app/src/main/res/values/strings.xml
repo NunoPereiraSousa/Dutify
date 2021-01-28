@@ -71,4 +71,12 @@
     <string name="awards_statistics">Awards Statistics</string>
     <string name="duties_top_navbar">Duties</string>
     <string name="task_ending">&#160;task ends here!</string>
+    <string name="are_you_sure_you_want_to">Are you sure you want to</string>
+    <string name="purchase_a">purchase a</string>
+    <string name="for_duties">for duties?</string>
+    <string name="buy">Buy</string>
+    <string name="cancel">Cancel</string>
+    <string name="back_to_menu">Back to menu</string>
+    <string name="icon_done">icon_done</string>
+    <string name="fresh_update">Fresh update? 😎</string>
 </resources>

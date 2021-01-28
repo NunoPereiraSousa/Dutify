@@ -28,7 +28,6 @@ import com.example.dutify.RecyclerViewAdapterProjectsTeamMember.TeamMembersViewA
 import com.example.dutify.RecyclerViewAdapterProjectsTeamMember.TeamMembersViewClickInterface;
 import com.google.android.material.button.MaterialButton;
 
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -65,7 +64,6 @@ public class DashboardProjectDescription extends AppCompatActivity implements Te
     private AlertDialog.Builder dialogBuilder;
     private AlertDialog dialog;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,7 +79,6 @@ public class DashboardProjectDescription extends AppCompatActivity implements Te
             Log.d("justTest", "An idea is being cooked");
         }
     }
-
 
     public void IdentificationByToken(final String token, final String projectId) {
         String url = "https://dutify.herokuapp.com/identification";
@@ -111,7 +108,6 @@ public class DashboardProjectDescription extends AppCompatActivity implements Te
         };
         queue.add(jsonObjectRequest);
     }
-
 
     private void getCategoryTags(final String token) {
         categoryTags = new ArrayList<JSONObject>();
@@ -218,7 +214,6 @@ public class DashboardProjectDescription extends AppCompatActivity implements Te
         queue.add(stringRequest);
     }
 
-
     public void setProjectDaysLeft(String endDate) throws ParseException {
         SimpleDateFormat myFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date date1 = myFormat.parse(new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date()));
@@ -235,9 +230,7 @@ public class DashboardProjectDescription extends AppCompatActivity implements Te
         projectsDaysLeftTxt.setText(String.valueOf(daysLeft) + suffix);
     }
 
-
     public void getProgressStatus(final String token) {
-
         progressStatus = new ArrayList<>();
 
         final String url = "https://dutify.herokuapp.com/progressStatus";
@@ -282,7 +275,6 @@ public class DashboardProjectDescription extends AppCompatActivity implements Te
                 projectDevelopmentTxt.setText(dataObj.getString("description"));
             }
         }
-
     }
 
     public void getUserProjectTasks(String userId, final String token, String projectId) {
@@ -309,7 +301,6 @@ public class DashboardProjectDescription extends AppCompatActivity implements Te
                     recyclerViewMyTasks.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                     adapterMyTasks = new DashDescTasksViewAdapter(myTasks, self);
                     recyclerViewMyTasks.setAdapter(adapterMyTasks);
-
 
                 } catch (JSONException e) {
                     e.printStackTrace();

@@ -39,24 +39,23 @@ public class ProjectsViewAdapter extends RecyclerView.Adapter<ProjectsViewAdapte
         return new ProjectsViewAdapter.ViewHolder(view);
     }
 
-    //This does the action of altering the cards
     @Override
     public void onBindViewHolder(@NonNull ProjectsViewAdapter.ViewHolder holder, int position) {
         Project myProject = data.get(position);
 
-        int totalTask= myProject.getTotalTask();
+        int totalTask = myProject.getTotalTask();
         int totalToDoTask = myProject.getTotalTasksTodo();
-        holder.progressBar.getLayoutParams().width = totalToDoTask*holder.progressBar.getLayoutParams().width / totalTask;
-        holder.taskCounterTxt.setText(totalToDoTask+" / "+totalTask);
+        holder.progressBar.getLayoutParams().width = totalToDoTask * holder.progressBar.getLayoutParams().width / totalTask;
+        holder.taskCounterTxt.setText(totalToDoTask + " / " + totalTask);
         holder.projectTitleTxt.setText(myProject.getTitle());
         holder.teamNameTxt.setText(String.valueOf(myProject.getTeamName()));
         holder.cardHolder.setBackgroundColor(Color.parseColor(myProject.getColor()));
         String dayLeftSuffix = " days left";
-        if (myProject.getDaysLeft().equals("1")){
+        if (myProject.getDaysLeft().equals("1")) {
             dayLeftSuffix = " day left";
         }
 
-        holder.daysLeftTxt.setText(myProject.getDaysLeft()+ dayLeftSuffix);
+        holder.daysLeftTxt.setText(myProject.getDaysLeft() + dayLeftSuffix);
         Picasso.get()
                 .load(myProject.getPictureUrl1())
                 .resize(256, 256)
@@ -68,7 +67,6 @@ public class ProjectsViewAdapter extends RecyclerView.Adapter<ProjectsViewAdapte
                 .resize(256, 256)
                 .centerCrop()
                 .into(teamMember2);
-
 
         Picasso.get()
                 .load(myProject.getPictureUrl3())
@@ -91,10 +89,8 @@ public class ProjectsViewAdapter extends RecyclerView.Adapter<ProjectsViewAdapte
         TextView daysLeftTxt;
         View progressBar;
 
-
         ViewHolder(View itemView) {
             super(itemView);
-            // Views that will display our data
             daysLeftTxt = itemView.findViewById(R.id.daysLeftTxt);
             progressBar = itemView.findViewById(R.id.progressBar);
             taskCounterTxt = itemView.findViewById(R.id.taskCounterTxt);

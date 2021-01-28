@@ -29,6 +29,7 @@ import com.example.dutify.RecyleViewAdapterProjectsCard.ProjectsViewAdapter;
 import com.example.dutify.RecyleViewAdapterProjectsCard.ProjectsViewClickInterface;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.chip.Chip;
+import com.google.android.material.textfield.TextInputLayout;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -48,6 +49,13 @@ import java.util.concurrent.TimeUnit;
 public class Profile extends AppCompatActivity implements ProjectsViewClickInterface {
     BottomNavigationView bottomNavigation;
     private String tokenToBeSent;
+
+    TextInputLayout nameInputLayout;
+    TextInputLayout locationInputLayout;
+    TextInputLayout descInputLayout;
+    TextInputLayout phoneInputLayout;
+    TextInputLayout emailInputLayout;
+    TextInputLayout websiteInputLayout;
 
     ProfileAwardsViewAdapter adapter;
     ProjectsViewAdapter adapterProjects;
@@ -80,7 +88,6 @@ public class Profile extends AppCompatActivity implements ProjectsViewClickInter
         }
     }
 
-
     public void IdentificationByToken(final String token) {
         String url = "https://dutify.herokuapp.com/identification";
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -111,6 +118,22 @@ public class Profile extends AppCompatActivity implements ProjectsViewClickInter
         queue.add(jsonObjectRequest);
     }
 
+    public void fillSwipeHints(String name, String description, String email, String contact, String website) {
+        nameInputLayout = (TextInputLayout) findViewById(R.id.nameTextInput);
+        locationInputLayout = (TextInputLayout) findViewById(R.id.locationTextInput);
+        descInputLayout = (TextInputLayout) findViewById(R.id.descTextInput);
+        phoneInputLayout = (TextInputLayout) findViewById(R.id.phoneTextInput);
+        emailInputLayout = (TextInputLayout) findViewById(R.id.emailTextInput);
+        websiteInputLayout = (TextInputLayout) findViewById(R.id.websiteTextInput);
+
+        nameInputLayout.setHint(name);
+        //locationInputLayout.setHint(location);
+        descInputLayout.setHint(description);
+        phoneInputLayout.setHint(contact);
+        emailInputLayout.setHint(email);
+        websiteInputLayout.setHint(website);
+    }
+
     private void getUserInformation(String userId, final String token) {
         String url = "https://dutify.herokuapp.com/users/" + userId;
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -137,6 +160,7 @@ public class Profile extends AppCompatActivity implements ProjectsViewClickInter
                     userType = user.getInt("id_user_type");
                     website = user.getString("website");
                     displayUserInformation(picture, fullName, description, contact, email, website, userType);
+                    fillSwipeHints(fullName, description, email, contact, website);
 
                 } catch (JSONException e) {
                     e.printStackTrace();

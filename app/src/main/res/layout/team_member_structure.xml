@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -8,15 +9,23 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="2dp"
+        android:layout_marginRight="18dp"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/personImageHolder"
-            android:layout_width="26dp"
-            android:layout_height="26dp"
-            android:contentDescription="TODO" />
+        <androidx.cardview.widget.CardView
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:layout_gravity="center"
+            app:cardCornerRadius="250dp">
+
+            <ImageView
+                android:id="@+id/personImageHolder"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:contentDescription="TODO" />
+
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/memberNameTxt"
