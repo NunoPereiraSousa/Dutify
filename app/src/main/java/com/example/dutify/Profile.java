@@ -667,7 +667,7 @@ public class Profile extends AppCompatActivity implements ProjectsViewClickInter
             if (toPage.equals("calendar")) {
                 myIntent = new Intent(this, Calendar.class);
             } else if (toPage.equals("dashboard")) {
-                myIntent = new Intent(this, Dashboard.class);
+                myIntent = new Intent(this, DashboardBoard.class);
             } else if (toPage.equals("awards")) {
                 myIntent = new Intent(this, Catalog.class);
             }

@@ -38,14 +38,14 @@
             style="@style/Widget.MaterialComponents.Toolbar.Primary1"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:menu="@menu/calendar_top_menu"
-            app:title="Calendar"
+            app:menu="@menu/profile_top_menu"
+            app:title="Profile"
             app:titleTextAppearance="@style/BottomNav" />
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="60dp"
             android:layout_marginBottom="60dp"
             android:orientation="vertical">
 
