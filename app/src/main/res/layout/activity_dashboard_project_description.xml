@@ -8,7 +8,7 @@
     tools:context=".Login">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation3"
+        android:id="@+id/bottomNavigation"
         style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -55,7 +55,7 @@
                 android:layout_marginTop="40dp"
                 android:fontFamily="@font/poppins_medium"
                 android:letterSpacing="0.06"
-                android:text="@string/project_desc_name"
+                android:text=""
                 android:textColor="@color/pTextColor5"
                 android:textSize="26sp" />
 
@@ -76,7 +76,7 @@
                 android:fontFamily="@font/raleway_medium"
                 android:letterSpacing="0.05"
                 android:lineHeight="20dp"
-                android:text="@string/descriptionProfileEx"
+                android:text=""
                 android:textColor="@color/pTextColor5"
                 android:textSize="14sp" />
 

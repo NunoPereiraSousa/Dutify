@@ -1,13 +1,16 @@
 package com.example.dutify;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,6 +29,7 @@ import com.example.dutify.RecyclerViewAdapterDashDescMyTasks.Task;
 import com.example.dutify.RecyclerViewAdapterProjectsTeamMember.TeamMember;
 import com.example.dutify.RecyclerViewAdapterProjectsTeamMember.TeamMembersViewAdapter;
 import com.example.dutify.RecyclerViewAdapterProjectsTeamMember.TeamMembersViewClickInterface;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.button.MaterialButton;
 
 import org.json.JSONArray;
@@ -44,6 +48,7 @@ import java.util.Map;
 
 
 public class DashboardProjectDescription extends AppCompatActivity implements TeamMembersViewClickInterface, DashDescTasksClickInterface {
+    BottomNavigationView bottomNavigation;
     TextView projectTitleTxt;
     TextView projectDescriptionTxt;
     TextView projectsDaysLeftTxt;
@@ -72,6 +77,9 @@ public class DashboardProjectDescription extends AppCompatActivity implements Te
         Intent receivedIntend = getIntent();
         Bundle intendExtras = receivedIntend.getExtras();
         if (intendExtras != null) {
+            bottomNavigation = findViewById(R.id.bottomNavigation);
+            bottomNavigation.setOnNavigationItemSelectedListener(navListener);
+
             tokenToBeSent = intendExtras.getString("token");
             projectId = intendExtras.getInt("id_project");
             IdentificationByToken(intendExtras.getString("token"), String.valueOf(projectId));
@@ -245,8 +253,7 @@ public class DashboardProjectDescription extends AppCompatActivity implements Te
                         JSONObject dataObj = responseArray.getJSONObject(i);
                         progressStatus.add(dataObj);
                     }
-//                    Toast.makeText(getApplicationContext(), "li", Toast.LENGTH_SHORT).show();
-//                    Toast.makeText(getApplicationContext(), String.valueOf(progressStatus.size()), Toast.LENGTH_SHORT).show();
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -291,7 +298,6 @@ public class DashboardProjectDescription extends AppCompatActivity implements Te
                         myTasks.add(new Task(dataObj.getInt("id_task"), dataObj.getString("title"), dataObj.getString("description"), dataObj.getInt("id_progress_status"), dataObj.getString("endDate"), dataObj.getInt("creditsValue")));
                     }
 
-                    Toast.makeText(getApplicationContext(), String.valueOf(myTasks.size()), Toast.LENGTH_SHORT).show();
 
                     LinearLayoutManager layoutManager
                             = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
@@ -437,6 +443,46 @@ public class DashboardProjectDescription extends AppCompatActivity implements Te
             }
         });
     }
+
+
+    private void changePage(String toPage) {
+        if (!toPage.equals("dashboard")) {
+            Intent myIntent = null;
+            if (toPage.equals("calendar")) {
+                myIntent = new Intent(this, Calendar.class);
+            } else if (toPage.equals("profile")) {
+                myIntent = new Intent(this, Profile.class);
+            } else if (toPage.equals("awards")) {
+                myIntent = new Intent(this, Catalog.class);
+            }
+            myIntent.putExtra("token", tokenToBeSent);
+            startActivity(myIntent);
+        }
+    }
+
+    private final BottomNavigationView.OnNavigationItemSelectedListener navListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        @SuppressLint("NonConstantResourceId")
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.nav_calendar:
+                    changePage("calendar");
+                    break;
+                case R.id.nav_dashboard:
+                    changePage("dashboard");
+                    break;
+                case R.id.nav_awards:
+                    changePage("awards");
+                    break;
+                case R.id.nav_profile:
+                    changePage("profile");
+                    break;
+            }
+            return true;
+        }
+    };
 
     @Override
     public void onTeamMemberClick(int position) {

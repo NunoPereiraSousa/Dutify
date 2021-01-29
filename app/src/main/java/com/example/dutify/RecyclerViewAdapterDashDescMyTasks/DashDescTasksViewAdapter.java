@@ -18,7 +18,7 @@ import com.example.dutify.RecyleViewAdapterProjectsCard.ProjectsViewClickInterfa
 
 import java.util.List;
 
-public class DashDescTasksViewAdapter  extends RecyclerView.Adapter<DashDescTasksViewAdapter.ViewHolder> {
+public class DashDescTasksViewAdapter extends RecyclerView.Adapter<DashDescTasksViewAdapter.ViewHolder> {
     private List<Task> data;
     private final DashDescTasksClickInterface dashDescTasksClickInterface;
 
@@ -41,13 +41,13 @@ public class DashDescTasksViewAdapter  extends RecyclerView.Adapter<DashDescTask
     public void onBindViewHolder(@NonNull DashDescTasksViewAdapter.ViewHolder holder, int position) {
         Task myTask = data.get(position);
 
-        if (myTask.getId_progress_status()==1) {
-            holder.tasksTitleAndStateTxt.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_slash,0,0,0);
-        }else if (myTask.getId_progress_status()==2){
-            holder.tasksTitleAndStateTxt.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_correct,0,0,0);
+        if (myTask.getId_progress_status() == 1) {
+            holder.tasksTitleAndStateTxt.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_slash, 0, 0, 0);
+        } else if (myTask.getId_progress_status() == 2) {
+            holder.tasksTitleAndStateTxt.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_correct, 0, 0, 0);
             holder.priceTxt.setTextColor(Color.parseColor("#8E96FF"));
-        }else if (myTask.getId_progress_status()==3){
-            holder.tasksTitleAndStateTxt.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_cross_x,0,0,0);
+        } else if (myTask.getId_progress_status() == 3) {
+            holder.tasksTitleAndStateTxt.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_cross_x, 0, 0, 0);
             holder.priceTxt.setTextColor(Color.parseColor("#E15554"));
         }
         holder.tasksTitleAndStateTxt.setText(myTask.getTaskTitle());
@@ -76,18 +76,15 @@ public class DashDescTasksViewAdapter  extends RecyclerView.Adapter<DashDescTask
             });
 
 
-        itemView.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                dashDescTasksClickInterface.onTaskCardLongClick(getAdapterPosition());
-                return false;
-            }
-        });
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    dashDescTasksClickInterface.onTaskCardLongClick(getAdapterPosition());
+                    return false;
+                }
+            });
         }
     }
-
-
-
 
 
 }

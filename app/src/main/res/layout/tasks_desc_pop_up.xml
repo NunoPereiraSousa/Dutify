@@ -18,12 +18,14 @@
         android:paddingRight="28dp"
         android:paddingBottom="20dp">
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="62dp"
-            android:layout_height="58dp"
-            app:srcCompat="@drawable/ic_profile_edited"
-            android:contentDescription="@string/icon_done" />
+        <TextView
+            android:id="@+id/tasksTitleTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Title"
+            android:textColor="@color/calendarColor"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/taskDescriptionTxt"
