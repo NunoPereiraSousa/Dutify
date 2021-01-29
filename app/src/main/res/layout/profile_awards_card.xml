@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="12dp"
+    android:background="@drawable/shadow_stats"
+    tools:context=".TaskStatsCard">
+
+    <com.google.android.flexbox.FlexboxLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingStart="34dp"
+        android:paddingTop="20dp"
+        android:paddingEnd="34dp"
+        android:paddingBottom="20dp"
+        app:flexDirection="row"
+        app:flexWrap="wrap"
+        app:justifyContent="space_between">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imageHolder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/awardPictureHolder"
+                android:maxWidth="25dp"
+                android:maxHeight="25dp"
+                tools:src="" />
+
+            <TextView
+                android:id="@+id/awardNameTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="26dp"
+                android:text="@string/projectTileProfile"
+                android:textColor="@color/pTextColor5"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/priceTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="26dp"
+            android:text="@string/numberTasks"
+            android:textColor="@color/blueishPurple"
+            android:textSize="15sp" />
+
+    </com.google.android.flexbox.FlexboxLayout>
+
+</FrameLayout>

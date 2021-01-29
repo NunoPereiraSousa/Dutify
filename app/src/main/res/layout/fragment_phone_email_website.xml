@@ -13,35 +13,38 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/contactTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:drawablePadding="14dp"
+            android:fontFamily="@font/poppins"
             android:text="@string/phoneNumberEx"
             android:textColor="@color/pTextColor5"
-            android:textFontWeight="400"
             android:textSize="14sp"
             app:drawableStartCompat="@drawable/ic_phone" />
 
         <TextView
+            android:id="@+id/emailTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:drawablePadding="14dp"
+            android:fontFamily="@font/poppins"
             android:text="@string/profileEmail"
             android:textColor="@color/pTextColor5"
-            android:textFontWeight="400"
             android:textSize="14sp"
             app:drawableStartCompat="@drawable/ic_email" />
 
         <TextView
+            android:id="@+id/websiteTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:drawablePadding="14dp"
+            android:fontFamily="@font/poppins"
             android:text="@string/websiteProfile"
             android:textColor="@color/pTextColor5"
-            android:textFontWeight="400"
             android:textSize="14sp"
             app:drawableStartCompat="@drawable/ic_globe"
             tools:targetApi="p" />

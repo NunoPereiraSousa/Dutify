@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="5dp"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shadow_stats"
+        tools:context=".TaskStatsCard">
+
+        <com.google.android.flexbox.FlexboxLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="34dp"
+            android:paddingTop="20dp"
+            android:paddingEnd="34dp"
+            android:paddingBottom="20dp"
+            app:flexDirection="row"
+            app:flexWrap="wrap"
+            app:justifyContent="space_between">
+
+            <TextView
+                android:id="@+id/tasksTitleAndStateTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="26dp"
+                android:text="@string/totalTasksTxt"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textColor="@color/pTextColor5"
+                android:textSize="15sp"
+                app:drawableStartCompat="@drawable/ic_correct" />
+
+            <TextView
+                android:id="@+id/priceTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="26dp"
+                android:text="@string/numberTasks"
+                android:textColor="@color/totalStatsTextColor"
+                android:textSize="15sp" />
+
+        </com.google.android.flexbox.FlexboxLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

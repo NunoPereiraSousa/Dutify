@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary">
+
+    <LinearLayout
+        android:layout_width="274dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/shadow"
+        android:orientation="vertical"
+        android:paddingLeft="28dp"
+        android:paddingTop="20dp"
+        android:paddingRight="28dp"
+        android:paddingBottom="20dp">
+
+        <TextView
+            android:id="@+id/forTodayLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="👀 For today's day:"
+            android:textColor="@color/calendarColor"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/taskDescriptionTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/raleway_semibold"
+            android:text="Finish web design of main pages"
+            android:textColor="@color/pTextColor5"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/projectNameTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Shimo Hill"
+            android:textColor="@color/pTextColor3"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

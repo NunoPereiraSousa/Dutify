@@ -21,12 +21,7 @@ public class MotivationalSmsSection extends AppCompatActivity {
         Intent receivedIntend = getIntent();
         Bundle intendExtras = receivedIntend.getExtras();
         if (intendExtras != null) {
-
             tokenToBeSent = intendExtras.getString("token");
-
-            Log.d("Motivation token", tokenToBeSent);
-        } else {
-            Log.d("justTest", "An idea is being cooked");
         }
 
         new Handler().postDelayed(new Runnable() {

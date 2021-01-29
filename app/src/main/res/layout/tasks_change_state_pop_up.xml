@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#AA000000"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shadow"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="28dp"
+        android:paddingTop="20dp"
+        android:paddingRight="28dp"
+        android:paddingBottom="20dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tasksTitleTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Title"
+                android:textColor="@color/calendarColor"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/raleway_semibold"
+                android:text="Are you sure that you"
+                android:textColor="@color/pTextColor5"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/raleway_semibold"
+                android:text="have completed"
+                android:textColor="@color/pTextColor5"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/raleway_semibold"
+                android:text="this task"
+                android:textColor="@color/pTextColor5"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <com.google.android.flexbox.FlexboxLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="-28dp"
+            android:layout_marginRight="-28dp"
+            android:layout_marginBottom="-20dp"
+            app:justifyContent="space_between">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/confirmBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/profileBk"
+                android:fontFamily="@font/poppins_semibold"
+                android:onClick="openMotivationPage"
+                android:paddingTop="11dp"
+                android:paddingBottom="11dp"
+                android:paddingRight="11dp"
+                android:paddingLeft="11dp"
+                android:text="Yes"
+                android:textAllCaps="false"
+                android:textColor="@color/mainYellow"
+                android:textSize="14sp"
+                android:singleLine="true"
+                app:strokeColor="@color/colorPrimary" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/cancelBtn"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/profileBk"
+                android:fontFamily="@font/poppins_semibold"
+                android:onClick="openMotivationPage"
+                android:paddingTop="11dp"
+                android:paddingBottom="11dp"
+                android:text="No"
+                android:textAllCaps="false"
+                android:textColor="@color/pTextColor5"
+                android:textSize="14sp"
+                app:cornerRadius="50dp"
+                app:strokeColor="@color/colorPrimary" />
+
+        </com.google.android.flexbox.FlexboxLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

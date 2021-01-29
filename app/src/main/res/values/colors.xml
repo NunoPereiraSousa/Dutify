@@ -22,4 +22,6 @@
     <color name="awardsErrorColor">#F26F6E</color>
     <color name="profileColor">#7FBBCF</color>
     <color name="formGrey">#353846</color>
+    <color name="warning">#E15554</color>
+    <color name="blueishPurple">#8E96FF</color>
 </resources>

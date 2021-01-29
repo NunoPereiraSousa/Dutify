@@ -11,7 +11,8 @@
     sothree:umanoOverlay="false"
     sothree:umanoPanelHeight="10dp"
     sothree:umanoParallaxOffset="20dp"
-    sothree:umanoShadowHeight="4dp">
+    sothree:umanoShadowHeight="4dp"
+    tools:context=".Welcome">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,30 +24,39 @@
         android:paddingBottom="6dp"
         tools:context=".Welcome">
 
-        <ImageView
-            android:id="@+id/userPicture"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+        <androidx.cardview.widget.CardView
+            android:layout_width="110dp"
+            android:layout_height="110dp"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:contentDescription="@string/userImageDescription" />
+            android:layout_marginTop="30dp"
+            app:cardCornerRadius="250dp">
+
+            <ImageView
+                android:id="@+id/userPicture"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:layout_gravity="center"
+                android:background="@color/colorPrimary"
+                android:contentDescription="@string/userImageDescription" />
+
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/userNameTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins"
             android:text="@string/welcomeUser"
             android:textColor="@color/pTextColor5"
-            android:textFontWeight="500"
             android:textSize="16sp" />
 
         <ImageView
             android:layout_width="23dp"
             android:layout_height="30dp"
             android:layout_gravity="center"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="40dp"
             android:contentDescription="@string/arrowImageDescription"
             android:src="@drawable/ic_arrow" />
 
@@ -76,10 +86,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/poppins"
             android:text="@string/dayHour"
             android:textColor="@color/pTextColor5"
-            android:textFontWeight="500"
             android:textSize="16sp" />
 
         <TextView
@@ -88,9 +98,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins"
             android:text="@string/monthDay"
             android:textColor="@color/pTextColor4"
-            android:textFontWeight="500"
             android:textSize="15sp" />
 
         <com.google.android.material.button.MaterialButton
@@ -99,8 +109,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="54dp"
+            android:layout_marginTop="44dp"
             android:backgroundTint="#fff"
+            android:fontFamily="@font/poppins_semibold"
+            android:onClick="openMotivationPage"
             android:paddingLeft="32dp"
             android:paddingTop="11dp"
             android:paddingRight="32dp"
@@ -108,11 +120,9 @@
             android:text="@string/enterCompany"
             android:textAllCaps="false"
             android:textColor="@color/colorPrimaryDark"
-            android:textFontWeight="600"
-            android:textSize="16sp"
+            android:textSize="14sp"
             app:cornerRadius="50dp"
-            app:strokeColor="@color/colorPrimary"
-            android:onClick="openMotivationPage"/>
+            app:strokeColor="@color/colorPrimary" />
 
         <TextView
             android:id="@+id/textView7"
@@ -120,15 +130,15 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="16dp"
+            android:fontFamily="@font/poppins"
+            android:onClick="contactAdmin"
             android:text="@string/contactAdministrators"
             android:textColor="@color/pTextColor5"
-            android:textFontWeight="400"
-            android:textSize="13sp"
-            android:onClick="contactAdmin"/>
+            android:textSize="13sp" />
 
         <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="wrap_content"
             android:gravity="center_horizontal">
 
             <fragment
@@ -173,6 +183,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
+                android:fontFamily="@font/poppins_medium"
                 android:text="@string/hi"
                 android:textColor="@color/pTextColor5"
                 android:textSize="18sp" />
@@ -182,6 +193,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="106dp"
+                android:fontFamily="@font/poppins"
                 android:text="@string/another_day"
                 android:textColor="@color/pTextColor5"
                 android:textSize="16sp" />
@@ -190,6 +202,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:fontFamily="@font/poppins"
                 android:text="@string/another_grind"
                 android:textColor="@color/pTextColor5"
                 android:textSize="16sp" />
@@ -233,6 +246,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="50dp"
+                android:fontFamily="@font/poppins"
                 android:text="@string/anything_you_may_need"
                 android:textColor="@color/pTextColor4"
                 android:textSize="14sp" />
@@ -241,6 +255,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:fontFamily="@font/poppins"
                 android:text="@string/we_are_here_for_you"
                 android:textColor="@color/pTextColor4"
                 android:textSize="14sp" />

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <item
+        android:id="@+id/navTopCredits"
+        android:title="@string/duties_top_navbar"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/notBellBtn"
+        android:icon="@drawable/ic_bell"
+        android:title="Notification Button"
+        app:showAsAction="ifRoom" />
+</menu>

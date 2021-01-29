@@ -3,86 +3,47 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/topCatalogBar"
+        style="@style/Widget.MaterialComponents.Toolbar.Primary1"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:elevation="4dp"
+        app:itemTextColor="@color/frontEnd"
+        app:menu="@menu/catalog_navigation_menu"
+        app:title="Awards"
+        app:titleTextAppearance="@style/BottomNav" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation3"
+        android:id="@+id/bottomNavigation"
         style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@color/colorPrimary"
-        android:paddingVertical="5dp"
         app:itemIconTint="@color/pTextColor5"
         app:itemTextColor="@color/pTextColor5"
         app:labelVisibilityMode="labeled"
         app:menu="@menu/bottom_navigation_menu" />
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorPrimary"
-        android:orientation="vertical"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="60dp"
         android:paddingHorizontal="20dp"
-        android:paddingBottom="20dp">
+        android:paddingBottom="20dp"
+        android:scrollbars="none">
 
-        <androidx.coordinatorlayout.widget.CoordinatorLayout
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/catalogAwardRecycleView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            app:spanCount="2" />
 
-            <!-- Note: A RecyclerView can also be used -->
-            <androidx.core.widget.NestedScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="80dp">
-
-                <com.google.android.flexbox.FlexboxLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:flexDirection="row"
-                    app:flexWrap="wrap"
-                    app:justifyContent="space_around">
-
-                    <fragment
-                        android:id="@+id/award_card_frag"
-                        android:name="com.example.dutify.AwardsCard"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        tools:layout="@layout/fragment_awards_card" />
-
-                    <fragment
-                        android:id="@+id/award_card_frag2"
-                        android:name="com.example.dutify.AwardsCard"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        tools:layout="@layout/fragment_awards_card" />
-
-                    <fragment
-                        android:id="@+id/award_card_frag3"
-                        android:name="com.example.dutify.AwardsCard"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        tools:layout="@layout/fragment_awards_card" />
-
-                    <fragment
-                        android:id="@+id/award_card_frag4"
-                        android:name="com.example.dutify.AwardsCard"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        tools:layout="@layout/fragment_awards_card" />
-
-                </com.google.android.flexbox.FlexboxLayout>
-
-
-            </androidx.core.widget.NestedScrollView>
-
-
-        </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-    </LinearLayout>
+    </ScrollView>
 
 </RelativeLayout>

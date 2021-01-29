@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#CC000000"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shadow"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="28dp"
+        android:paddingTop="20dp"
+        android:paddingRight="28dp"
+        android:paddingBottom="20dp">
+
+        <TextView
+            android:id="@+id/awardNameTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Title"
+            android:textColor="@color/calendarColor"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/raleway"
+            android:text="@string/are_you_sure_you_want_to"
+            android:textColor="@color/pTextColor5"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/raleway_semibold"
+            android:text="@string/purchase_a"
+            android:textColor="@color/pTextColor5"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/forDutiesTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/raleway_semibold"
+            android:text="@string/for_duties"
+            android:textColor="@color/pTextColor5"
+            android:textSize="14sp" />
+
+        <com.google.android.flexbox.FlexboxLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="-28dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="-28dp"
+            android:layout_marginBottom="-20dp"
+            app:justifyContent="space_between">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buyBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/profileBk"
+                android:fontFamily="@font/poppins_semibold"
+                android:onClick="openMotivationPage"
+                android:paddingLeft="11dp"
+                android:paddingTop="11dp"
+                android:paddingRight="11dp"
+                android:paddingBottom="11dp"
+                android:singleLine="true"
+                android:text="@string/buy"
+                android:textAllCaps="false"
+                android:textColor="@color/mainYellow"
+                android:textSize="14sp"
+                app:strokeColor="@color/colorPrimary" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/cancelBtn"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/profileBk"
+                android:fontFamily="@font/poppins_semibold"
+                android:onClick="openMotivationPage"
+                android:paddingTop="11dp"
+                android:paddingBottom="11dp"
+                android:text="@string/cancel"
+                android:textAllCaps="false"
+                android:textColor="@color/pTextColor5"
+                android:textSize="14sp"
+                app:cornerRadius="50dp"
+                app:strokeColor="@color/colorPrimary" />
+
+        </com.google.android.flexbox.FlexboxLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

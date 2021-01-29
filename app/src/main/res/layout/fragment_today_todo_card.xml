@@ -4,55 +4,49 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     tools:context=".TodayTodoCard">
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/ForTheDayCard"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="@color/cardColor"
-        app:shapeAppearance="@style/ShapeAppearanceOverlay.MaterialCardView.Cut.TodayTaskCard">
+        android:background="@drawable/shadow"
+        android:orientation="vertical"
+        android:layout_marginEnd="30dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:paddingLeft="28dp"
+        android:paddingRight="28dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/forTodayLabel"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="20dp"
-            android:minHeight="90dp"
-            >
+            android:fontFamily="@font/poppins_semibold"
+            android:text="👀 For today's day:"
+            android:textColor="@color/calendarColor"
+            android:textSize="16sp" />
 
-            <TextView
-                android:id="@+id/forTodayLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="For today's day:"
-                android:textSize="16sp"
-                android:textColor="@color/calendarColor" />
+        <TextView
+            android:id="@+id/taskTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/raleway_semibold"
+            android:text="Finish web design of main pages"
+            android:textColor="@color/pTextColor5"
+            android:textSize="14sp" />
 
-            <TextView
-                android:layout_marginTop="5dp"
-                android:id="@+id/taskTxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Finish web design of main pages"
-                android:textColor="@color/pTextColor5"
-                android:textSize="14sp"
-                />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Shimo Hill"
+            android:textColor="@color/pTextColor3"
+            android:textSize="14sp"
+            />
 
-            <TextView
-                android:layout_marginTop="4dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Shimo Hill"
-                android:textColor="@color/pTextColor3"
-                android:textSize="14sp"
-
-                />
-
-
-        </LinearLayout>
-
-    </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
 
 </FrameLayout>
