@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -18,6 +17,7 @@ import com.google.android.material.textfield.TextInputEditText;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.nio.charset.StandardCharsets;
 
 public class Login extends AppCompatActivity {
@@ -68,9 +68,6 @@ public class Login extends AppCompatActivity {
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    if (Integer.parseInt(String.valueOf(error.networkResponse.statusCode))>= 500) {
-                        openErrorPage();
-                    }
                     Toast.makeText(getApplicationContext(), new String(error.networkResponse.data, StandardCharsets.UTF_8), Toast.LENGTH_LONG).show();
                 }
             });
@@ -81,20 +78,6 @@ public class Login extends AppCompatActivity {
     public void openErrorPage() {
         Intent i = new Intent(this, ErrorPage.class);
         startActivity(i);
-    }
-
-    public void saveToken(String Token) {
-//        Context context = getApplicationContext();
-//        File file = new File(context.getFilesDir(), "Dutify");
-//        String filename = "Dutify";
-//        String fileContents = "Hello world!";
-//        try (FileOutputStream fos = context.openFileOutput(filename, Context.MODE_PRIVATE)) {
-//            fos.write(fileContents.toB);
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
     }
 
     private void enterApp(String token, Integer userType, String userFullName) {

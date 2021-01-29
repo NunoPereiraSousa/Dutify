@@ -10,7 +10,7 @@
     <string name="welcomeUser">welcomeUser</string>
     <string name="dayHour">Monday, 8.15am</string>
     <string name="monthDay">november 28th</string>
-    <string name="enterCompany">Enter AirBnb</string>
+    <string name="enterCompany">Enter FiftyFive</string>
     <string name="contactAdministrators">Contact Administrators</string>
     <string name="userImageDescription">userImageDescription</string>
     <string name="arrowImageDescription">arrowImageDescription</string>
@@ -46,8 +46,8 @@
     <string name="BtnPersonalTasksText">Personal Tasks</string>
     <string name="allTasksBtnText">All Tasks</string>
     <string name="workTasksBtnText">Work Tasks</string>
-    <string name="letsGetItText">Let\'s get it!.</string>
-    <string name="makeYourDayCount">Make your day count.</string>
+    <string name="letsGetItText">Let\'s get it!</string>
+    <string name="makeYourDayCount">Make your day count ⚡.</string>
     <string name="addPersonalTaskBtnLabelText">Add Personal Task</string>
     <string name="forTodayDayLabelText">For today\'s day:</string>
     <string name="PersonalTaksNameHintLabel">Personal Task Name</string>
@@ -79,4 +79,6 @@
     <string name="back_to_menu">Back to menu</string>
     <string name="icon_done">icon_done</string>
     <string name="fresh_update">Fresh update? 😎</string>
+    <string name="dutify">DUTIFY</string>
+    <string name="todo_loading">TODO</string>
 </resources>

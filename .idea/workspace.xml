@@ -20,20 +20,21 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="505792da-c298-4325-aeb5-b539b5c27c64" name="Default Changelist" comment="Personalized Toasts + Calendar Validations">
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_award_bought.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_profile_edited.xml" afterDir="false" />
+    <list default="true" id="505792da-c298-4325-aeb5-b539b5c27c64" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_logo_rounded.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/dutify/DashboardProjectDescription.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/dutify/DashboardProjectDescription.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/dutify/Profile.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/dutify/Profile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/dutify/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/dutify/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/dutify/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/dutify/MainActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/dutify/RecyleViewAdapterProjectsCard/ProjectsViewAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/dutify/RecyleViewAdapterProjectsCard/ProjectsViewAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/shadow_categories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/shadow_categories.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_calendar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_calendar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_dashboard_project_description.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_dashboard_project_description.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_profile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_profile.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_catalog.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_catalog.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_welcome.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_welcome.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/award_buy_pop_up.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/award_buy_pop_up.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/award_card.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/award_card.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/projects_card.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/projects_card.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/tasks_change_state_pop_up.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/tasks_change_state_pop_up.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/tasks_desc_pop_up.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/tasks_desc_pop_up.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/team_member_structure.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/team_member_structure.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -93,6 +94,9 @@
   </component>
   <component name="RecentsManager">
     <key name="android.template.2000811164">
+      <recent name="com.example.dutify" />
+    </key>
+    <key name="android.template.-1307690646">
       <recent name="com.example.dutify" />
     </key>
     <key name="android.template.-1346967009">
@@ -254,7 +258,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611626781614</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Popups and Profile continuation">
+      <created>1611798016477</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1611798016477</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -282,7 +293,8 @@
     <MESSAGE value="Calendar and Calendar tasks already filtered" />
     <MESSAGE value="Top navbars in progress" />
     <MESSAGE value="Personalized Toasts + Calendar Validations" />
-    <option name="LAST_COMMIT_MESSAGE" value="Personalized Toasts + Calendar Validations" />
+    <MESSAGE value="Popups and Profile continuation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Popups and Profile continuation" />
   </component>
   <component name="WindowStateProjectService">
     <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser" timestamp="1611182306514">
@@ -293,46 +305,46 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="756" y="379" width="408" height="288" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/-3840.0.1536.832/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1610906235366" />
-    <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1610909888973">
+    <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1611882172760">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-3840.0.1536.832/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1610909888973" />
-    <state x="818" y="333" key="AndroidCreateXmlResourceDialog" timestamp="1611795773998">
+    <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-3840.0.1536.832/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1611882172760" />
+    <state x="818" y="333" key="AndroidCreateXmlResourceDialog" timestamp="1611882033190">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="818" y="333" key="AndroidCreateXmlResourceDialog/-3840.0.1536.832/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1611795773998" />
-    <state x="614" y="114" key="CommitChangelistDialog2" timestamp="1611626923733">
+    <state x="818" y="333" key="AndroidCreateXmlResourceDialog/-3840.0.1536.832/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1611882033190" />
+    <state x="614" y="114" key="CommitChangelistDialog2" timestamp="1611798013810">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="614" y="114" key="CommitChangelistDialog2/-3840.0.1536.832/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1611626923733" />
+    <state x="614" y="114" key="CommitChangelistDialog2/-3840.0.1536.832/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1611798013810" />
     <state x="640" y="275" key="Downloadable.Font.Dialog.Size" timestamp="1610999008419">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="640" y="275" key="Downloadable.Font.Dialog.Size/-3840.0.1536.832/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1610999008419" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1611793229403">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1611881904572">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/-3840.0.1536.832/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1611793229403" />
-    <state width="1875" height="318" key="GridCell.Tab.0.bottom" timestamp="1611797869327">
+    <state x="740" y="275" key="FileChooserDialogImpl/-3840.0.1536.832/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1611881904572" />
+    <state width="1877" height="318" key="GridCell.Tab.0.bottom" timestamp="1611886294242">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="280" key="GridCell.Tab.0.bottom/-3840.0.1536.832/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1611235632945" />
-    <state width="1875" height="318" key="GridCell.Tab.0.bottom/-3840.0.1536.832/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1611797869327" />
-    <state width="1875" height="318" key="GridCell.Tab.0.center" timestamp="1611797869327">
+    <state width="1877" height="318" key="GridCell.Tab.0.bottom/-3840.0.1536.832/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1611886294242" />
+    <state width="1877" height="318" key="GridCell.Tab.0.center" timestamp="1611886294242">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="280" key="GridCell.Tab.0.center/-3840.0.1536.832/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1611235632944" />
-    <state width="1875" height="318" key="GridCell.Tab.0.center/-3840.0.1536.832/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1611797869327" />
-    <state width="1875" height="318" key="GridCell.Tab.0.left" timestamp="1611797869327">
+    <state width="1877" height="318" key="GridCell.Tab.0.center/-3840.0.1536.832/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1611886294242" />
+    <state width="1877" height="318" key="GridCell.Tab.0.left" timestamp="1611886294242">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="280" key="GridCell.Tab.0.left/-3840.0.1536.832/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1611235632944" />
-    <state width="1875" height="318" key="GridCell.Tab.0.left/-3840.0.1536.832/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1611797869327" />
-    <state width="1875" height="318" key="GridCell.Tab.0.right" timestamp="1611797869327">
+    <state width="1877" height="318" key="GridCell.Tab.0.left/-3840.0.1536.832/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1611886294242" />
+    <state width="1877" height="318" key="GridCell.Tab.0.right" timestamp="1611886294242">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="280" key="GridCell.Tab.0.right/-3840.0.1536.832/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1611235632945" />
-    <state width="1875" height="318" key="GridCell.Tab.0.right/-3840.0.1536.832/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1611797869327" />
+    <state width="1877" height="318" key="GridCell.Tab.0.right/-3840.0.1536.832/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1611886294242" />
     <state x="540" y="263" key="IDE.errors.dialog" timestamp="1610991821772">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -341,18 +353,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="498" height="446" key="SwitcherDM/-3840.0.1536.832/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1609635509442" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1611627031175">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1611798028519">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/-3840.0.1536.832/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1611627031175" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/-3840.0.1536.832/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1611798028519" />
     <state x="606" y="135" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1609634664435">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="606" y="135" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/-3840.0.1536.832/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1609634664435" />
-    <state x="695" y="311" key="git4idea.merge.GitPullDialog" timestamp="1611789443500">
+    <state x="695" y="311" key="git4idea.merge.GitPullDialog" timestamp="1611881819008">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1225" y="311" key="git4idea.merge.GitPullDialog/-3840.0.1536.832/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1611235640905" />
-    <state x="695" y="311" key="git4idea.merge.GitPullDialog/-3840.0.1536.832/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1611789443500" />
+    <state x="695" y="311" key="git4idea.merge.GitPullDialog/-3840.0.1536.832/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1611881819008" />
   </component>
 </project>

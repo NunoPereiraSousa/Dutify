@@ -4,53 +4,38 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+import android.os.Handler;
+import android.util.Log;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static int TIMEOUT = 2000;
+    private String tokenToBeSent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
 
-    public void openLogin(View view){
-        Intent i = new Intent(this, Login.class);
-        startActivity(i);
-    }
+        Intent receivedIntend = getIntent();
+        Bundle intendExtras = receivedIntend.getExtras();
+        if (intendExtras != null) {
 
-    public void openCalendar(View view){
-        Intent i = new Intent(this, Calendar.class);
-        startActivity(i);
-    }
+            tokenToBeSent = intendExtras.getString("token");
 
+            Log.d("Motivation token", tokenToBeSent);
+        } else {
+            Log.d("justTest", "An idea is being cooked");
+        }
 
-    public void openWelcome(View view){
-        Intent i = new Intent(this, Welcome.class);
-        startActivity(i);
-    }
-
-
-    public void openDashboard(View view){
-        Intent i = new Intent(this, Dashboard.class);
-        startActivity(i);
-    }
-
-
-    public void openDashboardStats(View view){
-        Intent i = new Intent(this, DashboardBoard.class);
-        startActivity(i);
-    }
-
-
-    public void openDashboardProject(View view){
-        Intent i = new Intent(this, DashboardProjectDescription.class);
-        startActivity(i);
-    }
-
-
-    public void openProfile(View view){
-        Intent i = new Intent(this, Profile.class);
-        startActivity(i);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent calendarIntent = new Intent(MainActivity.this, Login.class);
+                calendarIntent.putExtra("token", tokenToBeSent);
+                startActivity(calendarIntent);
+                finish();
+            }
+        }, TIMEOUT);
     }
 }
