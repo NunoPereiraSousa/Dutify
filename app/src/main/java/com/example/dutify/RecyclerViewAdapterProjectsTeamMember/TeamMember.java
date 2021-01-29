@@ -1,20 +1,17 @@
 package com.example.dutify.RecyclerViewAdapterProjectsTeamMember;
 
 public class TeamMember {
-    private int  personId;
-    private  String personName;
-    private  String photoUrl;
-    private  String teamColor;
+    private int personId;
+    private String personName;
+    private String photoUrl;
+    private String teamColor;
 
-
-
-    public  TeamMember (int personId, String personName, String photoUrl, String teamColor){
+    public TeamMember(int personId, String personName, String photoUrl, String teamColor) {
         this.personId = personId;
         this.personName = personName;
-        this.photoUrl =  photoUrl;
-        this.teamColor =  teamColor;
+        this.photoUrl = photoUrl;
+        this.teamColor = teamColor;
     }
-
 
     public int getPersonId() {
         return personId;

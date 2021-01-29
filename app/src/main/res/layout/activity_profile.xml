@@ -62,12 +62,21 @@
                     android:gravity="center_horizontal"
                     android:orientation="vertical">
 
-                    <ImageView
-                        android:id="@+id/profileImg"
+                    <androidx.cardview.widget.CardView
                         android:layout_width="100dp"
                         android:layout_height="100dp"
-                        android:contentDescription="@string/userImageDescription"
-                        tools:src="@tools:sample/avatars" />
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="10dp"
+                        app:cardCornerRadius="250dp">
+
+                        <ImageView
+                            android:id="@+id/profileImg"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:contentDescription="@string/userImageDescription"
+                            tools:src="@tools:sample/avatars" />
+
+                    </androidx.cardview.widget.CardView>
 
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/card"
@@ -82,14 +91,13 @@
                             android:orientation="vertical"
                             android:padding="16dp">
 
-                            <!-- Title, secondary and supporting text -->
                             <TextView
                                 android:id="@+id/fullNameTxt"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
                                 android:fontFamily="@font/raleway_semibold"
-                                android:text="@string/profileUserName"
+                                android:text=""
                                 android:textColor="@color/pTextColor5"
                                 android:textSize="14sp" />
 
@@ -99,7 +107,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
                                 android:fontFamily="@font/poppins_medium"
-                                android:text="@string/profileUserName"
+                                android:text=""
                                 android:textColor="@color/pTextColor4"
                                 android:textSize="12sp" />
 
@@ -118,7 +126,7 @@
                                     android:layout_marginEnd="12dp"
                                     android:backgroundTint="@color/colorPrimary"
                                     android:fontFamily="@font/poppins_medium"
-                                    android:text="@string/profileCategory"
+                                    android:text=""
                                     android:textColor="@color/pTextColor5"
                                     app:chipStrokeColor="@color/mobileDev"
                                     app:chipStrokeWidth="1.5dp" />
@@ -131,7 +139,7 @@
                                     android:layout_marginHorizontal="12dp"
                                     android:backgroundTint="@color/colorPrimary"
                                     android:fontFamily="@font/poppins_medium"
-                                    android:text="@string/profileCategory"
+                                    android:text=""
                                     android:textColor="@color/pTextColor5"
                                     app:chipStrokeColor="@color/uiUx"
                                     app:chipStrokeWidth="1.5dp" />
@@ -144,7 +152,7 @@
                                     android:layout_marginStart="12dp"
                                     android:backgroundTint="@color/colorPrimary"
                                     android:fontFamily="@font/poppins_medium"
-                                    android:text="@string/profileCategory"
+                                    android:text=""
                                     android:textColor="@color/pTextColor5"
                                     app:chipStrokeColor="@color/frontEnd"
                                     app:chipStrokeWidth="1.5dp" />
@@ -163,6 +171,7 @@
                     android:layout_height="match_parent"
                     android:background="@color/colorPrimary"
                     android:orientation="vertical"
+                    android:layout_marginTop="20dp"
                     android:paddingHorizontal="20dp"
                     android:paddingBottom="20dp">
 
@@ -183,7 +192,7 @@
                         android:fontFamily="@font/raleway_medium"
                         android:letterSpacing="0.05"
                         android:lineHeight="20dp"
-                        android:text="@string/descriptionProfileEx"
+                        android:text=""
                         android:textColor="@color/pTextColor5"
                         android:textSize="14sp" />
 
@@ -391,7 +400,6 @@
         android:backgroundTint="@color/colorPrimary"
         android:orientation="vertical">
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -419,10 +427,11 @@
                 android:textColor="@color/pTextColor5"
                 android:textSize="20sp" />
 
-
             <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:scrollbars="none">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -433,7 +442,6 @@
                         android:id="@+id/firstNameTextInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
                         android:layout_gravity="start"
                         android:hint=""
                         android:textColorHint="@color/pTextColor4"
@@ -458,7 +466,6 @@
                         android:id="@+id/lastNameTextInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
                         android:hint=""
                         android:textColorHint="@color/pTextColor4"
                         app:boxStrokeColor="@color/pTextColor5"

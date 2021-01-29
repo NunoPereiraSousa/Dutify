@@ -56,20 +56,17 @@ public class Welcome extends AppCompatActivity {
             tokenToBeSent = intendExtras.getString("token");
 
             setTimeAndDate();
-            Log.d("token", tokenToBeSent);
             IdentificationByToken(tokenToBeSent);
         } else {
             setTimeAndDate();
-            Log.d("justTest", "An idea is being cooked");
         }
     }
 
-    //Function that sets the interface time and date displayed
     private void setTimeAndDate() {
-        String dayName = new SimpleDateFormat("EEEE", Locale.getDefault()).format(new Date()); // Get day of the week name
-        String MonthName = new SimpleDateFormat("MMM", Locale.getDefault()).format(new Date());// get month name
-        String currentTime = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());//current Time
-        String currentDay = new SimpleDateFormat("dd", Locale.getDefault()).format(new Date());//current Day
+        String dayName = new SimpleDateFormat("EEEE", Locale.getDefault()).format(new Date());
+        String MonthName = new SimpleDateFormat("MMM", Locale.getDefault()).format(new Date());
+        String currentTime = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());
+        String currentDay = new SimpleDateFormat("dd", Locale.getDefault()).format(new Date());
 
         dayNameAndTimeTxt = (TextView) findViewById(R.id.dayNameAndTimeTxt);
         monthAndDayTxt = (TextView) findViewById(R.id.monthAndDayTxt);
@@ -120,7 +117,6 @@ public class Welcome extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 String data = response;
-                Log.d("date", data);
 
                 try {
                     JSONArray userArray = new JSONArray(response);
@@ -128,8 +124,6 @@ public class Welcome extends AppCompatActivity {
 
                     JSONObject user = userArray.getJSONObject(0);
                     picture = user.getString("picture");
-
-                    Log.d("image", picture);
 
                     ImageView userPicture = (ImageView) findViewById(R.id.userPicture);
                     Picasso.get()

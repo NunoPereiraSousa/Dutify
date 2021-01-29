@@ -13,16 +13,14 @@ import com.example.dutify.R;
 
 import java.util.List;
 
-public class DashListTasksViewAdapter extends  RecyclerView.Adapter<DashListTasksViewAdapter.ViewHolder> {
+public class DashListTasksViewAdapter extends RecyclerView.Adapter<DashListTasksViewAdapter.ViewHolder> {
     private List<Task> data;
     private final DashListTasksClickInterface dashListTasksClickInterface;
-
 
     public DashListTasksViewAdapter(List<Task> data, DashListTasksClickInterface dashListTasksClickInterface) {
         this.dashListTasksClickInterface = dashListTasksClickInterface;
         this.data = data;
     }
-
 
     @NonNull
     @Override
@@ -35,22 +33,22 @@ public class DashListTasksViewAdapter extends  RecyclerView.Adapter<DashListTask
     @Override
     public void onBindViewHolder(@NonNull DashListTasksViewAdapter.ViewHolder holder, int position) {
         Task myTask = data.get(position);
-        if (myTask.getId_progress_status()==1) {
-            holder.tasksTitleAndStateTxt.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_slash,0,0,0);
-        }else if (myTask.getId_progress_status()==2){
-            holder.tasksTitleAndStateTxt.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_correct,0,0,0);
+        if (myTask.getId_progress_status() == 1) {
+            holder.tasksTitleAndStateTxt.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_slash, 0, 0, 0);
+        } else if (myTask.getId_progress_status() == 2) {
+            holder.tasksTitleAndStateTxt.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_correct, 0, 0, 0);
             holder.priceAndPermissionTxt.setTextColor(Color.parseColor("#8E96FF"));
-        }else if (myTask.getId_progress_status()==3){
-            holder.tasksTitleAndStateTxt.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_cross_x,0,0,0);
+        } else if (myTask.getId_progress_status() == 3) {
+            holder.tasksTitleAndStateTxt.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_cross_x, 0, 0, 0);
             holder.priceAndPermissionTxt.setTextColor(Color.parseColor("#E15554"));
         }
         holder.tasksTitleAndStateTxt.setText(myTask.getTaskTitle());
         holder.priceAndPermissionTxt.setText(String.valueOf(myTask.getTaskPrice()));
 
-        if (myTask.getProjectProgressStatus()!=1 ||myTask.getIsPersonalTask()){
-            holder.priceAndPermissionTxt.setCompoundDrawablesWithIntrinsicBounds(0,0,0,0);
-        }else{
-            holder.priceAndPermissionTxt.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_arrow_right,0);
+        if (myTask.getProjectProgressStatus() != 1 || myTask.getIsPersonalTask()) {
+            holder.priceAndPermissionTxt.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+        } else {
+            holder.priceAndPermissionTxt.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_arrow_right, 0);
         }
     }
 
@@ -75,7 +73,6 @@ public class DashListTasksViewAdapter extends  RecyclerView.Adapter<DashListTask
                 }
             });
 
-
             itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
@@ -85,7 +82,4 @@ public class DashListTasksViewAdapter extends  RecyclerView.Adapter<DashListTask
             });
         }
     }
-
-
-
 }

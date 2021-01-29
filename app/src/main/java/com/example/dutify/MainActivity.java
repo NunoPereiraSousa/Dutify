@@ -22,10 +22,6 @@ public class MainActivity extends AppCompatActivity {
         if (intendExtras != null) {
 
             tokenToBeSent = intendExtras.getString("token");
-
-            Log.d("Motivation token", tokenToBeSent);
-        } else {
-            Log.d("justTest", "An idea is being cooked");
         }
 
         new Handler().postDelayed(new Runnable() {

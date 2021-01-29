@@ -155,7 +155,20 @@ public class Calendar extends AppCompatActivity implements ProjectsViewClickInte
                 personalTaskDescTxt.equals("") ||
                 startingDateTaskTxt.equals("") ||
                 endingDateDescTxt.equals("")) {
-            Toast.makeText(getApplicationContext(), "Please fill all your inputs", Toast.LENGTH_SHORT).show();
+            LayoutInflater inflater = getLayoutInflater();
+            View layout = inflater.inflate(R.layout.toast,
+                    (ViewGroup) findViewById(R.id.toast_layout));
+
+            ImageView image = (ImageView) layout.findViewById(R.id.image);
+            image.setImageResource(R.drawable.ic_logo);
+            TextView text = (TextView) layout.findViewById(R.id.text);
+
+            text.setText(getResources().getString(R.string.fill_inputs));
+
+            Toast toast = new Toast(getApplicationContext());
+            toast.setDuration(Toast.LENGTH_SHORT);
+            toast.setView(layout);
+            toast.show();
         } else {
             Intent emailIntent = new Intent(Intent.ACTION_SEND);
             emailIntent.setType("*/*");
@@ -380,9 +393,9 @@ public class Calendar extends AppCompatActivity implements ProjectsViewClickInte
             @Override
             public void onResponse(String response) {
                 try {
-                    ArrayList<Integer> projectsIds = new ArrayList<Integer>(); // Create an ArrayList object
-                    ArrayList<Integer> teamsInsideIds = new ArrayList<Integer>(); //
-                    ArrayList<JSONObject> selectedInformation = new ArrayList<JSONObject>(); // Create an ArrayList object
+                    ArrayList<Integer> projectsIds = new ArrayList<Integer>();
+                    ArrayList<Integer> teamsInsideIds = new ArrayList<Integer>();
+                    ArrayList<JSONObject> selectedInformation = new ArrayList<JSONObject>();
                     JSONArray operations = new JSONArray(response);
 
                     //#1-GET ALL PROJECTS IDS THAT THE USER IS INSIDE
@@ -402,6 +415,7 @@ public class Calendar extends AppCompatActivity implements ProjectsViewClickInte
                             }
                         }
                     }
+
                     //#2- GET THE TEAMS THAT THE PERSON IS INSIDE based in his projects
                     for (int i = 0; i < projectsIds.size(); i++) {
                         for (int j = 0; j < operations.length(); j++) {

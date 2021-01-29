@@ -1,20 +1,19 @@
 package com.example.dutify.RecyclerViewAdapterDashDescMyTasks;
 
 public class Task {
-   private int taskId;
-    private  String taskTitle;
-    private  String tasksDescription;
-    private  int id_progress_status;
-    private  String enDate;
+    private int taskId;
+    private String taskTitle;
+    private String tasksDescription;
+    private int id_progress_status;
+    private String enDate;
     private int taskPrice;
 
-
-    public Task(int taskId,String taskTitle, String tasksDescription, int id_progress_status, String enDate, int taskPrice) {
+    public Task(int taskId, String taskTitle, String tasksDescription, int id_progress_status, String enDate, int taskPrice) {
         this.taskId = taskId;
         this.taskTitle = taskTitle;
         this.tasksDescription = tasksDescription;
         this.id_progress_status = id_progress_status;
-        this.enDate= enDate;
+        this.enDate = enDate;
         this.taskPrice = taskPrice;
     }
 

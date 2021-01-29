@@ -1,20 +1,15 @@
 package com.example.dutify.RecyclerViewAdapterDashDescMyTasks;
 
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dutify.R;
-import com.example.dutify.RecyleViewAdapterProjectsCard.Project;
-import com.example.dutify.RecyleViewAdapterProjectsCard.ProjectsViewAdapter;
-import com.example.dutify.RecyleViewAdapterProjectsCard.ProjectsViewClickInterface;
 
 import java.util.List;
 
@@ -27,7 +22,6 @@ public class DashDescTasksViewAdapter extends RecyclerView.Adapter<DashDescTasks
         this.dashDescTasksClickInterface = dashDescTasksClickInterface;
         this.data = data;
     }
-
 
     @NonNull
     @Override
@@ -75,7 +69,6 @@ public class DashDescTasksViewAdapter extends RecyclerView.Adapter<DashDescTasks
                 }
             });
 
-
             itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
@@ -85,6 +78,4 @@ public class DashDescTasksViewAdapter extends RecyclerView.Adapter<DashDescTasks
             });
         }
     }
-
-
 }

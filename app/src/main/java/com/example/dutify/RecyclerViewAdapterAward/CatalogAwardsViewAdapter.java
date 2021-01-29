@@ -1,6 +1,5 @@
 package com.example.dutify.RecyclerViewAdapterAward;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,7 +38,7 @@ public class CatalogAwardsViewAdapter extends RecyclerView.Adapter<CatalogAwards
 
         Picasso.get()
                 .load(myAward.getPicture())
-                .resize(256, 256)
+                .resize(200, 200)
                 .centerCrop()
                 .into(imageAward);
         holder.awardName.setText(String.valueOf(myAward.getName()));

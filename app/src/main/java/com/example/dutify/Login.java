@@ -4,7 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -35,7 +39,20 @@ public class Login extends AppCompatActivity {
         emailInput = findViewById(R.id.emailInput);
         passwordInput = findViewById(R.id.passwordInput);
         if (emailInput.getEditableText().toString().equals("") || passwordInput.getEditableText().toString().equals("")) {
-            Toast.makeText(getApplicationContext(), "Please fill all your inputs", Toast.LENGTH_SHORT).show();
+            LayoutInflater inflater = getLayoutInflater();
+            View layout = inflater.inflate(R.layout.toast,
+                    (ViewGroup) findViewById(R.id.toast_layout));
+
+            ImageView image = (ImageView) layout.findViewById(R.id.image);
+            image.setImageResource(R.drawable.ic_logo);
+            TextView text = (TextView) layout.findViewById(R.id.text);
+
+            text.setText(getResources().getString(R.string.fill_inputs));
+
+            Toast toast = new Toast(getApplicationContext());
+            toast.setDuration(Toast.LENGTH_SHORT);
+            toast.setView(layout);
+            toast.show();
         } else {
             String postUrl = "https://dutify.herokuapp.com/login";
             RequestQueue requestQueue = Volley.newRequestQueue(this);
@@ -87,8 +104,20 @@ public class Login extends AppCompatActivity {
             welcomeIntent.putExtra("userFullName", userFullName);
             startActivity(welcomeIntent);
         } else {
-            CharSequence message = "Administration dashboard is underdevelopment";
-            Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+            LayoutInflater inflater = getLayoutInflater();
+            View layout = inflater.inflate(R.layout.toast,
+                    (ViewGroup) findViewById(R.id.toast_layout));
+
+            ImageView image = (ImageView) layout.findViewById(R.id.image);
+            image.setImageResource(R.drawable.ic_logo);
+            TextView text = (TextView) layout.findViewById(R.id.text);
+
+            text.setText(getResources().getString(R.string.admin_pages));
+
+            Toast toast = new Toast(getApplicationContext());
+            toast.setDuration(Toast.LENGTH_SHORT);
+            toast.setView(layout);
+            toast.show();
         }
     }
 }

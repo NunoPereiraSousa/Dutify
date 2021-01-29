@@ -3,18 +3,17 @@ package com.example.dutify.RecyclerViewAdapterDashListTaskCard;
 public class Task {
 
     private int taskId;
-    private  String taskTitle;
-    private  String tasksDescription;
-    private  int id_progress_status;
+    private String taskTitle;
+    private String tasksDescription;
+    private int id_progress_status;
     private int taskPrice;
 
-    private  int projectRelatedId;
-    private String  projectTitle;
-    private int  projectProgressStatus;
+    private int projectRelatedId;
+    private String projectTitle;
+    private int projectProgressStatus;
     private boolean isPersonalTask;
 
-
-    public Task(int taskId,String taskTitle, String tasksDescription, int id_progress_status, int taskPrice, int projectRelatedId, String projectTitle, int projectProgressStatus,boolean isPersonalTask ) {
+    public Task(int taskId, String taskTitle, String tasksDescription, int id_progress_status, int taskPrice, int projectRelatedId, String projectTitle, int projectProgressStatus, boolean isPersonalTask) {
         this.taskId = taskId;
         this.taskTitle = taskTitle;
         this.tasksDescription = tasksDescription;
@@ -58,7 +57,6 @@ public class Task {
     public void setId_progress_status(int id_progress_status) {
         this.id_progress_status = id_progress_status;
     }
-
 
 
     public int getTaskPrice() {

@@ -30,7 +30,6 @@ public class TaskViewAdapter extends RecyclerView.Adapter<TaskViewAdapter.ViewHo
         return new TaskViewAdapter.ViewHolder(view);
     }
 
-    //This does the action of altering the cards
     @Override
     public void onBindViewHolder(@NonNull TaskViewAdapter.ViewHolder holder, int position) {
         Task myTask = data.get(position);
@@ -50,10 +49,8 @@ public class TaskViewAdapter extends RecyclerView.Adapter<TaskViewAdapter.ViewHo
 
         ViewHolder(View itemView) {
             super(itemView);
-            // Views that will display our data
             taskDescriptionTxt = itemView.findViewById(R.id.taskDescriptionTxt);
             projectNameTxt = itemView.findViewById(R.id.projectNameTxt);
-            //itemView.setOnClickListener((View.OnClickListener) this);
         }
 
         public void onClick(View view) {

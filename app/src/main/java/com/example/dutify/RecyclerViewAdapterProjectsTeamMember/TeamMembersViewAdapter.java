@@ -1,11 +1,9 @@
 package com.example.dutify.RecyclerViewAdapterProjectsTeamMember;
 
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,10 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.example.dutify.R;
-import com.example.dutify.RecyclerViewAdapterProfileAwards.Award;
-import com.example.dutify.RecyleViewAdapterProjectsCard.Project;
-import com.example.dutify.RecyleViewAdapterProjectsCard.ProjectsViewAdapter;
-import com.example.dutify.RecyleViewAdapterProjectsCard.ProjectsViewClickInterface;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -28,12 +22,10 @@ public class TeamMembersViewAdapter extends RecyclerView.Adapter<TeamMembersView
     private List<TeamMember> data;
     private final TeamMembersViewClickInterface teamMembersViewClickInterface;
 
-
     public TeamMembersViewAdapter(List<TeamMember> data, TeamMembersViewClickInterface teamMembersViewClickInterface) {
         this.teamMembersViewClickInterface = teamMembersViewClickInterface;
         this.data = data;
     }
-
 
     @Override
     public TeamMembersViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -63,12 +55,11 @@ public class TeamMembersViewAdapter extends RecyclerView.Adapter<TeamMembersView
 
         TextView memberNameTxt;
 
-
         ViewHolder(View itemView) {
             super(itemView);
 
             memberNameTxt = itemView.findViewById(R.id.memberNameTxt);
-            personImageHolder= itemView.findViewById(R.id.personImageHolder);
+            personImageHolder = itemView.findViewById(R.id.personImageHolder);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

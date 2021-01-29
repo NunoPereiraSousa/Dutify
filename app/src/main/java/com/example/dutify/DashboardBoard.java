@@ -68,11 +68,11 @@ public class DashboardBoard extends AppCompatActivity implements DashListTasksCl
             bottomNavigation.setOnNavigationItemSelectedListener(navListener);
             tokenToBeSent = intendExtras.getString("token");
             allTasksBtn = (Chip) findViewById(R.id.allTasksBtn);
-            personalTasksBtn =(Chip) findViewById(R.id.personalTasksBtn);
+            personalTasksBtn = (Chip) findViewById(R.id.personalTasksBtn);
             personalTasksBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    getUserPersonalTasks(userId,tokenToBeSent);
+                    getUserPersonalTasks(userId, tokenToBeSent);
                 }
             });
 
@@ -80,15 +80,12 @@ public class DashboardBoard extends AppCompatActivity implements DashListTasksCl
             allTasksBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    getUserTasks(userId,tokenToBeSent);
+                    getUserTasks(userId, tokenToBeSent);
                 }
             });
             IdentificationByToken(intendExtras.getString("token"));
-        } else {
-            Log.d("justTest", "An idea is being cooked");
         }
     }
-
 
     public void IdentificationByToken(final String token) {
         String url = "https://dutify.herokuapp.com/identification";
@@ -97,10 +94,8 @@ public class DashboardBoard extends AppCompatActivity implements DashListTasksCl
         StringRequest jsonObjectRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                userId= response;
+                userId = response;
                 getUserTasks(response, token);
-//                getUserPersonalTasks(response, token);
-//                displayTasks(1);
             }
         }, new Response.ErrorListener() {
             @Override
@@ -117,7 +112,6 @@ public class DashboardBoard extends AppCompatActivity implements DashListTasksCl
         };
         queue.add(jsonObjectRequest);
     }
-
 
     public void getUserTasks(String userId, final String token) {
         myTasks = new ArrayList<>();
@@ -173,10 +167,9 @@ public class DashboardBoard extends AppCompatActivity implements DashListTasksCl
                     JSONArray responseArray = new JSONArray(response);
 
 
-
                     for (int i = 0; i < responseArray.length(); i++) {
                         JSONObject dataObj = responseArray.getJSONObject(i);
-                        myTasks.add(new Task(dataObj.getInt("id_personal_task"), dataObj.getString("title"), dataObj.getString("todo"), dataObj.getInt("id_progress_status"), dataObj.getInt("creditsValue"), 0, "",0, true));
+                        myTasks.add(new Task(dataObj.getInt("id_personal_task"), dataObj.getString("title"), dataObj.getString("todo"), dataObj.getInt("id_progress_status"), dataObj.getInt("creditsValue"), 0, "", 0, true));
                     }
 
                     LinearLayoutManager layoutManager
@@ -209,8 +202,6 @@ public class DashboardBoard extends AppCompatActivity implements DashListTasksCl
         };
         queue.add(stringRequest);
     }
-
-
 
     private void changePage(String toPage) {
         if (!toPage.equals("dashboard")) {
@@ -252,7 +243,7 @@ public class DashboardBoard extends AppCompatActivity implements DashListTasksCl
     };
 
 
-    public void buildTasksDescriptionPopUp(String title, String additionalInfo,String description) {
+    public void buildTasksDescriptionPopUp(String title, String additionalInfo, String description) {
         dialogBuilder = new AlertDialog.Builder(self);
         final View taskDescriptionPopUpView = getLayoutInflater().inflate(R.layout.dash_list_tasks_pop_up, null);
         TextView tasksTitleTxt = (TextView) taskDescriptionPopUpView.findViewById(R.id.tasksTitleTxt);
@@ -273,18 +264,18 @@ public class DashboardBoard extends AppCompatActivity implements DashListTasksCl
         });
     }
 
-
     @Override
     public void onTaskCardClick(int position) {
-        if (myTasks.get(position).getIsPersonalTask()){
-            buildTasksDescriptionPopUp(myTasks.get(position).getTaskTitle(),"Personal Task", myTasks.get(position).getTasksDescription());
-        }else {
-            buildTasksDescriptionPopUp(myTasks.get(position).getTaskTitle(),"Project: "+ String.valueOf(myTasks.get(position).getProjectTitle()), myTasks.get(position).getTasksDescription());
+        if (myTasks.get(position).getIsPersonalTask()) {
+            buildTasksDescriptionPopUp(myTasks.get(position).getTaskTitle(), "Personal Task", myTasks.get(position).getTasksDescription());
+        } else {
+            buildTasksDescriptionPopUp(myTasks.get(position).getTaskTitle(), "Project: " + String.valueOf(myTasks.get(position).getProjectTitle()), myTasks.get(position).getTasksDescription());
         }
     }
+
     @Override
     public void onTaskCardLongClick(int position) {
-        if (!myTasks.get(position).getIsPersonalTask()&& myTasks.get(position).getProjectProgressStatus()==1){
+        if (!myTasks.get(position).getIsPersonalTask() && myTasks.get(position).getProjectProgressStatus() == 1) {
             Intent dashboardProjectDescriptionIntent = new Intent(this, DashboardProjectDescription.class);
             dashboardProjectDescriptionIntent.putExtra("token", tokenToBeSent);
             dashboardProjectDescriptionIntent.putExtra("id_project", myTasks.get(position).getProjectRelatedId());

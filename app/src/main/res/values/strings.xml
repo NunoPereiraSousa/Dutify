@@ -81,4 +81,6 @@
     <string name="fresh_update">Fresh update? 😎</string>
     <string name="dutify">DUTIFY</string>
     <string name="todo_loading">TODO</string>
+    <string name="fill_inputs">Please fill all the inputs</string>
+    <string name="admin_pages">Administration dashboard is underdevelopment</string>
 </resources>

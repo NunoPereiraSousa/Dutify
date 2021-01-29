@@ -83,8 +83,6 @@ public class DashboardProjectDescription extends AppCompatActivity implements Te
             tokenToBeSent = intendExtras.getString("token");
             projectId = intendExtras.getInt("id_project");
             IdentificationByToken(intendExtras.getString("token"), String.valueOf(projectId));
-        } else {
-            Log.d("justTest", "An idea is being cooked");
         }
     }
 
@@ -159,7 +157,7 @@ public class DashboardProjectDescription extends AppCompatActivity implements Te
             @Override
             public void onResponse(String response) {
                 try {
-                    ArrayList<JSONObject> selectedInformation = new ArrayList<JSONObject>(); // Create an ArrayList object
+                    ArrayList<JSONObject> selectedInformation = new ArrayList<JSONObject>();
                     JSONArray operations = new JSONArray(response);
                     for (int j = 0; j < operations.length(); j++) {
                         int permitted = 1;
@@ -298,7 +296,6 @@ public class DashboardProjectDescription extends AppCompatActivity implements Te
                         myTasks.add(new Task(dataObj.getInt("id_task"), dataObj.getString("title"), dataObj.getString("description"), dataObj.getInt("id_progress_status"), dataObj.getString("endDate"), dataObj.getInt("creditsValue")));
                     }
 
-
                     LinearLayoutManager layoutManager
                             = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
 
@@ -395,7 +392,6 @@ public class DashboardProjectDescription extends AppCompatActivity implements Te
             }
         };
         requestQueue.add(jsonObjectRequest);
-
     }
 
     public void buildTasksDescriptionPopUp(String title, String description) {
@@ -443,7 +439,6 @@ public class DashboardProjectDescription extends AppCompatActivity implements Te
             }
         });
     }
-
 
     private void changePage(String toPage) {
         if (!toPage.equals("dashboard")) {

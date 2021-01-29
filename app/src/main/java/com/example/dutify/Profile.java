@@ -9,9 +9,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -54,7 +55,7 @@ import java.util.concurrent.TimeUnit;
 public class Profile extends AppCompatActivity implements ProjectsViewClickInterface {
     BottomNavigationView bottomNavigation;
     private String tokenToBeSent;
-    private  String  id_user;
+    private String id_user;
 
     TextInputLayout firstNameInputLayout;
     TextInputLayout lastNameInputLayout;
@@ -81,7 +82,6 @@ public class Profile extends AppCompatActivity implements ProjectsViewClickInter
     List<JSONObject> categoryTags;
     Profile self;
 
-    //form Button
     MaterialButton submitChangesBtn;
 
     @Override
@@ -100,10 +100,6 @@ public class Profile extends AppCompatActivity implements ProjectsViewClickInter
 
             tokenToBeSent = intendExtras.getString("token");
             IdentificationByToken(intendExtras.getString("token"));
-
-            Log.d("Calendar token", tokenToBeSent);
-        } else {
-            Log.d("justTest", "An idea is being cooked");
         }
     }
 
@@ -147,15 +143,12 @@ public class Profile extends AppCompatActivity implements ProjectsViewClickInter
         formEmailTxt = (TextInputEditText) findViewById(R.id.formEmailTxt);
         formWebsiteTxt = (TextInputEditText) findViewById(R.id.formWebsiteTxt);
 
-
         formFirstNameTxt.setText(firstName);
         formLastNameTxt.setText(lastName);
         formDescriptionTxt.setText(description);
         formPhoneTxt.setText(contact);
         formEmailTxt.setText(email);
         formWebsiteTxt.setText(website);
-
-
     }
 
     public void prepareEditProfileForm() {
@@ -170,13 +163,24 @@ public class Profile extends AppCompatActivity implements ProjectsViewClickInter
         submitChangesBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!formFirstNameTxt.getText().equals("") &&!formLastNameTxt.getText().equals("") &&!formDescriptionTxt.getText().equals("") &&!formPhoneTxt.getText().equals("") &&!formEmailTxt.getText().equals("") &&!formWebsiteTxt.getText().equals("")  ){
+                if (!formFirstNameTxt.getText().equals("") && !formLastNameTxt.getText().equals("") && !formDescriptionTxt.getText().equals("") && !formPhoneTxt.getText().equals("") && !formEmailTxt.getText().equals("") && !formWebsiteTxt.getText().equals("")) {
                     updateProfile(id_user);
-//                    Toast.makeText(getApplicationContext(), "It is here", Toast.LENGTH_SHORT).show();
-                }else {
-                    Toast.makeText(getApplicationContext(), "Please fill all your inputs", Toast.LENGTH_SHORT).show();
-                }
+                } else {
+                    LayoutInflater inflater = getLayoutInflater();
+                    View layout = inflater.inflate(R.layout.toast,
+                            (ViewGroup) findViewById(R.id.toast_layout));
 
+                    ImageView image = (ImageView) layout.findViewById(R.id.image);
+                    image.setImageResource(R.drawable.ic_logo);
+                    TextView text = (TextView) layout.findViewById(R.id.text);
+
+                    text.setText(getResources().getString(R.string.fill_inputs));
+
+                    Toast toast = new Toast(getApplicationContext());
+                    toast.setDuration(Toast.LENGTH_SHORT);
+                    toast.setView(layout);
+                    toast.show();
+                }
             }
         });
 
@@ -187,8 +191,6 @@ public class Profile extends AppCompatActivity implements ProjectsViewClickInter
         emailInputLayout.setHint("Email");
         websiteInputLayout.setHint("Website");
     }
-
-
 
     public void updateProfile(final String userId) {
         String postUrl = "https://dutify.herokuapp.com/users/" + String.valueOf(userId) + "/profile";
@@ -228,11 +230,6 @@ public class Profile extends AppCompatActivity implements ProjectsViewClickInter
         };
         requestQueue.add(jsonObjectRequest);
     }
-
-
-
-
-
 
     private void getUserInformation(String userId, final String token) {
         String url = "https://dutify.herokuapp.com/users/" + userId;
@@ -291,6 +288,7 @@ public class Profile extends AppCompatActivity implements ProjectsViewClickInter
                 .resize(256, 256)
                 .centerCrop()
                 .into(userPicture);
+
         //#2-Display Name and user function
         TextView fullNameTxt = (TextView) findViewById(R.id.fullNameTxt);
         fullNameTxt.setText(fullName);
@@ -300,9 +298,11 @@ public class Profile extends AppCompatActivity implements ProjectsViewClickInter
         } else if (userType == 2) {
             levelTxt.setText("Team Leader");
         }
+
         //#3-Display FullName
         TextView descriptionTxt = (TextView) findViewById(R.id.descriptionTxt);
         descriptionTxt.setText(description);
+
         //#4-Display Contact, email and website
         PhoneEmailWebsite contactsFragment = new PhoneEmailWebsite();
         Bundle myBundle = new Bundle();
@@ -315,7 +315,6 @@ public class Profile extends AppCompatActivity implements ProjectsViewClickInter
         ft.commit();
     }
 
-    //Function that displays the user category
     private void displayUserCategoriesTag(String userId, final String token) {
         String url = "https://dutify.herokuapp.com/users/" + userId + "/tags";
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -379,8 +378,6 @@ public class Profile extends AppCompatActivity implements ProjectsViewClickInter
                     recyclerView.setHasFixedSize(true);
                     recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                     adapter = new ProfileAwardsViewAdapter(awards);
-                    // problem
-                    //adapter.setClickListener(this);
                     recyclerView.setAdapter(adapter);
 
                 } catch (JSONException e) {
@@ -402,7 +399,6 @@ public class Profile extends AppCompatActivity implements ProjectsViewClickInter
         };
         queue.add(stringRequest);
     }
-
 
     private void getUserTasks(String userId, final String token) {
         String url = "https://dutify.herokuapp.com/users/" + userId + "/tasks";
@@ -535,7 +531,7 @@ public class Profile extends AppCompatActivity implements ProjectsViewClickInter
                             }
                         }
                     }
-                    Log.d("Bitches", String.valueOf(selectedInformation));
+
                     String needed = "";
                     //#4-DISPLAY THE INFORMATION
                     for (int i = 0; i < projectsIds.size(); i++) {
@@ -660,7 +656,6 @@ public class Profile extends AppCompatActivity implements ProjectsViewClickInter
         queue.add(stringRequest);
     }
 
-
     private void changePage(String toPage) {
         if (!toPage.equals("profile")) {
             Intent myIntent = null;
@@ -687,7 +682,7 @@ public class Profile extends AppCompatActivity implements ProjectsViewClickInter
                     changePage("calendar");
                     break;
                 case R.id.nav_dashboard:
-                    //changePage("calendar");
+                    changePage("dashboard");
                     break;
                 case R.id.nav_awards:
                     changePage("awards");
@@ -702,7 +697,6 @@ public class Profile extends AppCompatActivity implements ProjectsViewClickInter
 
     @Override
     public void onProjectCardClick(int position) {
-//        Toast.makeText(this, String.valueOf(projects.get(position).getId()), Toast.LENGTH_SHORT).show();
         Intent dashboardProjectDescriptionIntent = new Intent(this, DashboardProjectDescription.class);
         dashboardProjectDescriptionIntent.putExtra("token", tokenToBeSent);
         dashboardProjectDescriptionIntent.putExtra("id_project", projects.get(position).getId());

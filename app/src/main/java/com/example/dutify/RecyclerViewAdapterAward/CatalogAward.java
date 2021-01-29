@@ -8,7 +8,7 @@ public class CatalogAward {
     private String description;
     private Boolean bought;
 
-    public CatalogAward( int id ,String name, int price, String picture,String description,Boolean bought ) {
+    public CatalogAward(int id, String name, int price, String picture, String description, Boolean bought) {
         this.id = id;
         this.name = name;
         this.price = price;

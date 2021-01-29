@@ -22,7 +22,7 @@ public class Project {
         this.id = id;
         this.teamName = teamName;
         this.color = color;
-        this.totalTask= totalTask;
+        this.totalTask = totalTask;
         this.totalTasksTodo = totalTasksTodo;
         this.daysLeft = daysLeft;
     }
@@ -79,7 +79,8 @@ public class Project {
     public String getTeamName() {
         return teamName;
     }
-    public  void  setTeamName(String teamName){
+
+    public void setTeamName(String teamName) {
         this.teamName = teamName;
 
     }
@@ -87,6 +88,7 @@ public class Project {
     public String getColor() {
         return color;
     }
+
     public void setColor() {
         this.color = color;
     }
@@ -94,6 +96,7 @@ public class Project {
     public int getTotalTask() {
         return totalTask;
     }
+
     public void setTotalTask() {
         this.totalTask = this.totalTask;
     }
