@@ -1,69 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
+    android:gravity="center"
     android:orientation="vertical"
-    android:paddingHorizontal="20dp"
-    android:paddingBottom="20dp"
     tools:context=".MainActivity">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#fff"
-        android:textColor="#000"
-        android:text="Open Login"
-        android:onClick="openLogin"/>
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:contentDescription="@string/todo_loading"
+        android:src="@drawable/ic_logo" />
 
-    <Button
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="#fff"
-        android:textColor="#000"
-        android:text="Open Calendar"
-        android:onClick="openCalendar"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#fff"
-        android:textColor="#000"
-        android:text="Force Welcome Open"
-        android:onClick="openWelcome"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#fff"
-        android:textColor="#000"
-        android:text="Open Dashboard"
-        android:onClick="openDashboard"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#fff"
-        android:textColor="#000"
-        android:text="Open Dashboard Stats"
-        android:onClick="openDashboardStats"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#fff"
-        android:textColor="#000"
-        android:text="Open Dashboard Project"
-        android:onClick="openDashboardProject"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#fff"
-        android:textColor="#000"
-        android:text="Open Profile"
-        android:onClick="openProfile"/>
+        android:layout_marginTop="6dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="@string/dutify"
+        android:textColor="@color/pTextColor5"
+        android:textSize="22sp" />
 
 </LinearLayout>

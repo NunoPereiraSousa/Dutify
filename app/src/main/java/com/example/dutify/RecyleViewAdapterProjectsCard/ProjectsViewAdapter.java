@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dutify.R;
@@ -36,6 +37,7 @@ public class ProjectsViewAdapter extends RecyclerView.Adapter<ProjectsViewAdapte
 
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.projects_card, parent, false); // Define the data display layout
+        view.setBackgroundResource(R.drawable.shadow_categories);
         return new ProjectsViewAdapter.ViewHolder(view);
     }
 
@@ -50,6 +52,7 @@ public class ProjectsViewAdapter extends RecyclerView.Adapter<ProjectsViewAdapte
         holder.projectTitleTxt.setText(myProject.getTitle());
         holder.teamNameTxt.setText(String.valueOf(myProject.getTeamName()));
         holder.cardHolder.setBackgroundColor(Color.parseColor(myProject.getColor()));
+        holder.mainLayoutProjectCard.setBackgroundResource(R.drawable.shadow_categories);
         String dayLeftSuffix = " days left";
         if (myProject.getDaysLeft().equals("1")) {
             dayLeftSuffix = " day left";
@@ -85,6 +88,7 @@ public class ProjectsViewAdapter extends RecyclerView.Adapter<ProjectsViewAdapte
         TextView projectTitleTxt;
         TextView teamNameTxt;
         LinearLayout cardHolder;
+        LinearLayout mainLayoutProjectCard;
         TextView taskCounterTxt;
         TextView daysLeftTxt;
         View progressBar;
@@ -95,6 +99,7 @@ public class ProjectsViewAdapter extends RecyclerView.Adapter<ProjectsViewAdapte
             progressBar = itemView.findViewById(R.id.progressBar);
             taskCounterTxt = itemView.findViewById(R.id.taskCounterTxt);
             cardHolder = itemView.findViewById(R.id.cardHolder);
+            mainLayoutProjectCard = itemView.findViewById(R.id.mainLayoutProjectCard);
             teamMember1 = itemView.findViewById(R.id.teamMember1);
             teamMember2 = itemView.findViewById(R.id.teamMember2);
             teamMember3 = itemView.findViewById(R.id.teamMember3);

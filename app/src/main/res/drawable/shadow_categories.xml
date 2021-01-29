@@ -13,7 +13,7 @@
 
             <solid android:color="#40676A81" />
 
-            <corners android:radius="12dp" />
+            <corners android:radius="50dp" />
         </shape>
     </item>
 
@@ -21,7 +21,7 @@
         <shape>
             <solid android:color="@color/frontEndCard" />
 
-            <corners android:radius="12dp" />
+            <corners android:radius="50dp" />
         </shape>
     </item>
 

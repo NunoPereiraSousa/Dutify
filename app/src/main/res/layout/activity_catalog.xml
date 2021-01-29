@@ -11,10 +11,10 @@
         style="@style/Widget.MaterialComponents.Toolbar.Primary1"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        app:menu="@menu/catalog_navigation_menu"
-        app:title="Awards"
         android:elevation="4dp"
         app:itemTextColor="@color/frontEnd"
+        app:menu="@menu/catalog_navigation_menu"
+        app:title="Awards"
         app:titleTextAppearance="@style/BottomNav" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -33,21 +33,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="60dp"
-        android:layout_marginBottom="60dp">
+        android:layout_marginBottom="60dp"
+        android:paddingHorizontal="20dp"
+        android:paddingBottom="20dp"
+        android:scrollbars="none">
 
-        <LinearLayout
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/catalogAwardRecycleView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingHorizontal="20dp"
-            android:paddingBottom="20dp">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/catalogAwardRecycleView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:spanCount="2" />
-
-        </LinearLayout>
+            android:layout_height="match_parent"
+            app:spanCount="2" />
 
     </ScrollView>
 

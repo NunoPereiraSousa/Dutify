@@ -5,22 +5,8 @@
     android:layout_height="130dp"
     android:layout_marginTop="30dp"
     android:background="@drawable/shadow"
-    android:gravity="center_horizontal"
+    android:gravity="center"
     android:orientation="vertical">
-
-    <!--<LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end">
-
-        <ImageView
-            android:id="@+id/boughtIcon"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:contentDescription="TODO"
-            app:srcCompat="@drawable/ic_bought" />
-
-    </LinearLayout>-->
 
     <LinearLayout
         android:layout_width="wrap_content"
