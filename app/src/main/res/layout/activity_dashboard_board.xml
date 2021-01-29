@@ -9,7 +9,7 @@
     tools:context=".DashboardBoard">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation3"
+        android:id="@+id/bottomNavigation"
         style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -56,21 +56,23 @@
                     app:chipEndPadding="10dp"
                     app:chipStartPadding="10dp"
                     app:chipStrokeColor="@color/colorAccent"
-                    app:chipStrokeWidth="1.5dp" />
+                    app:chipStrokeWidth="1.5dp"
+                    android:layout_marginRight="10dp"
+                    />
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/workTasksBtn"
-                    style="@style/chipTextAppearance"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/colorPrimary"
-                    android:fontFamily="@font/poppins"
-                    android:text="@string/workTasksBtnText"
-                    android:textColor="@color/pTextColor5"
-                    app:chipEndPadding="10dp"
-                    app:chipStartPadding="10dp"
-                    app:chipStrokeColor="@color/calendarColor"
-                    app:chipStrokeWidth="0dp" />
+<!--                <com.google.android.material.chip.Chip-->
+<!--                    android:id="@+id/workTasksBtn"-->
+<!--                    style="@style/chipTextAppearance"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:backgroundTint="@color/colorPrimary"-->
+<!--                    android:fontFamily="@font/poppins"-->
+<!--                    android:text="@string/workTasksBtnText"-->
+<!--                    android:textColor="@color/pTextColor5"-->
+<!--                    app:chipEndPadding="10dp"-->
+<!--                    app:chipStartPadding="10dp"-->
+<!--                    app:chipStrokeColor="@color/calendarColor"-->
+<!--                    app:chipStrokeWidth="0dp" />-->
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/personalTasksBtn"
@@ -84,7 +86,7 @@
                     app:chipEndPadding="10dp"
                     app:chipStartPadding="10dp"
                     app:chipStrokeColor="@color/mainYellow"
-                    app:chipStrokeWidth="0dp" />
+                    app:chipStrokeWidth="1.5dp" />
             </LinearLayout>
 
             <ScrollView
